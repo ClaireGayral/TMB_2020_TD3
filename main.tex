@@ -1,0 +1,208 @@
+%
+%   TMB-TD-2019.tex  - Tine Léon Matar
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext,mathabx}
+\usepackage{textcomp,multicol,enumitem,mdwlist}
+\usepackage{pict2e,graphicx}
+
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+\setlength{\textheight}{27cm}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{-2.8cm}
+%\setlength{\leftmargin}{-.5cm}
+\setlength{\oddsidemargin}{-1.05cm}
+\setlength{\evensidemargin}{-1.05cm}
+ 
+%\setcounter{page}{0}
+
+\renewcommand{\arraystretch}{1.5}
+
+\newcommand{\bitem}{\item[$\bullet$]}
+\newcommand{\ds}{\displaystyle}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\dist}{\mathrm{dist}\,}
+\newcommand{\Vect}{\mathrm{Vect}\,} 
+\newcommand{\Lin}{\mathrm{Lin}\,} 
+\newcommand{\calF}{{\cal F}}
+\newcommand{\calM}{{\cal M}}
+\newcommand{\Aire}{\mathrm{Aire}\,}
+\newcommand{\ch}{\mathrm{ch}\,}
+\newcommand{\sh}{\mathrm{sh}\,}
+\renewcommand{\th}{\mathrm{th}\,}
+
+\newcommand{\vi}{\vec{\mbox{\it \i}}\,}
+\newcommand{\vj}{\vec{\mbox{\it \j}}\,} 
+\newcommand{\vk}{\vec{\mbox{\it k}}\,} 
+\newcommand{\ve}{\vec{e}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\vw}{\vec{w}}
+\newcommand{\vh}{\vec{h}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vXY}[2]{\left(\!\!\begin{array}{c} #1 \\ #2 \end{array}\!\!\right)}
+\newcommand{\vXYZ}[3]{\left(\!\!\begin{array}{c} #1 \\ #2 \\ #3 \end{array}\!\!\right)}
+
+\newcommand{\vA}{\overrightarrow{A}}
+\newcommand{\vB}{\overrightarrow{B}}
+\newcommand{\vE}{\overrightarrow{E}}
+\newcommand{\vF}{\overrightarrow{F}}
+\newcommand{\vV}{\overrightarrow{V}}
+\newcommand{\vU}{\overrightarrow{U}}
+
+\newcommand{\OXY}{\begin{picture}(30,20)(0,-5)
+                  \put(-20,0){\vector(1,0){45}}
+                  \put(17,-7){\footnotesize $x$}
+                  \put(0,-20){\vector(0,1){45}}
+                  \put(-7,17){\footnotesize $y$}
+                  \end{picture}}
+\newcommand{\OXYZ}{\begin{picture}(30,10)(0,0)
+                   \put(10,20){\vector(-1,-2){20}}
+                   \put(-16,-18){\footnotesize $x$}
+                   \put(-20,0){\vector(1,0){45}}
+                   \put(19,-7){\footnotesize $y$}
+                   \put(0,-20){\vector(0,1){45}}
+                   \put(-7,19){\footnotesize $z$}
+                   \end{picture}}
+
+
+\newenvironment{alphate}{\begin{enumerate}[label=\alph*)]}{\end{enumerate}}
+
+\newtheorem{exo}{Exercice}
+\newenvironment{exercice}{\begin{exo} \em}{\end{exo}}
+
+\newtheorem{rep}{R\'eponses}
+\newenvironment{reponse}{\begin{rep} \em}{\end{rep}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{center}
+{\bf TD 3 \quad--\quad \'EQUATIONS, IN\'EQUATIONS ET DOMAINE DE 
+D\'EFINITION}
+\end{center}
+\bigskip 
+
+\addtocounter{exo}{14}
+
+%%%%%%%%%%                  %%%%%%%%%%                  %%%%%%%%%%
+
+\begin{exercice} {\bf -- Domaine de d\'efinition de fonctions}
+\label{TD6-domaine}\\ 
+Trouver le domaine de d\'efinition des fonctions suivantes:
+\begin{multicols}{3}
+\begin{alphate}
+\item $f(x)=\dfrac{x^2+2x-1}{x^2-2x+1}$ \smallskip 
+\item $g(y)=\sqrt{y^3-8}+\sqrt{y^3+8}$ \smallskip 
+\item $h(z)=\ln(z+5)$ \smallskip 
+\item $\Phi(t)=\ln\sqrt{t^2-4}$
+\item $u(\theta)=\dfrac{1}{\sin\theta}$ \smallskip 
+\item $y(x)=\arctan \big(\frac{1}{x}\big)$ \smallskip 
+\item $z(u)=\ln(\tan u)$ \smallskip 
+\item $p(x)=\sqrt{1-x^2}$
+\item $F(y)=\ln(1-y^2)$ \smallskip 
+\item $G(z)=\arcsin \frac{2z}{1+z^2}$ \smallskip 
+\item $H(x)=\arctan(x)+5$ \smallskip 
+\item $x(t)=\sqrt{\cos t}$ 
+\end{alphate}
+\end{multicols}
+\end{exercice}
+\bigskip
+
+%%%%%%%%%%                  %%%%%%%%%%                  %%%%%%%%%%
+
+\begin{exercice} {\bf -- \'Equations et syst\`emes} \\ 
+R\'esoudre les \'equations et les syst\`emes suivants:
+\begin{multicols}{3}
+\begin{alphate}
+\item $x(x+1)=0$ \smallskip 
+\item $x^2-3x+2 = 0$ \smallskip 
+\item $3u^2-5u-2 = 0$ \smallskip 
+\item $x^2-5x+4=0$ \smallskip  
+\item $y^2(y^2-4)=0$ \smallskip 
+\item $\dfrac{1}{2t}-1 = t$ \smallskip 
+\item $ 2\sqrt{x}= x+1 $
+\item $e^{4-3x^2} = 1$ \smallskip 
+\item $e^{2-3u} = 5$ \smallskip 
+\item $\ln\left(\dfrac{x+3}{2}\right)=\dfrac{1}{2}(\ln x+\ln 3)$ \smallskip 
+\item $\ch x + 2\, \sh x = 1$ \smallskip
+\item $\left\{\begin{array}{l} x(y+1)=0 \\ y^2(x^2-4)=0 \end{array}\right.$ \smallskip 
+\item $\left\{\begin{array}{l} (x-1)(y^2-1)=0 \\ xy(x-y)=0 \end{array}\right.$ \smallskip 
+\item $\left\{\begin{array}{l} x+y=55 \\ \ln x +\ln y=\ln 700 \end{array}\right.$ \smallskip 
+\item $\left\{\begin{array}{l} \ch x+\frac{1}{2}\ch y=5 \\ \sh x+\frac{1}{2}\sh y=4 \end{array}\right.$ \smallskip 
+\end{alphate}
+\end{multicols}
+\end{exercice}
+\bigskip
+
+\begin{exercice} {\bf -- In\'equations} \\ 
+R\'esoudre les in\'equations suivantes:
+\begin{multicols}{3}
+\begin{alphate}
+\item $u^2 > 4$ \smallskip 
+\item $x^2-3x+2 \leq 0$ \smallskip 
+\item $x(x-2)(x^2-1) < 0$ \smallskip 
+\item $\dfrac{1}{2x}-1 \geq 0$ \smallskip 
+\item $2\sqrt{x} < x+1$ \smallskip 
+\item $\ln u \leq 1$ \smallskip 
+\item $\ln(\ln t) \geq 0$ \smallskip 
+\item $(3-x)\,\ln x > 0$ \smallskip 
+\item $e^{3x^2} > 1$ \smallskip 
+\end{alphate}
+\end{multicols}
+\end{exercice}
+\bigskip 
+
+%%%%%%%%%%                  %%%%%%%%%%                  %%%%%%%%%%
+
+\begin{exercice} {\bf -- \'Equations et in\'equations sur les fonctions 
+circulaires} \\ 
+R\'esoudre les \'equations et les in\'equations suivantes:
+\begin{multicols}{3}
+\begin{alphate}
+\item $\cos^2 \theta = 1/4$ \smallskip 
+\item $\sin(\pi x) = 0$ \smallskip 
+\item $\sin(2t) = \cos^2 t$ \smallskip 
+\item $\arcsin x =\dfrac{-\pi}{3}$ \smallskip 
+\item $\arcsin x =\dfrac{2\pi}{3}$ \smallskip 
+\item $\arctan y =\dfrac{2\pi}{3}$ \smallskip 
+\item $\arcsin x + \arctan \sqrt{3} =\dfrac{\pi}{4}$ \smallskip 
+\item $\sin(2y) < 0$
+\item $\cos^2 \theta \geq 1/4$
+\item $\arcsin x \geq 1/2$
+\item $x\,\arctan x \leq 0$
+\end{alphate}
+\end{multicols}
+\end{exercice}
+\bigskip 
+
+%%%%%%%%%%                  %%%%%%%%%%                  %%%%%%%%%%
+
+%\begin{exercice}{\bf -- Pour aller plus loin} \\ 
+%R\'esoudre les \'equations et les in\'equations suivantes:
+%\begin{alphate}
+%\item $\cos 4x = \sin 7x$ \smallskip 
+%\item $\ch x + 2\, \sh x \leq 1$ \smallskip 
+%\end{alphate}
+%\end{exercice}
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

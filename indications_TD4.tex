@@ -1,0 +1,207 @@
+%
+%   TMB-TD-2019.tex  - Tine Léon Matar
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext,mathabx}
+\usepackage{textcomp,multicol,enumitem,mdwlist}
+\usepackage{pict2e,graphicx}
+
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+\setlength{\textheight}{27cm}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{-2.8cm}
+%\setlength{\leftmargin}{-.5cm}
+\setlength{\oddsidemargin}{-1.05cm}
+\setlength{\evensidemargin}{-1.05cm}
+ 
+%\setcounter{page}{0}
+
+\renewcommand{\arraystretch}{1.5}
+
+\newcommand{\bitem}{\item[$\bullet$]}
+\newcommand{\ds}{\displaystyle}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\dist}{\mathrm{dist}\,}
+\newcommand{\Vect}{\mathrm{Vect}\,} 
+\newcommand{\Lin}{\mathrm{Lin}\,} 
+\newcommand{\calF}{{\cal F}}
+\newcommand{\calM}{{\cal M}}
+\newcommand{\Aire}{\mathrm{Aire}\,}
+\newcommand{\ch}{\mathrm{ch}\,}
+\newcommand{\sh}{\mathrm{sh}\,}
+\renewcommand{\th}{\mathrm{th}\,}
+
+\newcommand{\vi}{\vec{\mbox{\it \i}}\,}
+\newcommand{\vj}{\vec{\mbox{\it \j}}\,} 
+\newcommand{\vk}{\vec{\mbox{\it k}}\,} 
+\newcommand{\ve}{\vec{e}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\vw}{\vec{w}}
+\newcommand{\vh}{\vec{h}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vXY}[2]{\left(\!\!\begin{array}{c} #1 \\ #2 \end{array}\!\!\right)}
+\newcommand{\vXYZ}[3]{\left(\!\!\begin{array}{c} #1 \\ #2 \\ #3 \end{array}\!\!\right)}
+
+\newcommand{\vA}{\overrightarrow{A}}
+\newcommand{\vB}{\overrightarrow{B}}
+\newcommand{\vE}{\overrightarrow{E}}
+\newcommand{\vF}{\overrightarrow{F}}
+\newcommand{\vV}{\overrightarrow{V}}
+\newcommand{\vU}{\overrightarrow{U}}
+
+\newcommand{\OXY}{\begin{picture}(30,20)(0,-5)
+                  \put(-20,0){\vector(1,0){45}}
+                  \put(17,-7){\footnotesize $x$}
+                  \put(0,-20){\vector(0,1){45}}
+                  \put(-7,17){\footnotesize $y$}
+                  \end{picture}}
+\newcommand{\OXYZ}{\begin{picture}(30,10)(0,0)
+                   \put(10,20){\vector(-1,-2){20}}
+                   \put(-16,-18){\footnotesize $x$}
+                   \put(-20,0){\vector(1,0){45}}
+                   \put(19,-7){\footnotesize $y$}
+                   \put(0,-20){\vector(0,1){45}}
+                   \put(-7,19){\footnotesize $z$}
+                   \end{picture}}
+
+
+\newenvironment{alphate}{\begin{enumerate}[label=\alph*)]}{\end{enumerate}}
+
+\newtheorem{exo}{Exercice}
+\newenvironment{exercice}{\begin{exo} \em}{\end{exo}}
+
+\newtheorem{rep}{R\'eponses}
+\newenvironment{reponse}{\begin{rep} \em}{\end{rep}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{center}
+{\bf INDICATIONS TD 3 \quad--\quad \'EQUATIONS, IN\'EQUATIONS ET DOMAINE DE 
+D\'EFINITION}
+\end{center}
+\bigskip 
+
+\addtocounter{exo}{14}
+
+%%%%%%%%%%                  %%%%%%%%%%                  %%%%%%%%%%
+\begin{exercice} {\bf -- Domaine de d\'efinition de fonctions}
+\label{TD6-domaine}\\ 
+Liste des éléments à penser pour cet exercice : 
+\begin{itemize}
+\item Division par $0$
+\item $x \mapsto \sqrt{x}$ définie sur $\mathbb{R}_+$
+\item $\ln$ définie sur $\mathbb{R}_+^*$
+\item $\arcsin$ définie sur $[-1,1]$ (comme $\arccos$, et $\arctan$ est définie sur $\mathbb{R}$)
+\end{itemize}
+\end{exercice}
+
+%%%%%%%%%%                  %%%%%%%%%%                  %%%%%%%%%%
+\begin{exercice} {\bf -- \'Equations et syst\`emes} 
+\begin{alphate}\addtocounter{enumi}{2}
+% \item $x(x+1)=0$ \hspace{1cm} 
+% \item $x^2-3x+2 = 0$ \hspace{1cm} 
+\item $3u^2-5u-2 = 0$ \hspace{1cm} 
+    Pensez au coefficient directeur !
+% \item $x^2-5x+4=0$ \hspace{1cm} 
+\addtocounter{enumi}{1}
+\item $y^2(y^2-4)=0$ \hspace{1cm} Poser $Y = y^2$
+\item $\dfrac{1}{2t}-1 = t$ \hspace{1cm} 
+    Si $t\neq 0$, on peut multiplier par $t$, puis résolution équation du second ordre
+% \item $ 2\sqrt{x}= x+1 $
+\item $e^{4-3x^2} = 1$ \hspace{1cm} 
+    Remarquer : $e^0 = 1$, puis utiliser l'injectivité d'exponentielle/ du logarithme naturel
+\item $e^{2-3u} = 5$ \hspace{1cm} idem avec $5 = e^{\ln 5}$
+\item $\ln\left(\dfrac{x+3}{2}\right)=\dfrac{1}{2}(\ln x+\ln 3)$ \hspace{1cm} 
+    Attention au domaine de définition dans le $\ln$
+\item $\ch x + 2\, \sh x = 1$ \hspace{1cm} 
+    Utiliser la définition des fonctions cosinus et sinus hyperbolique : $\ch(x) = \dfrac{e^x+e^{-x} }{2} $ et $\sh(x) = \dfrac{e^x-e^{-x} }{2}$, puis résoudre l'équation polynomiale en $X:=e^X$ 
+\item $\left\{\begin{array}{l} x(y+1)=0 \\ y^2(x^2-4)=0 \end{array}\right.$ \hspace{1cm} 
+    3 solutions
+\item $\left\{\begin{array}{l} (x-1)(y^2-1)=0 \\ xy(x-y)=0 \end{array}\right.$ \hspace{1cm} 
+    5 solutions
+\item $\left\{\begin{array}{l} x+y=55 \\ \ln x +\ln y=\ln 700 \end{array}\right.$ \hspace{1cm} 
+    $55^2 -4*700 = 15^2$
+\item $\left\{\begin{array}{l} \ch x+\dfrac{1}{2}\ch y=5 \\ \sh x+\dfrac{1}{2}\sh y=4 \end{array}\right. $ \hspace{1cm} 
+Ecrire $ch$ et $sh$ en termes exponentiels, poser $X = e^x$ et $Y = e^y$
+
+\hspace{1cm} 
+\end{alphate}
+\end{exercice}
+\bigskip
+
+%%%%%%%%%%                  %%%%%%%%%%                  %%%%%%%%%%
+\begin{exercice} {\bf -- In\'equations} \\ 
+R\'esoudre les in\'equations suivantes dans $\mathbf{R}$:
+\begin{alphate}
+%\item $u^2 > 4$ \smallskip 
+\addtocounter{enumi}{1}
+\item $x^2-3x+2 \leq 0$ \hspace{1cm} 
+    même signe que le coefficient directeur sauf entre les racines, faire un tableau de comparaison
+% \item $x(x-2)(x^2-1) < 0$ \smallskip 
+\addtocounter{enumi}{1}
+\item $\dfrac{1}{2x}-1 \geq 0$ \hspace{1cm}
+    attention à la discontinuité en $0$ de $x \mapsto \dfrac{1}{x}$
+% \item $2\sqrt{x} < x+1$ \smallskip 
+\addtocounter{enumi}{1}
+\item $\ln u \leq 1$ \hspace{1cm} 
+    penser au domaine de définition de $\ln$
+%\item $\ln(\ln t) \geq 0$ \smallskip 
+% \item $(3-x)\,\ln x > 0$ \smallskip 
+%\item $e^{3x^2} > 1$ \smallskip 
+%\item $\ch x + 2\, \sh x \leq 1$ \smallskip 
+\end{alphate}
+\end{exercice}
+\bigskip 
+
+\begin{exercice} {\bf -- \'Equations et in\'equations sur les fonctions 
+circulaires} \\ 
+R\'esoudre les \'equations et les in\'equations suivantes dans $\mathbf{R}$:
+\begin{alphate}
+\item $\cos^2 \theta = 1/4$ \hspace{1cm} 
+    méthode 1 : passage à la racine, attention au cas $-\dfrac{1}{2}$,\\
+    méthode 2 : linéarisation du cos : $ cos^2\theta = \dfrac{1+cos(2\theta) }{2} $
+%\item $\sin(\pi x) = 0$ \smallskip
+\addtocounter{enumi}{1}
+\item $\sin(2t) = \cos^2 t$ \hspace{1cm} 
+    utiliser $\sin(2t) = 2 \cos t \sin t$, puis factoriser en $\cos t$
+%\item $\arcsin x =\dfrac{-\pi}{3}$ 
+\addtocounter{enumi}{1}
+\item $\arcsin x =\dfrac{2\pi}{3}$ \hspace{1cm} 
+    attention au domaine de définition de $\arcsin$
+\item $\arctan y =\dfrac{2\pi}{3}$ \hspace{1cm} 
+    attention au domaine de définition de $\arctan$
+\item $\arcsin x + \arctan \sqrt{3} =\dfrac{\pi}{4}$ \hspace{1cm} 
+     $\arctan \sqrt{3} = \dfrac{\pi}{3}$ et $\dfrac{-\pi}{12} \in [\dfrac{-\pi}{2}, \dfrac{\pi}{2}]$
+% \item $\sin(2y) < 0$ \hspace{1cm} 
+% \item $\cos^2 \theta \geq 1/4$ \hspace{1cm} 
+\addtocounter{enumi}{2}
+\item $\arcsin x \geq 1/2$ \hspace{1cm} 
+    attention au domaine de définition de $\arcsin$
+\item $x\,\arctan x \leq 0$ \hspace{1cm} 
+    attention au domaine de définition de $\arctan$
+\end{alphate}
+\end{exercice}
+\bigskip 
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
