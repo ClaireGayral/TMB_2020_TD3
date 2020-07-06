@@ -1,0 +1,436 @@
+%
+%   TMB-TD-2019.tex  - Tine Léon Matar
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext,mathabx}
+\usepackage{textcomp,multicol,enumitem,mdwlist}
+\usepackage{pict2e,graphicx}
+
+
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+%% TODO : a ajouter !!!!
+\usepackage{pgfplots,subcaption}
+
+\setlength{\textheight}{27cm}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{-2.8cm}
+%\setlength{\leftmargin}{-.5cm}
+\setlength{\oddsidemargin}{-1.05cm}
+\setlength{\evensidemargin}{-1.05cm}
+ 
+%\setcounter{page}{0}
+
+\renewcommand{\arraystretch}{1.5}
+
+\newcommand{\bitem}{\item[$\bullet$]}
+\newcommand{\ds}{\displaystyle}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\dist}{\mathrm{dist}\,}
+\newcommand{\Vect}{\mathrm{Vect}\,} 
+\newcommand{\Lin}{\mathrm{Lin}\,} 
+\newcommand{\calF}{{\cal F}}
+\newcommand{\calM}{{\cal M}}
+\newcommand{\Aire}{\mathrm{Aire}\,}
+\newcommand{\ch}{\mathrm{ch}\,}
+\newcommand{\sh}{\mathrm{sh}\,}
+\renewcommand{\th}{\mathrm{th}\,}
+
+\newcommand{\vi}{\vec{\mbox{\it \i}}\,}
+\newcommand{\vj}{\vec{\mbox{\it \j}}\,} 
+\newcommand{\vk}{\vec{\mbox{\it k}}\,} 
+\newcommand{\ve}{\vec{e}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\vw}{\vec{w}}
+\newcommand{\vh}{\vec{h}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vXY}[2]{\left(\!\!\begin{array}{c} #1 \\ #2 \end{array}\!\!\right)}
+\newcommand{\vXYZ}[3]{\left(\!\!\begin{array}{c} #1 \\ #2 \\ #3 \end{array}\!\!\right)}
+
+\newcommand{\vA}{\overrightarrow{A}}
+\newcommand{\vB}{\overrightarrow{B}}
+\newcommand{\vE}{\overrightarrow{E}}
+\newcommand{\vF}{\overrightarrow{F}}
+\newcommand{\vV}{\overrightarrow{V}}
+\newcommand{\vU}{\overrightarrow{U}}
+
+\newcommand{\OXY}{\begin{picture}(30,20)(0,-5)
+                  \put(-20,0){\vector(1,0){45}}
+                  \put(17,-7){\footnotesize $x$}
+                  \put(0,-20){\vector(0,1){45}}
+                  \put(-7,17){\footnotesize $y$}
+                  \end{picture}}
+\newcommand{\OXYZ}{\begin{picture}(30,10)(0,0)
+                   \put(10,20){\vector(-1,-2){20}}
+                   \put(-16,-18){\footnotesize $x$}
+                   \put(-20,0){\vector(1,0){45}}
+                   \put(19,-7){\footnotesize $y$}
+                   \put(0,-20){\vector(0,1){45}}
+                   \put(-7,19){\footnotesize $z$}
+                   \end{picture}}
+
+
+\newenvironment{alphate}{\begin{enumerate}[label=\alph*)]}{\end{enumerate}}
+
+\newtheorem{exo}{Exercice}
+\newenvironment{exercice}{\begin{exo} \em}{\end{exo}}
+
+\newtheorem{rep}{R\'eponses}
+\newenvironment{reponse}{\begin{rep} \em}{\end{rep}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{center}
+{\bf Figures TD 3 \quad--\quad \'EQUATIONS, IN\'EQUATIONS ET DOMAINE DE 
+D\'EFINITION}
+\end{center}
+\bigskip 
+
+$$\dfrac{d}{dt} \big( \dfrac{1}{\sqrt{1 - t^2 } + 1} \big) = \dfrac{t}{ (\sqrt{1 - t^2} + 1)^2 \sqrt{1 - t^2} }
+$$
+
+$$\dfrac{d}{dt} \big( \dfrac{1}{\sqrt{t^2 + 1} + 1} \big) = \dfrac{-t}{ (\sqrt{1 + t^2} + 1)^2 \sqrt{1 + t^2} }
+$$
+
+\addtocounter{rep}{14}
+
+%%%%%%%%%%                  %%%%%%%%%%                  %%%%%%%%%%
+
+\begin{reponse} {\bf -- Domaine de d\'efinition de fonctions}
+\label{TD6-domaine}\\ 
+Trouver le domaine de d\'efinition des fonctions suivantes:
+\begin{alphate}
+\item Pour $ x \in \mathbb{R}$, $f(x)=\dfrac{x^2+2x-1}{x^2-2x+1}$ existe si :
+    $x \neq 1 $  \hspace{1cm}
+    $\boxed{D_f = \mathbb{R}\setminus\{1\} = \{x \in \mathbb{R} | x \neq 1\}}$
+    
+    \begin{tikzpicture}[>=stealth]
+    \begin{axis}[
+        xmin=-1.5,xmax=4.8,
+        ymin=-0.5,ymax=3.2,
+        axis x line=middle,
+        axis y line=middle,
+        axis line style=->,
+        xlabel={$x$},
+        ylabel={$y$},
+        ]
+        \addplot[no marks,blue,-] expression[domain=-1:3,samples=100]{x^2-2*x+1}
+        % {sin(deg(2*x))+1/2}
+        node[pos=0.65,anchor=north west]{$x\mapsto x^2-2x+1$}; 
+    \end{axis}
+    \end{tikzpicture}   
+    
+    
+\item  Pour $ y \in \mathbb{R}$, $g(y)=\sqrt{y^3-8}+\sqrt{y^3+8}$ existe si :
+    $y \leq 2 $  \hspace{1cm}
+    $\boxed{D_g = [2, +\infty[}$  
+
+    \begin{tikzpicture}[>=stealth]
+    \begin{axis}[
+        xmin=-1.5,xmax=4.8,
+        ymin=-0.5,ymax=2.5,
+        axis x line=middle,
+        axis y line=middle,
+        axis line style=->,
+        xlabel={$x$},
+        ylabel={$y$},
+        ]
+        \addplot[no marks,blue,-] expression[domain=-1:4,samples=100]{x^(1/2)}
+        % {sin(deg(2*x))+1/2}
+        node[pos=0.65,anchor=north west]{$x \mapsto \sqrt{x}$}; 
+    \end{axis}
+    \end{tikzpicture}   
+
+\item Pour $ z \in \mathbb{R}$, $h(z)=\ln(z+5)$ existe si :
+    $z > -5 $  \hspace{1cm}
+    $\boxed{D_h = ]-5, +\infty[}$
+    
+    \begin{tikzpicture}[>=stealth]
+    \begin{axis}[
+        xmin=-5.2,xmax=4.8,
+        ymin=-3,ymax=2.5,
+        axis x line=middle,
+        axis y line=middle,
+        axis line style=->,
+        xlabel={$x$},
+        ylabel={$y$},
+        ]
+        \addplot[no marks,blue,-] expression[domain=-5.2:4,samples=100]{ln(x+5)}
+        % {sin(deg(2*x))+1/2}
+        node[pos=0.65,anchor=north west]{$z \mapsto \ln(z+5)$}; 
+    \end{axis}
+    \end{tikzpicture}   
+    
+\item Pour $ t \in \mathbb{R}$, $\Phi(t)=\ln\sqrt{t^2-4}$ existe si :
+    $t < -2$ et $t >2$ 
+    \begin{center}
+        $\boxed{D_{\Phi} =]-\infty,-2[\cup]2,+\infty[= \{t \in \mathbb{R} | \, t < -2 \text{ et } t >2 \}}$
+    \end{center}
+
+\item Pour $ \theta \in \mathbb{R}$, $u(\theta)=\dfrac{1}{\sin\theta}$ existe si :
+    $ \theta \neq k\pi, \, k\in \mathbb{Z} \Leftrightarrow k\pi < \theta < \pi + k\pi, \, k\in \mathbb{Z} $      
+    \begin{center}
+        $\boxed{D_{u} = \{\theta \neq k\pi, \, k\in \mathbb{Z} \}
+        =]0,\pi[ + k \pi, \, k\in \mathbb{Z} }$
+    \end{center}
+    
+    \begin{tikzpicture}[0.8]
+    \begin{axis}[
+        xmin=-4.2,xmax=4.8,
+        ymin=-1.2,ymax=1.2,
+        axis x line=middle,
+        axis y line=middle,
+        axis line style=->,
+        xlabel={$x$},
+        ylabel={$y$},
+        ]
+        \addplot[no marks,blue,-] expression[domain=-4:4,samples=100]{sin(deg(x))}
+        % {sin(deg(2*x))+1/2}
+        node[pos=0.02,anchor=south west]{$x \mapsto \sin x$}; 
+    \end{axis}
+    \end{tikzpicture}  
+    
+\item Pour $ x \in \mathbb{R}$, $y(x)=\arctan \big(\dfrac{1}{x}\big)$ existe si :
+    $x \neq 0 $  \hspace{1cm}
+    $\boxed{D_x = \mathbb{R}\setminus\{0\} =  \mathbb{R}^* }$
+        
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}[t]{0.45\textwidth}
+    \begin{tikzpicture}[scale = 0.9]
+    \begin{axis}[
+        xmin=-4.2,xmax=4.8,
+        ymin=-2.2,ymax=2.2,
+        axis x line=middle,
+        axis y line=middle,
+        axis line style=->,
+        xlabel={$x$},
+        ylabel={$y$},
+        ]
+        \addplot[no marks,blue,-] expression[domain=-4:4,samples=100]{rad(atan(x))}
+        % {sin(deg(2*x))+1/2}
+        node[pos=0.70, anchor=north west]{$x \mapsto \arctan x$}; 
+    \end{axis}
+    \end{tikzpicture}  
+    \end{minipage}%
+     
+    \begin{minipage}[t]{0.40\textwidth}
+        \centering
+    \begin{tikzpicture}[scale = 0.9]
+    \begin{axis}[
+        xmin=-4.2,xmax=4.8,
+        ymin=-2.2,ymax=2.2,
+        axis x line=middle,
+        axis y line=middle,
+        axis line style=->,
+        xlabel={$x$},
+        ylabel={$y$},
+        ]
+        \addplot[no marks,blue,-] expression[domain=-4:4,samples=100]{1/x}
+        node[pos=0.98, anchor= south west]{$x \mapsto \frac{1}{x}$}; 
+    \end{axis}
+    \end{tikzpicture}  
+    \end{minipage}%
+\end{figure}
+
+\item Pour $u \in \mathbb{R}$, $z(u)=\ln(\tan u)$  existe si :
+    $ k\pi < u < \dfrac{\pi}{2} + k\pi, \, k\in \mathbb{Z}  $  \hspace{1cm}
+    $\boxed{D_z =]0,\dfrac{\pi}{2} [ + k \pi, \, k\in \mathbb{Z}}$
+\item Pour $ x \in \mathbb{R}$, $p(x)=\sqrt{1-x^2}$ existe si :
+    $ -1 \leq x \leq 1 $  \hspace{1cm}
+    $\boxed{D_p = [-1,1]}$
+\item Pour $ y \in \mathbb{R}$, $F(y)=\ln(1-y^2)$ existe si :
+    $ -1 < y < 1 $  \hspace{1cm}
+    $\boxed{D_F = ]-1,1[}$
+\item Pour $ z \in \mathbb{R}$, $G(z)=\arcsin \dfrac{2z}{1+z^2}$ existe si :
+    $x \geq 1 $  \hspace{1cm}
+    $\boxed{D_G =[1,+\infty[}$
+\item Pour $ x \in \mathbb{R}$,  $H(x)=\arctan(x)+5$ existe si :
+    $x \in \mathbb{R} $  \hspace{1cm}
+    $\boxed{D_H = \mathbb{R}}$
+\item Pour $ t \in \mathbb{R}$, $x(t)=\sqrt{\cos t}$ existe si :
+    $ -\dfrac{\pi}{2} + 2k\pi < t < \dfrac{\pi}{2} + 2k\pi, \, k\in \mathbb{Z}  $  \hspace{1cm}
+    $\boxed{D_x =]-\dfrac{\pi}{2},\dfrac{\pi}{2} [ + 2k \pi, \, k\in \mathbb{Z}}$
+\end{alphate}
+\end{reponse}
+
+
+%%%%%%%%%%                  %%%%%%%%%%                  %%%%%%%%%%
+
+\begin{reponse} {\bf -- \'Equations et syst\`emes} \\ 
+R\'esoudre les \'equations et les syst\`emes suivants dans $\mathbf{R}$:
+\begin{alphate}
+\item $x(x+1)=0 \Leftrightarrow
+    x = 0 \text{ ou } x = 1$ \hspace{1cm} 
+    $\boxed{\mathcal{S}_a = \{0, \, 1\} }$ 
+\item $x^2-3x+2 = 0 \Leftrightarrow 
+    x=1 \text{ ou } x=2$ \hspace{1cm} 
+    $\boxed{\mathcal{S}_b = \{ 1, \, 2\} }$ 
+\item $3u^2-5u-2 = 0 \Leftrightarrow 
+    u=\dfrac{-1}{3} \text{ ou } u = 2$ \hspace{1cm} 
+    $\boxed{\mathcal{S}_c = \{\dfrac{-1}{3}, \, 2\} }$
+\item $x^2-5x+4=0 \Leftrightarrow 
+    x=1 \text{ ou } x=4$ \hspace{1cm} 
+    $\boxed{\mathcal{S}_d = \{1, \, 4\} }$
+\item $y^2(y^2-4)=0 \Leftrightarrow 
+    y = -2 \text{ ou } y = 0 \text{ ou } y = 2$ \hspace{1cm} $\boxed{\mathcal{S}_e = \{-2, \, 0, \, 2\} }$ 
+\item $\dfrac{1}{2t}-1 = t \Leftrightarrow 
+    t=\dfrac{-1}{2}-\dfrac{\sqrt{3}}{2} 
+    \text{ ou }  
+    t=\dfrac{-1}{2}+\dfrac{\sqrt{3}}{2}$ \hspace{1cm} 
+    $\boxed{\mathcal{S}_f = \{
+        \dfrac{-1}{2}-\dfrac{\sqrt{3}}{2}, \, 
+        \dfrac{-1}{2}+\dfrac{\sqrt{3}}{2}\} }$
+\item $ 2\sqrt{x}= x+1 \Leftrightarrow x=1$ \hspace{1cm}
+    $\boxed{\mathcal{S}_g = \{ 1 \} }$ 
+\item $e^{4-3x^2} = 1 \Leftrightarrow 
+    x=\dfrac{-2}{\sqrt{3}}  \text{ ou } x=\dfrac{2}{\sqrt{3}}$ \hspace{1cm}
+    $\boxed{\mathcal{S}_h = \{\dfrac{-2}{\sqrt{3}}, \, \dfrac{2}{\sqrt{3}}\} }$ 
+\item $e^{2-3u} = 5 \Leftrightarrow 
+    u = \dfrac{-\ln(5)+2}{3}$ \hspace{1cm} 
+    $\boxed{\mathcal{S}_i = \{\dfrac{-\ln(5)+2}{3}\} }$ 
+\item $\ln\left(\dfrac{x+3}{2}\right)=\dfrac{1}{2}(\ln x+\ln 3) \Leftrightarrow 
+    x=3$ \hspace{1cm} $\boxed{\mathcal{S}_j = \{3\} }$ 
+\item $\ch x + 2\, \sh x = 1 \Leftrightarrow
+    x=0$ \hspace{1cm}
+    $\boxed{\mathcal{S}_k = \{0\} }$ 
+\item $\left\{\begin{array}{l} x(y+1)=0 \\ y^2(x^2-4)=0 \end{array}\right. 
+    \Leftrightarrow
+    \left\{\begin{array}{l} x=0 \\ y=0 \end{array}\right.
+    \text{ ou } 
+    \left\{\begin{array}{l} x=-2 \\ y=-1 \end{array}\right.
+    \text{ ou } 
+    \left\{\begin{array}{l} x=2 \\ y=-1 \end{array}\right.$ 
+    \hspace{0.5cm} 
+    $\boxed{\mathcal{S}_l = \{(0,0), \, (-2,-1), \, (2,-1)\} }$ 
+\item $\left\{\begin{array}{l} (x-1)(y^2-1)=0 \\ xy(x-y)=0 \end{array}\right.  
+    \Leftrightarrow
+    \left\{\begin{array}{l} x=0 \\ y=\pm 1 \end{array}\right.
+    \text{ ou } 
+    \left\{\begin{array}{l} x=1 \\ y=0 \end{array}\right.
+    \text{ ou }
+    \left\{\begin{array}{l} x=-1 \\ y=-1 \end{array}\right.
+    \text{ ou } 
+    \left\{\begin{array}{l} x=1 \\ y=1 \end{array}\right.$ 
+    \\
+    \begin{center}
+        $\boxed{\mathcal{S}_m = \{(0,-1), \, (0,1), \, (1,0), \, (-1,-1), \, (1,1)\} }$
+    \end{center}
+\item $\left\{\begin{array}{l} x+y=55 \\ \ln x +\ln y=\ln 700 \end{array}\right.     \Leftrightarrow
+    \left\{\begin{array}{l} x=15 \\ y=35 \end{array}\right.
+    \text{ ou } 
+    \left\{\begin{array}{l} x=35 \\ y=20 \end{array}\right.$ 
+    \hspace{0.5cm} 
+    $\boxed{\mathcal{S}_n = \{(15,35), \, (35,20)\} }$ 
+\item $\left\{\begin{array}{l} \ch x+\dfrac{1}{2}\ch y=5 \\ \sh x+\dfrac{1}{2}\sh y=4 \end{array}\right.     \Leftrightarrow
+    \left\{\begin{array}{l} x=-\ln 3 \\ y=\ln 3 \end{array}\right.$
+    \hspace{0.5cm} 
+    $\boxed{\mathcal{S}_o = \{(- \ln 3,\ln 3)\} }$ 
+\end{alphate}
+\end{reponse}
+\bigskip
+
+%%%%%%%%%%                  %%%%%%%%%%                  %%%%%%%%%%
+
+
+\begin{reponse} {\bf -- In\'equations} \\ 
+R\'esoudre les in\'equations suivantes dans $\mathbf{R}$:
+\begin{alphate}
+\item $u^2 > 4 \Leftrightarrow
+    u>2 \text{ et } u>-2$ \hspace{1cm} 
+    $\boxed{\mathcal{S}_a = ]-\infty,-2[\cup]2,+\infty[ }$ 
+\item $x^2-3x+2 \leq 0 \Leftrightarrow
+    1 < x < 2 $ \hspace{1cm} 
+    $\boxed{\mathcal{S}_b = ]1, 2[ }$ 
+\item $x(x-2)(x^2-1) < 0 \Leftrightarrow
+    \left\{\begin{array}{l} -1 < x < 0 \\ \text{ ou }\\ 1 < x < 2 \end{array}\right. $ \hspace{1cm} 
+    $\boxed{\mathcal{S}_c = ]-1,0[\cup]1,2[ }$ 
+\item $\dfrac{1}{2x}-1 \geq 0 \Leftrightarrow
+    0 < x < \dfrac{1}{2} $ \hspace{1cm} 
+    $\boxed{\mathcal{S}_d = \big]0,  \, \dfrac{1}{2}\big[ }$ 
+\item $2\sqrt{x} < x+1 \Leftrightarrow
+    x \neq -1 $ \hspace{1cm} 
+    $\boxed{\mathcal{S}_e = \mathbb{R}\setminus\{1\} }$ 
+\item $\ln u \leq 1 \Leftrightarrow
+    0 < u < e^1 = e \approx 2.7 $ \hspace{1cm} 
+    $\boxed{\mathcal{S}_f = ]0 , \,  e[ }$ 
+\item $\ln(\ln t) \geq 0 \Leftrightarrow
+    t \geq e $ \hspace{1cm} 
+    $\boxed{\mathcal{S}_g = [ e, \, +\infty[ }$ 
+\item $(3-x)\,\ln x > 0 \Leftrightarrow
+    1 < x <3 $ \hspace{1cm} 
+    $\boxed{\mathcal{S}_h = ]1,3[ }$ 
+\item $e^{3x^2} > 1 \Leftrightarrow
+    x \neq 0 $ \hspace{1cm} 
+    $\boxed{\mathcal{S}_i = \mathbb{R}\setminus\{0\} = \mathbb{R}^* }$ 
+\end{alphate}
+\end{reponse}
+\bigskip 
+
+%%%%%%%%%%                  %%%%%%%%%%                  %%%%%%%%%%
+
+\begin{reponse} {\bf -- \'Equations et in\'equations sur les fonctions 
+circulaires} \\ 
+R\'esoudre les \'equations et les in\'equations suivantes:
+\begin{alphate}
+\item $\cos^2 \theta = 1/4 \Leftrightarrow
+    \theta = \pm \dfrac{\pi}{3} + k\pi, \, k \in \mathbb{Z} $ \hspace{1cm} 
+    $\boxed{\mathcal{S}_a = \{-\dfrac{\pi}{3}  + \pi \mathbb{Z} \}\cup\{\dfrac{\pi}{3}  + \pi \mathbb{Z}\}}$ 
+\item $\sin(\pi x) = 0 \Leftrightarrow
+    x \in \mathbb{Z} $ \hspace{1cm} 
+    $\boxed{\mathcal{S}_b = \mathbb{Z} }$ 
+\item $\sin(2t) = \cos^2 t \Leftrightarrow
+    \left\{\begin{array}{l} t = \arctan\dfrac{1}{2} + k\pi, k \in \mathbb{Z} \\ \text{ ou } t = \dfrac{\pi}{2}  + k\pi, k \in \mathbb{Z} \end{array}\right.$ \hspace{1cm} 
+    $\boxed{\mathcal{S}_c = \{ \arctan\dfrac{1}{2}  + \pi \mathbb{Z} \}\cup\{\dfrac{\pi}{2}  + \pi \mathbb{Z}\} }$ \\
+    Remarque : $\arctan \dfrac{1}{2} = \arcsin \dfrac{1}{\sqrt{5}}$
+\item $\arcsin x =\dfrac{\sqrt{2}}{2} \Leftrightarrow
+    x = \dfrac{\pi}{4}  $ \hspace{1cm} 
+    $\boxed{\mathcal{S}_d = \{\sqrt{3}\}}$ 
+\item $\arcsin x =\dfrac{2\pi}{3}$  n'a pas de solution 
+    car $\dfrac{2\pi}{3} \notin [\dfrac{-\pi}{2}, \dfrac{\pi}{2}]$ \hspace{1cm} 
+    $\boxed{\mathcal{S}_e =\emptyset }$ 
+\item $\arctan y =\dfrac{2\pi}{3}$  n'a pas de solution 
+    car $\dfrac{2\pi}{3} \notin ]\dfrac{-\pi}{2}, \dfrac{\pi}{2}[$ \hspace{1cm} 
+    $\boxed{\mathcal{S}_f=\emptyset }$ 
+\item $\arcsin x + \arctan \sqrt{3} =\dfrac{\pi}{4} \Leftrightarrow
+    x = \sin(\dfrac{-\pi}{12}) $ \hspace{1cm} 
+    $\boxed{\mathcal{S}_g = \{\sin(\dfrac{-\pi}{12})\} }$ 
+\item $\sin(2y) < 0 \Leftrightarrow
+    -\dfrac{\pi}{2}) + k\pi < y < k\pi, \, k \in \mathbb{Z} $ \hspace{1cm} 
+    $\boxed{\mathcal{S}_h =]-\dfrac{\pi}{2}), 0[ + \pi \mathbb{Z} }$ 
+\item $\cos^2 \theta \geq 1/4 \Leftrightarrow
+    -\dfrac{\pi}{3} + k\pi \leq \theta  \leq \dfrac{\pi}{3} + k\pi, \, k \in \mathbb{Z} $ 
+    \begin{center}
+         $\boxed{\mathcal{S}_i = \{[-\dfrac{\pi}{3} + k\pi,\dfrac{\pi}{3} + k\pi], \, k \in \mathbb{Z}\} = [-\dfrac{\pi}{3}, \dfrac{\pi}{3}] + \pi \mathbb{Z} }$ 
+    \end{center}
+\item $\arcsin x \geq 1/2 \Leftrightarrow
+    \sin(\dfrac{1}{2}) < y < 1 $ \hspace{1cm} 
+    $\boxed{\mathcal{S}_j =]\sin(\dfrac{1}{2}), 1[ }$ 
+\item $x\,\arctan x \leq 0 \Leftrightarrow
+    x = 0 $ \hspace{1cm} 
+    $\boxed{\mathcal{S}_k =\{0\} }$ 
+\end{alphate}
+\end{reponse}
+
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
