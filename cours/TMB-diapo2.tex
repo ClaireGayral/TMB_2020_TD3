@@ -1,0 +1,1591 @@
+%
+%   TMB-diapo2.tex  2019-2020  A. Mikelic & L. M. Tine  \` \^ 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt]{beamer}
+% \documentclass[8pt,handout]{beamer} % to get handout of the presentation
+
+%\usetheme[height=1cm,width=1.7cm]{}%{sidebar}	
+
+%	
+% packages 
+%
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext,mathabx,bbm}
+\usepackage{textcomp,multicol,multirow,enumitem}
+\usepackage{pict2e,graphicx}
+\usepackage{mathrsfs}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}  % bof 
+
+
+
+
+%%%%%%%%%%############%%%%%%%%%%%%%%%##############%%%%%%%%%%%%%%%##########
+\renewcommand{\contentsname}{Programme du cours}
+
+\newcommand{\bitem}{\item[$\bullet$]}
+\newcommand{\litem}{\hspace{-.5cm}\item[$\bullet$]}
+\setlist[itemize]{leftmargin=*}
+
+\newcommand{\ds}{\displaystyle}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+
+\newcommand{\lra}{\longrightarrow}
+
+\newcommand{\Arg}{\mathrm{Arg}}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+
+\newcommand{\dist}{\mathrm{dist}}
+\newcommand{\Vect}{\mathrm{Vect}} 
+\newcommand{\Lin}{\mathrm{Lin}}  
+\newcommand{\Rot}{\mathrm{Rot}} 
+\newcommand{\Ref}{\mathrm{Ref}} 
+\newcommand{\calF}{{\cal F}}
+\newcommand{\calL}{{\cal L}}
+\newcommand{\calM}{{\cal M}}
+\newcommand{\calS}{{\cal S}}
+\newcommand{\matun}{\mathbbm{1}}
+\newcommand{\Aire}{\mathrm{Aire}}
+\newcommand{\Vol}{\mathrm{Vol}} 
+\newcommand{\id}{\mathrm{id}}
+
+\newcommand{\vi}{\vec{\mbox{\it \i}}\,}
+\newcommand{\vj}{\vec{\mbox{\it \j}}\,} 
+\newcommand{\vk}{\vec{\mbox{\it k}}\,} 
+\newcommand{\ve}{\vec{e}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\vw}{\vec{w}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vXY}[2]{\left(\!\!\begin{array}{c} #1 \\ #2 \end{array}\!\!\right)}
+\newcommand{\vXYZ}[3]{\left(\!\!\begin{array}{c} #1 \\ #2 \\ #3 \end{array}\!\!\right)}
+
+\newcommand{\vA}{\overrightarrow{A}}
+\newcommand{\vB}{\overrightarrow{B}}
+\newcommand{\vE}{\overrightarrow{E}}
+\newcommand{\vF}{\overrightarrow{F}}
+\newcommand{\vG}{\overrightarrow{{\cal G}}}
+\newcommand{\vV}{\overrightarrow{V}}
+\newcommand{\vU}{\overrightarrow{U}}
+\newcommand{\vdl}{\overrightarrow{d\ell}}
+\newcommand{\vdS}{\overrightarrow{dS}}
+
+\newcommand{\ch}{\mathrm{ch}\,} 
+\newcommand{\sh}{\mathrm{sh}\,} 
+\renewcommand{\th}{\mathrm{th}\,} 
+
+\newcommand{\ddx}{\frac{d}{dx}}
+\newcommand{\dd}[1]{\frac{d #1}{dx}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newenvironment{definition}{\medskip \noindent{\bf D\'efinition.}\ }
+%{\medskip}
+\newenvironment{theoreme}{\medskip \noindent{\bf Th\'eor\`eme.}\ }
+{\medskip}
+\newenvironment{theoreme-nom}[1]{\medskip \noindent{\bf Th\'eor\`eme #1.}\ }
+{\medskip}
+\newenvironment{proposition}{\medskip \noindent{\bf Proposition.}\ }
+{\medskip}
+\newenvironment{corollaire}{\medskip \noindent{\bf Corollaire.}\ }
+{\medskip}
+\newenvironment{lemme}{\medskip \noindent{\bf Lemme.}\ }
+{\medskip}
+\newenvironment{remarque}{\medskip \noindent{\bf Remarque.}\ }{\medskip}
+\newenvironment{rappel}{\medskip \noindent{\bf Rappel.}\ }{\medskip}
+\newenvironment{exercice}{\medskip \noindent{\bf Exercice.}\ }{\medskip}
+\newenvironment{exercices}{\medskip \noindent{\bf Exercices.}\ }{\medskip}
+%\newenvironment{exemple}{\medskip \begin{quote}\noindent{\bf Exemple.}\quad}%
+%     {\end{quote}\medskip}
+%\newenvironment{exemples}{\medskip \begin{quote}\noindent{\bf Exemples.}\quad}%
+%     {\end{quote}\medskip}
+\newenvironment{exemple}{\medskip \noindent{\bf Exemple.}\ }{\medskip}
+\newenvironment{exemples}{\medskip \noindent{\bf Exemples.}\ }{\medskip}
+\newenvironment{preuve}{\medskip \noindent{\bf Preuve.}\ }%
+{\medskip}
+\newenvironment{application}{\medskip \noindent{\bf Application.}\ }%
+{\medskip}
+\newenvironment{question}{\medskip \noindent{\bf Question.}\ }{\medskip}
+\newenvironment{conclusion}{\medskip \noindent{\bf Conclusion.}\ }{\medskip}
+%%%%%%%%%%%############%%%%%%%%%%%%############ù%%%%%%%%%%ù
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\setlength{\textwidth}{17cm}
+%\setlength{\oddsidemargin}{-1.05cm}
+%\setlength{\evensidemargin}{-1.05cm}
+%
+% packages pour dessins avec tikzpicture
+%
+%\usepackage{pgf,tikz,pgfplots}
+%\pgfplotsset{compat=1.15}
+%\usepackage{mathrsfs}
+%\usetikzlibrary{arrows}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+
+% \usepackage{cours/TMB-dessins}
+
+%
+% macros
+%
+% \usepackage{cours/TMB-macros}
+%\usepackage[paperheight=11cm, paperwidth=8.5cm]{geometry}
+%
+% macros pour beamer 
+%
+\newcommand{\uv}{\mbox{\small $u$,$v$}}
+\newcommand{\xy}{\mbox{\small $x$,$y$}}
+\newcommand{\xxyy}{\mbox{\footnotesize $\sqrt{x^2\!+\!y^2}$}}
+
+%\AtBeginSubsection[]
+%{
+%  \begin{frame}<beamer>
+%    \frametitle{Plan}
+%    \tableofcontents[currentsection,currentsubsection]
+%  \end{frame}
+%}
+
+\setbeamertemplate{navigation symbols}{} 
+
+\usepackage[footheight=.5em]{beamerthemeboxes}
+\addfootboxtemplate{\color{white}}{\color{black}\hfill\large{\insertframenumber}\hspace{1em}\null} %/\inserttotalframenumber}\hspace{1em}\null}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{2 Fonctions}
+
+\begin{frame}[plain]
+\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf TMB -- Chapitre 2 \\ 
+Fonctions d'une variable r\'eelle}
+
+Dans ce chapitre: 
+\begin{itemize}
+\item[1.] Fonctions usuelles. 
+
+\item[2.] Graphes des fonctions. 
+
+\item[3.] Fonctions croissantes, d\'ecroissantes, monotones. 
+Fonctions paires et impaires. 
+
+\item[4.] Op\'erations entre fonctions: addition, multiplication, 
+composition. 
+
+\item[5.] Fonctions r\'eciproques. 
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Fonctions usuelles} 
+
+\begin{frame}
+\frametitle{\bf 1. Fonctions r\'eelles}
+\medskip 
+
+{\bf D\'efinition:} 
+Une {\bf fonction (r\'eelle)} est une ``loi'' qui associe 
+\`a tout $x\in\R$ \underline{au maximum une valeur} $y\in\R$, 
+qu'on note $y(x)$ car elle d\'epend de $x$. Une fonction est aussi not\'ee 
+$$\mbox{\framebox{\ 
+$f:\R\longrightarrow \R,\ x\mapsto y=f(x)$
+\ }} $$
+\vspace*{-5mm}
+
+\pause
+\begin{itemize}
+\bitem
+Le {\bf domaine (de d\'efinition)} d'une fonction $f$ est l'ensemble 
+\vspace*{-1mm}
+$$\mbox{\framebox{\ 
+$D_f=\big\{ x\in\R\ |\ f(x)\in\R,\ 
+\mbox{i.e. la valeur $f(x)$ est bien d\'efinie}\Big\}$
+\ }} $$
+\vspace*{-3mm}
+
+\bitem
+L'{\bf image} d'une fonction $f$ est l'ensemble 
+\vspace*{-1mm}
+$$\mbox{\framebox{\ 
+$I_f=\big\{ y\in\R\ |\ y=f(x)\ \mbox{pour un $x\in D_f$} \Big\}$
+\ }} $$
+\end{itemize}
+\vspace*{1mm}
+
+\pause
+\underline{Attention}: une loi qui associe \`a $x\in\R$ 
+\underline{deux} valeurs distinctes $y_1,y_2\in\R$ (ou plus) 
+n'est pas une fonction.  
+\vspace*{2mm}
+
+\pause
+{\small 
+{\bf Exemples:}
+\begin{itemize}
+\bitem
+La loi $f(x)=x^2$ est une fonction de domaine $D_f\!=\!\R$ et image $I_f\!=\!\R^+$.
+\bitem
+La loi $f(x)=\sqrt{x}$ est une fonction de domaine $D_f\!=\!\R^+$ et image $I_f\!=\!\!\R^+$.
+\bitem
+La loi $f(x)=\pm\sqrt{x}$ n'est pas une fonction, ex. $f(4)=+2$ ou bien $-2$. 
+\end{itemize}
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[plain]
+\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Polyn\^omes, fractions, racines}
+\medskip 
+
+{\bf D\'efinition:} 
+On appelle ``usuelles'' les fonctions $f:\R\rightarrow\R$ suivantes:
+\begin{itemize}
+\bitem
+{\bf fonctions polynomiales}, abr\'eg\'e en ``polyn\^omes'': 
+$$
+\mbox{\framebox{\ $f(x)=a_o+a_1\,x+a_2\,x^2+\cdots +a_n\,x^n$\ }}
+\quad a_i\in\R,
+\ \mbox{avec\ \framebox{\ $D_f=\R$\ }.} 
+$$
+
+\pause
+\bitem
+{\bf fractions rationnelles}, abr\'eg\'e en ``fractions'': ce sont les 
+quotients de polyn\^omes $a(x)$ et $b(x)$
+$$
+\mbox{\framebox{\ $f(x)=\frac{a(x)}{b(x)}$\ }\quad 
+avec\ \framebox{\ $D_f=\Big\{ x\in\R\ |\ b(x)\neq 0 \Big\}$\ }.}  
+$$
+
+\pause
+\bitem
+{\bf fonctions radicales}, abr\'eg\'e en ``racines'': ce sont les 
+racines $k$-i\`emes de polyn\^omes $a(x)$, pour $k\in\N$
+$$
+\mbox{\framebox{\ $f(x)=\sqrt[k]{a(x)}$\ }\quad 
+d\'efini par\quad $f(x)^k=a(x)$}
+$$
+avec domaine\ \framebox{\  
+$D_f=\left\{ x\in\R\ |\ \Big\langle\begin{array}{ll} 
+a(x)\in\R &\mbox{si $k$ est impair} \\ a(x)\in \R^+ &\mbox{si $k$ est pair} 
+\end{array}\right\}$\ }. 
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\bf Fonctions circulaires}
+\medskip 
+
+\begin{itemize}
+\parbox{10cm}{
+\bitem
+{\bf cosinus}\ \framebox{\ $f(x)\!=\!\cos x$\ }\quad avec\quad  
+\framebox{\ $D_{\cos}\!=\!\R$\ }\quad et\quad \framebox{\ $I_{\cos}\!=\![-1,1]$\ }
+}
+\vspace*{3mm}
+
+\bitem
+{\bf sinus}\ \framebox{\ $f(x)\!=\!\sin x$\ }\quad avec\quad 
+\framebox{\ $D_{\sin}\!=\!\R$\ }\quad et\quad \framebox{\ $I_{\sin}\!=\![-1,1]$\ }
+\vspace*{3mm}
+
+\parbox[t]{6cm}{
+o\`u $(\cos x,\sin x)$ sont les coordonn\'ees du point $P$ 
+qui se trouve sur le cercle unitaire \`a angle $x$ 
+mesur\'e dans le sens antihoraire depuis l'axe de direction $\vi$. 
+\vspace*{1mm}
+
+Puisque le cercle a \'equation $X^2+Y^2=1$, si on pose $X=\cos x$ et 
+$Y=\sin x$ on a
+$$
+\mbox{\framebox{\ 
+$\cos^2 x + \sin^2 x = 1$\ } \quad pour tout $x\in\R$.}
+$$
+}
+\quad\raisebox{-\height}{
+\begin{picture}(90,90)(-45,-45)
+\setlength{\unitlength}{1.5pt}
+\put(-30,0){\vector(1,0){60}}
+\put(28,-5){\scriptsize{$\vi$}}
+\put(0,-30){\vector(0,1){60}}
+\put(-5,28){\scriptsize{$\vj$}}
+\put(0,0){\circle{40}}
+\put(20,-20){\vector(0,1){50}}
+%
+\put(14,14){\circle*{2}}
+\put(12,17){\scriptsize{$P$}}
+\put(0,0){\line(1,1){20}}
+\put(8,0){\vector(-2,3){3}}
+\put(8,3){\scriptsize{$x$}}
+\multiput(14,0)(0,4){4}{\line(0,1){2}}
+\multiput(0,14)(4,0){4}{\line(1,0){2}}
+%
+\linethickness{0.5mm}
+\put(0,0){\line(1,0){14}}
+\put(2,-5){\scriptsize{$\cos x$}}
+\put(0,0){\line(0,1){14}}
+\put(-12,8){\scriptsize{$\sin x$}}
+\put(20,0){\line(0,1){20}}
+\put(22,10){\scriptsize{$\tan x$}}
+\end{picture}
+}
+
+\pause
+\bitem
+{\bf tangente}\ \framebox{\ $f(x)=\tan x=\dfrac{\sin x}{\cos x}$\ }\quad 
+avec\quad 
+$$
+\mbox{
+\framebox{\ $D_{\tan}=\{ x\in\R\ |\ x\neq \frac{\pi}{2}+k\pi,\ k\in\Z\}$}\quad 
+et\quad \framebox{\ $I_{\tan}=\R$\ }
+}
+$$
+\end{itemize}
+
+\end{frame}
+
+%\begin{frame}
+%\frametitle{\bf Formulaire sur les fonctions circulaires}
+
+%\centering{Voir livret de cours}
+
+%\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[plain]
+\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Fonctions arc}
+\medskip 
+
+\begin{itemize}
+\bitem
+{\bf arccosinus}\ \framebox{\ $f(x)\!=\!\arccos x$\ }\quad 
+\vspace*{1mm}
+
+$\arccos x$ est l'angle compris entre $0$ et $\pi$ qui a $x$ comme cosinus, 
+c.-\`a-d.\quad $\arccos x = \theta \ \Leftrightarrow\ x=\cos \theta$\quad 
+et\quad $\theta\in [0,\pi]$, alors
+$$
+\mbox{
+\framebox{\ $D_{\arccos}\!=\![-1,1]$\ }\quad et\quad 
+\framebox{\ $I_{\arccos}\!=\![0,\pi]$\ }
+}
+$$
+\vspace*{1mm}
+
+\pause
+\bitem
+{\bf arcsinus}\ \framebox{\ $f(x)\!=\!\arcsin x$\ }\quad 
+\vspace*{1mm}
+
+$\arcsin x$ est l'angle compris entre $-\frac{\pi}{2}$ et $\frac{\pi}{2}$ 
+qui a $x$ comme sinus, c.-\`a-d.\quad 
+$\arcsin x = \theta \ \Leftrightarrow\ x=\sin \theta$\quad 
+et\quad $\theta\in [-\frac{\pi}{2},\frac{\pi}{2}]$, alors\quad 
+$$
+\mbox{
+\framebox{\ $D_{\arcsin}\!=\![-1,1]$\ }\quad et\quad 
+\framebox{\ $I_{\arcsin}\!=\![-\frac{\pi}{2},\frac{\pi}{2}]$\ }
+}
+$$
+\vspace*{1mm}
+
+\pause
+\bitem
+{\bf arctangente}\ \framebox{\ $f(x)=\arctan x$\ }\quad 
+\vspace*{1mm}
+
+$\arctan x$ est l'angle compri entre $-\frac{\pi}{2}$ et $\frac{\pi}{2}$ 
+qui a $x$ comme tangente, c.-\`a-d.\quad 
+$\arctan x = \theta \ \Leftrightarrow\ x=\tan \theta$\quad 
+et\quad $\theta\in ]-\frac{\pi}{2},\frac{\pi}{2}[$, alors\quad 
+$$
+\mbox{
+\framebox{\ $D_{\arctan}=\R$}\quad et\quad 
+\framebox{\ $I_{\arctan}=]-\frac{\pi}{2},\frac{\pi}{2}[$\ }
+}
+$$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\bf Exponentiel}
+\medskip 
+
+\begin{itemize}
+\bitem
+La {\bf fonction exponentielle}, abr\'eg\'e en ``exponentiel'', \\ 
+de base le {\bf nombre de N\'eper} 
+{\small (de Euler et Napier, XVII s.)}
+\vspace*{-2mm}
+$$
+e=\lim_{n\rightarrow\infty} \left(1+\frac{1}{n}\right)^n 
+= \sum_{n=0}^\infty \frac{1}{n!} \simeq 2,7182
+\vspace*{-2mm}
+$$
+est la fonction\ \framebox{\ $f(x)=e^x = \exp(x)$\ }\ qui peut \^etre d\'efinie 
+de plusieurs fa\c{c}ons (voir les prochains chapitres pour comprendre): 
+\vspace*{2mm}
+
+\begin{itemize}
+\item[i)]
+c'est la seule fonction continue qui \underline{transforme une somme en} 
+\underline{produit}, $\exp(x+y)=\exp(x)\, \exp(y)$, et qui vaut $e$ en $x=1$;
+\vspace*{3mm}
+
+\item[ii)]
+c'est la seule solution de l'\underline{\'equation diff\'erentielle}\quad 
+$f'(x)=f(x)$ \\ qui vaut $1$ en $x=0$;
+\vspace*{3mm}
+
+\item[iii)]
+comme \underline{somme de s\'erie}\quad 
+$\ds e^x=\sum_{n=0}^\infty \frac{1}{n!}\,x^n$.
+\end{itemize}
+\vspace*{3mm}
+
+On a\quad \framebox{\ $D_{\exp}=\R$\ }\quad et\quad 
+\framebox{\ $I_{\exp}= ]0,\infty[$\ }. 
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[plain]
+\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Logarithme}
+\medskip 
+
+\begin{itemize}
+\bitem
+La {\bf fonction logarithme naturel}, abr\'eg\'e en ``logarithme'', 
+est la fonction\ \framebox{\ $f(x)=\ln x$\ }\ qui donne l'exposant \`a 
+l'exponentiel pour obtenir $x$, c'est-\`a-dire telle que\quad 
+$\ln x = y \quad\Leftrightarrow\quad e^y=x$. 
+\vspace*{3mm}
+
+\pause
+Elle peut \'egalement \^etre d\'efinie des fa\c{c}ons suivantes 
+(voir les prochains chapitres pour comprendre): 
+\vspace*{2mm}
+
+\begin{itemize}
+\item[i)]
+c'est la seule fonction continue qui \underline{transforme un produit en} 
+\underline{somme}, $\ln(x\,y)=\ln(x)+ \ln(y)$, et qui vaut $1$ en $x=e$;
+\vspace*{2mm}
+
+\item[ii)]
+c'est la seule \underline{primitive} de la fonction\quad 
+$x\mapsto \dfrac{1}{x}$\quad qui vaut $0$ en $x=1$. 
+\end{itemize}
+\vspace*{2mm}
+
+On a\quad \framebox{\ $D_{\ln}=]0,\infty[$\ }\quad et\quad 
+\framebox{\ $I_{\ln}= \R$\ }. 
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\bf Fonctions hyperboliques}
+\medskip 
+
+\begin{itemize}
+\parbox{10cm}{
+\bitem
+{\bf cosinus hyperbolique}\ 
+\framebox{\ $f(x)=\ch x = \cosh x = \dfrac{e^x+e^{-x}}{2}$\ }\quad avec\quad 
+\framebox{\ $D_{\ch}\!=\!\R$\ }\quad et\quad 
+\framebox{\ $I_{\ch}\!=\![1,\infty[$\ }
+}
+\vspace*{3mm}
+
+\bitem
+{\bf sinus hyperbolique}\ 
+\framebox{\ $f(x)=\sh x= \sinh x = \dfrac{e^x-e^{-x}}{2}$\ }\quad avec\quad 
+\framebox{\ $D_{\sh} \!=\!\R$\ }\quad et\quad \framebox{\ $I_{\sh}\!=\!\R$\ }
+\vspace*{2mm}
+
+\pause
+\parbox[t]{7cm}{
+On a
+\vspace*{-2mm}
+$$
+\mbox{\framebox{\ $\ch^2x-\sh^2x=1$\ } pour tout $x\in\R$,}
+$$ 
+donc $(\ch x,\sh x)$ sont les coordonn\'ees des points $P$ qui se trouvent 
+sur la branche droite de l'hyperbole d'\'equation $X^2-Y^2=1$} 
+
+\quad\raisebox{-\height}{
+\begin{picture}(60,60)(-15,-35)
+\setlength{\unitlength}{1.5pt}
+\put(-10,0){\vector(1,0){40}}
+\put(28,-5){\scriptsize{$\vi$}}
+\put(0,-25){\vector(0,1){55}}
+\put(-5,28){\scriptsize{$\vj$}}
+\qbezier(25,25)(-8,0)(25,-25)
+%
+\put(14,14){\circle*{2}}
+\put(12,17){\scriptsize{$P$}}
+\multiput(14,0)(0,4){4}{\line(0,1){2}}
+\multiput(0,14)(4,0){4}{\line(1,0){2}}
+%
+\linethickness{0.5mm}
+\put(0,0){\line(1,0){14}}
+\put(2,-5){\scriptsize{$\ch x$}}
+\put(0,0){\line(0,1){14}}
+\put(-12,8){\scriptsize{$\sh x$}}
+\end{picture}
+}
+\vspace*{3mm}
+
+\pause
+\bitem
+{\bf tangente hyperbolique}\ 
+
+\parbox{11cm}{
+\framebox{\ $f(x)=\th x=\tanh x=\dfrac{\sh x}{\ch x}$\ }\quad 
+avec\quad 
+\framebox{\ $D_{\th}\!=\!\R$}\quad et\quad \framebox{\ $I_{\tan}\!=\!]\!-1,1[$\ }
+}
+\end{itemize}
+
+\end{frame}
+
+%\begin{frame}
+%\frametitle{\bf Formulaire sur les fonctions hyperboliques}
+
+%\centering{Voir livret de cours}
+
+%\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Graphes} 
+
+\begin{frame}[plain]
+\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf 2. Graphe de fonctions} 
+\medskip 
+
+{\bf D\'efinition:} 
+Le {\bf graphe} d'une fonction $f$ est l'ensemble des points du plan
+\begin{align*}
+\Gamma_f & = \Big\{ (x,y)\in \R^2\ |\ x\in D_f,\ y=f(x)\ \Big\} \\ 
+& = \Big\{ \big(x,f(x)\big)\in \R^2\ |\ x\in D_f\ \Big\}
+\subset \R^2
+\end{align*}
+
+$$
+\grapheF
+$$
+
+\pause
+En regardant le graphe d'une fonction on peut d\'eduire quel est son domaine, 
+son image et ses propri\'et\'es importantes. 
+\vspace*{3mm}
+
+\pause
+Le graphe des fonctions usuelles est \`a conna\^{\i}tre par c{\oe}ur.  
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\bf Graphes \`a conna\^{\i}tre !} 
+\medskip 
+
+\grapheX \quad \grapheXX \quad \grapheXXX %\quad \grapheXXXX
+
+\grapheXinv \quad \grapheXXinv \quad \grapheXXXinv %\quad \grapheXXXXinv 
+
+\grapheXsqrtII \quad \grapheXsqrtIII \quad \grapheXsqrtIV %\quad \grapheXsqrtV
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[plain]
+\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf D'autres graphes \`a conna\^{\i}tre !} 
+\medskip 
+
+\grapheXVA \quad \grapheXXXVA \quad \grapheXinvVA \quad %\grapheXsqrtIIIVA 
+
+\grapheSIN \quad \grapheCOS \quad \grapheTAN %\quad \grapheCOT
+
+\grapheASIN \quad \grapheACOS \quad \grapheATAN %\quad \grapheACOT
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\bf D'autres encore... ouf !} 
+\medskip 
+
+\qquad \qquad \grapheEXP \qquad \grapheEXPinv 
+
+\qquad \qquad \grapheLN \qquad \grapheLNinv
+
+\grapheSINH \qquad \grapheCOSH \qquad \grapheTANH
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Croissance} 
+
+\begin{frame}[plain]
+\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf 3. Fonctions croissantes, d\'ecroissantes, monotones}
+\medskip 
+
+{\small 
+La premi\`ere propri\'et\'e qu'on voit sur le graphe est la 
+\underline{croissance}.}
+\vspace*{2mm}
+
+{\bf D\'efinition:} 
+Soit $f:\R\rightarrow\R$ une fonction et $D\subset D_f$. On dit que: 
+\vspace*{1mm}
+
+\begin{itemize}
+\bitem
+\parbox[t]{7.5cm}{
+$f$ est {\bf (strictement) croissante sur $D$} si\\ 
+\framebox{\ $f(x)<f(y)$\ }\ pour tout $x,y\in D$ tels que $x<y$. 
+}
+\quad
+\raisebox{-.7\height}{\croissant}  
+\vspace*{1mm}
+
+\bitem
+\parbox[t]{7.5cm}{
+$f$ est {\bf (strictement) d\'ecroissante sur $D$} si\\ 
+\framebox{\  $f(x)\!>\!f(y)$\ }\ pour tout $x,y\in D$ tels que $x<y$.
+}
+\quad
+\raisebox{-.7\height}{\decroissant}  
+\vspace*{1mm}
+
+\bitem
+\parbox[t]{7.5cm}{
+$f$ est {\bf constante sur $D$} si\ \framebox{\  $f(x)=f(y)$\ }\\ 
+pour tout $x,y\in D$.
+}
+\quad
+\raisebox{-.7\height}{\constant}  
+\end{itemize} 
+\vspace*{1mm}
+
+\pause
+{\small
+Si on n'indique pas l'ensemble $D$, on sous-entend qu'on parle de tout le 
+domaine de d\'efinition $D_f$.
+} 
+\vspace*{2mm}
+
+\pause
+\begin{itemize}
+\bitem
+$f$ est {\bf (strictement) monotone} si elle est partout croissante 
+ou partout d\'ecroissante sur $D_f$.
+\end{itemize} 
+\vspace*{2mm}
+
+\pause
+{\small
+L'appellatif ``strictement'' peut \^etre remplac\'e par ``largement'' 
+si on consid\`ere des in\'egalit\'es larges $\leq$ et $\geq$. 
+
+S'il est sous-entendu on consid\`ere les in\'egalit\'es strictes $<$ et $>$.
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\bf Exemple de fonctions monotones}
+\medskip 
+
+{\small 
+{\bf Exemples:}
+\begin{itemize}
+\bitem
+Les polyn\^omes $x^n$ sont monotones croissants seulement si $n$ 
+est impair. 
+\vspace*{1mm}
+
+Si $n$ est pair, ils sont d\'ecroissants pour $x<0$ et croissants pour $x>0$.  
+\vspace*{1mm}
+
+\parbox{10cm}{
+\bitem
+Les fractions $\frac{1}{x^n}$ sont monotones d\'ecroissantes seulement 
+si $n$ est impair. 
+\vspace*{1mm}
+
+Si $n$ est pair, elles sont croissantes pour $x<0$ et d\'ecroissantes 
+pour $x>0$.}
+\vspace*{1mm}
+
+\bitem
+Les racines $\sqrt[k]{x}$ sont monotones croissantes. 
+\vspace*{1mm}
+
+\bitem
+Les fonctions circulaires $\sin x$ et $\cos x$ ne sont pas monotones 
+(elles sont {\bf oscillantes}).
+La tangente $\tan x$ est monotone croissante. 
+\vspace*{1mm}
+
+\bitem
+Les fonctions $\arcsin x$ et $\arctan x$ sont monotones croissantes, 
+alors que $\arccos x$ est monotone d\'ecroissante. 
+\vspace*{1mm}
+
+\bitem
+L'exponentiel $e^x$ et le logarithme $\ln x$ sont monotones croissants. 
+\vspace*{1mm}
+
+\bitem
+Les fonctions hyperboliques $\sinh x$ et $\tanh x$ sont monotones 
+croissantes, alors que $\cosh x$ est d\'ecroissant pour $x<0$ et 
+croissant pour $x>0$. 
+\end{itemize} 
+
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[plain]
+\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Fonctions convexes et concaves}
+\medskip 
+
+{\small 
+La deuxi\`eme propri\'et\'e qu'on voit sur le graphe est la 
+\underline{convexit\'e}.}
+\vspace*{2mm}
+
+{\bf D\'efinition:} 
+Soit $f:\R\rightarrow\R$ une fonction et $D\subset D_f$. On dit que: 
+\vspace*{1mm}
+
+\begin{itemize}
+\bitem
+\parbox[t]{6cm}{
+$f$ est {\bf convexe sur $D$} si elle a la forme 
+}
+\quad
+\raisebox{-.5\height}{\convexe}  
+\vspace*{1mm}
+
+\bitem
+\parbox[t]{6cm}{
+$f$ est {\bf concave sur $D$} si elle a la forme
+}
+\quad
+\raisebox{-.5\height}{\concave} 
+\vspace*{1mm}
+
+\bitem
+\parbox[t]{6cm}{
+$f$ est {\bf plate sur $D$} si elle est constante
+}
+\quad
+\raisebox{-.5\height}{\constant}  
+\end{itemize} 
+\vspace*{1mm}
+
+\pause
+{\small
+Si on n'indique pas l'ensemble $D$, on sous-entend qu'on parle de tout le 
+domaine de d\'efinition $D_f$.
+} 
+\vspace*{2mm}
+
+\pause
+{\small 
+{\bf Exemples:}
+\begin{itemize}
+\bitem
+Les polyn\^omes $x^n$ et les fractions $\frac{1}{x^n}$ sont convexes si $n$ 
+est pair. 
+\vspace*{1mm}
+
+Si $n$ est impair, ils sont concaves pour $x<0$ et convexes pour $x>0$.  
+\vspace*{1mm}
+
+\bitem
+Les racines $\sqrt[k]{x}$ sont concaves. 
+\vspace*{1mm}
+
+\bitem
+L'exponentiel $e^x$ est convexe. Le logarithme $\ln x$ est concave. 
+\end{itemize} 
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\bf Fonctions paires, impaires et p\'eriodiques}
+\medskip 
+
+{\small 
+La troisi\`eme propri\'et\'e qu'on voit sur le graphe est la 
+\underline{sym\'etrie}.}
+\vspace*{2mm}
+
+{\bf D\'efinition:} 
+Soit $f:\R\rightarrow\R$ une fonction. On dit que: 
+\vspace*{1mm}
+
+\begin{itemize}
+\bitem
+\parbox[t]{6cm}{
+$f$ est {\bf paire} si\ \framebox{\ $f(-x)=f(x)$\ }\ pour tout 
+$x\!\in\! D_f$ (\underline{sym\'etrie axiale}).}
+\quad
+\raisebox{-.8\height}{\pair}
+\vspace*{1mm}
+
+\bitem
+\parbox[t]{6cm}{
+$f$ est {\bf impaire} si\ \framebox{\ $f(-x)=-f(x)$\ }\ pour tout 
+$x\!\in\! D_f$ (\underline{sym\'etrie centrale}).}
+\quad
+\raisebox{-.8\height}{\impair} 
+\vspace*{1mm}
+
+\bitem
+\parbox[t]{5.5cm}{
+$f$ est {\bf p\'eriodique} de {\bf p\'eriode $p$} si\ 
+\framebox{\ $f(x+p)=f(x)$\ }\ pour tout $x\!\in\! D_f$
+(\underline{sym\'etrie par translation}).}
+\quad
+\raisebox{-.8\height}{\periodique} 
+\end{itemize} 
+\vspace*{0.5mm}
+
+\pause
+{\small 
+{\bf Exemples:}
+\begin{itemize}
+\parbox{10cm}{
+\bitem
+Les polyn\^omes $x^n$ et les fractions $\frac{1}{x^n}$ sont des fonctions 
+paires si $n$ est pair, et des fonctions impaires si $n$ est impair.}  
+%\vspace*{1mm}
+\parbox{10cm}{
+\bitem
+Les fonctions $\sin x$ et $\tan x$ sont impaires, $\cos x$ est paire. 
+Toutes les trois sont p\'eriodiques: $\sin x$ et $\cos x$ de p\'eriode $2\pi$, 
+$\tan x$ de p\'eriode $\pi$.}
+\end{itemize} 
+
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[plain]
+\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Exercice}
+\medskip 
+
+{\bf Exercice:}
+{\em 
+Pour les fonctions suivantes, dessiner le graphe, pr\'eciser le domaine de 
+d\'efinition et si elles sont monotones (croissantes ou d\'ecroissantes), 
+paires ou impaires et p\'eriodiques.
+}
+\vspace*{2mm}
+
+\begin{itemize}
+\bitem
+$f(x)=2\ln x +1$
+\end{itemize}
+\vspace*{2mm}
+
+\pause
+{\bf R\'eponse:}
+Le graphe de $f(x)= 2\ln x +1$ se trouve en dilatant par $2$ le graphe de 
+$x\mapsto \ln x$ et en d\'ecalant tout de $+1$: 
+$$
+\raisebox{-\height}{\exoLNA} \qquad\qquad 
+\raisebox{-\height}{\exoLNB}
+$$
+\pause
+Le domaine de $f$ est\quad $D_f=\{ x\in\R\ |\ x>0\} = ]0,\infty[$. 
+\vspace*{1mm}
+
+La fonction $f$ est monotone croissante, ni paire ni impaire. 
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[plain]
+\frametitle{\bf Exercice (suite)}
+\medskip 
+
+\begin{itemize}
+\bitem
+$u(\theta)=\cos (2\theta)-1$
+\end{itemize}
+\vspace*{2mm}
+
+\pause
+{\bf R\'eponse:}
+Le graphe de $u(\theta)= \cos (2\theta)-1$ se trouve en d\'ecalant de $-1$ 
+le graphe de la fonction $f(x)= \cos x$ o\`u $x=2\theta$: 
+$$
+\raisebox{-\height}{\exoCOSA} \qquad\qquad 
+\raisebox{-\height}{\exoCOSB}
+$$
+\pause
+Le domaine de $u$ est\quad $D_u=\{ \theta\in\R\ |\ 2\theta\in\R \} = \R$. 
+\vspace*{1mm}
+
+La fonction $u$ n'est pas monotone, et elle est paire. 
+\vspace*{1mm}
+
+Elle est clairement p\'eriodique de p\'eriode $\pi$: 
+\begin{align*}
+u(\theta+\pi) & = \cos\big(2(\theta+\pi)\big)-1 
+= \cos(2\theta+2\pi)-1 \\ 
+& = \cos(2\theta)-1 = u(\theta).
+\end{align*}   
+
+\end{frame}
+
+\begin{frame}[plain]
+\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Exercice (suite)}
+\medskip 
+
+\begin{itemize}
+\bitem
+$z(t)=-\sqrt{t-1}$
+\end{itemize}
+\vspace*{2mm}
+
+\pause
+{\bf R\'eponse:}
+Le graphe de $z(t)= -\sqrt{t-1}$ se trouve par \'etapes: 
+on dessine la fonction $\sqrt{t}$, on d\'ecale la variable independante 
+de $t$ \`a $t-1$ en bougeant l'axe vertical de $-1$ en horizontal, 
+enfin on prend son oppos\'e $-\sqrt{t-1}$.
+$$
+\raisebox{-\height}{\exoSQRTA} \qquad
+\raisebox{-\height}{\exoSQRTB} \qquad
+\raisebox{-\height}{\exoSQRTC} 
+$$
+\pause
+Le domaine de la fonction $z$ est\quad 
+$D_z=\{ t\in\R\ |\ t-1\geq 0 \} = [1,\infty[$. 
+\vspace*{1mm}
+
+\parbox{10cm}{
+La fonction $z$ est monotone d\'ecroissante, elle n'est ni paire ni impaire.}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Op\'erations} 
+
+\begin{frame}
+\frametitle{\bf 4. Op\'erations entre fonctions}
+\medskip 
+
+{\bf D\'efinition:} 
+Soient $f,g:\R\rightarrow\R$ deux fonctions, et $t\in\R$. 
+\vspace*{1mm}
+
+\begin{itemize}
+\bitem
+{\bf addition}:\ \framebox{\ $(f+g)(x)=f(x)+g(x)$\ } avec domaine 
+\vspace*{-1mm}
+$$
+D_{f+g} =\{x\in\R\ |\ \mbox{$x\in D_f$ et $x\in D_g$} \} = D_f\cap D_g
+\vspace*{-1mm}
+$$
+
+{\bf z\'ero}:\ \framebox{\ $0(x)=0$\ } avec $D_0=\R$
+\vspace*{1mm}
+
+{\bf oppos\'ee}: \framebox{\ $(-f)(x)=-f(x)$\ } avec $D_{-f}=D_f$
+\vspace*{1mm}
+
+\pause
+\bitem
+{\bf produit par un scalaire}:\ \framebox{\ $(t\,f)(x)=t\,f(x)$\ } avec 
+$D_{t\,f}=D_f$
+\vspace*{1mm}
+
+\pause
+\bitem
+{\bf multiplication}:\ \framebox{\ $(f\,g)(x)=f(x)g(x)$\ } avec 
+$D_{f\,g}=D_f\cap D_g$
+\vspace*{1mm}
+
+{\bf unit\'e}:\ \framebox{\ $1(x)=1$\ } avec $D_1=\R$
+\vspace*{0.5mm}
+
+{\bf inverse}: \framebox{\ $\left(\frac{1}{f}\right)(x)=\frac{1}{f(x)}$\ } 
+avec $D_{1/f}=\{x\in D_f\ |\ f(x)\neq 0 \}$
+\end{itemize}
+\vspace*{0.5mm}
+
+\pause
+{\small 
+{\bf Exemples:}
+\begin{itemize}
+\item
+$h(x)=x^2+\sin x$ est la somme de $f(x)=x^2$ et $g(x)=\sin x$
+
+\item
+$k(x)=10(x^2+\sin x)$ est le produit de $h(x)$ par le scalaire $10$ 
+
+\item
+$H(x)=\frac{x^2}{\sin x}$ est le produit de $f(x)$ par l'inverse de $g(x)$
+\end{itemize}
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[plain]
+\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Propri\'et\'es des op\'erations}
+\medskip 
+
+{\bf Proposition:}
+\begin{itemize}
+\bitem
+Les op\'erations entre fonctions ont les m\^emes \underline{propri\'et\'es} 
+que leurs analogues entre nombres r\'eels {\small (associative, commutative, 
+distributive)}. 
+
+\bitem
+En particulier, l'ensemble des fonctions est un \underline{espace vectoriel} 
+(de dimension infinie) avec l'addition et le produit par un scalaire. 
+\end{itemize}
+\vspace*{2mm}
+
+\pause
+{\small 
+{\bf Exemple:}
+Si $f(x)=x^2$, $g(x)=\sin x$, $h(x)=\cos x$ et $t=10$, l'\'egalit\'e
+$$
+x^2(10\,\sin x+\cos x) = x^2\cos x+10\,x^2\sin x \qquad\mbox{(pour tout $x$)}
+$$
+s'exprime en terme de fonctions comme 
+$$
+f\,(t\,g+h) = f\,h + t\,f\,g
+$$ 
+et repose sur la propri\'et\'e \underline{commutative} de l'addition et du 
+produit par un scalaire et sur la propriet\'e \underline{distributive} 
+de la multiplication par rapport \`a l'addition.}
+\vspace*{3mm}
+
+\pause
+{\bf Note:} Un espace vectoriel qui a en plus une \underline{multiplication} 
+s'appelle {\bf alg\`ebre}.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\bf Composition de fonctions}
+\medskip 
+
+{\small 
+La \underline{composition} de fonctions est une op\'eration qui n'a pas 
+d'analogue dans les nombres r\'eels. }
+\vspace*{1mm}
+
+\pause
+{\bf D\'efinition:} 
+La {\bf compos\'ee} de deux fonctions $x\mapsto f(x)$ et $y\mapsto g(y)$ 
+est la fonction $g\circ f:\R\rightarrow\R$ d\'efinie par
+$$
+\mbox{\framebox{\ $(g\circ f)(x)=g\big(f(x)\big)$\ }} 
+$$
+avec domaine\ \framebox{\ $D_{g\circ f}=\big\{ x\in D_f\ |\ f(x)\in D_g \big\}$\ }.
+\vspace*{1mm}
+
+\pause
+La composition peut \^etre vue comme l'\underline{enchainement} 
+des fonctions l'une apr\`es l'autre: 
+$$
+\begin{picture}(80,30)(10,-10)
+\setlength{\unitlength}{1.5pt}
+\put(0,10){$x$}
+\put(10,12){\vector(1,0){13}}
+\put(27,10){$f(x)$}
+\put(43,12){\vector(1,0){13}}
+\put(60,10){$g\big(f(x)\big)$}
+\qbezier(3,7)(34,-3)(65,5)
+\put(65,5){\vector(2,1){3}}
+\put(25,-5){$(g\circ f)(x)$}
+\end{picture}
+$$
+ou \'egalement comme la \underline{substitution} de la variable $y$, 
+dans $g(y)$, par la valeur $y=f(x)$.   
+\vspace*{1mm}
+
+\pause
+{\small 
+{\bf Exemple:}\quad
+Si $f(x)=x^2$ et $g(y)=\sin y$, on pose $y=x^2$ et on a: 
+$$
+(g\circ f)(x) = g\big(f(x)\big) = g(y)\Big|_{y=f(x)} 
+= \sin y\Big|_{y=x^2} = \sin(x^2). 
+$$
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[plain]
+\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Propri\'et\'es de la composition}
+\medskip 
+
+{\bf Propri\'et\'es:}
+\begin{itemize}
+\bitem 
+La composition est \underline{associative}:\ 
+\framebox{\ $\big(h\circ g\big) \circ f = h\circ \big(g\circ f\big)$\ } \\ 
+mais elle \underline{n'est pas commutative}:\ 
+\framebox{\ $g \circ f \neq f\circ g$\ } en g\'en\'eral. 
+\end{itemize}
+%\vspace*{1mm}
+
+\pause
+{\small 
+{\bf Exemple:}\quad
+Si\quad $f(x)=x^2$,\quad $g(y)=\sin y$\quad et\quad $h(z)=\ln z$,\quad on a
+\begin{align*}
+(h\circ g)(y) = \ln(\sin y) & \quad\mbox{donc}\quad 
+\big((h\circ g) \circ f\big)(x) = \ln(\sin(x^2)) \\ 
+(g\circ f)(x) = \sin(x^2) & \quad\mbox{donc}\quad 
+\big(h\circ (g\circ f)\big)(x) = \ln(\sin(x^2))
+\vspace*{-2mm}
+\end{align*}
+et 
+\vspace*{-2mm}
+$$
+(g\circ f)(x) = \sin(x^2) \quad\mbox{mais}\quad 
+(f\circ g)(y) = (\sin y)^2.
+\vspace*{-2mm}
+$$
+}
+
+\pause
+\begin{itemize}
+\bitem 
+La fonction {\bf identit\'e}\ \framebox{\ $\id(x)=x$\ }, avec domaine 
+$D_{\id}=\R$, est une \underline{unit\'e} pour la composition:\ 
+\framebox{\ $f\circ\id = \id\circ f= f$\ }. 
+\end{itemize}
+\vspace*{0.5mm}
+
+\pause
+{\small 
+{\bf Remarque:}\quad
+Pour une fonction $f$, l'\underline{inverse} $\displaystyle\frac{1}{f}$ est d\'efinie 
+\`a partir de la \underline{multiplication} et de l'\underline{unit\'e} $1$ 
+de telle sorte que\ \framebox{\ $f\displaystyle\frac{1}{f}=1$\ }\ et\
+\framebox{\ $\displaystyle\frac{1}{f} f=1$\ }. 
+
+L'analogue pour la \underline{composition} et l'\underline{identit\'e} 
+est une fonction $f^{-1}$ telle que\ \framebox{\ $f^{-1}\circ f=\id$\ }\ et\
+\framebox{\ $f\circ f^{-1}=\id$\ }, c'est la \underline{r\'eciproque} de $f$. 
+} 
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{R\'eciproques} 
+
+\begin{frame}
+\frametitle{\bf 5. Fonctions r\'eciproques}
+\medskip 
+
+{\bf D\'efinition:}\quad La {\bf r\'eciproque} d'une fonction $x\mapsto f(x)$ 
+est la fonction $y\mapsto f^{-1}(y)$ telle que 
+$$
+\mbox{
+\framebox{\ $f^{-1}\circ f=\id$\ }\quad et \quad 
+\framebox{\ $f\circ f^{-1}=\id$\ }
+}
+$$
+c'est-\`a-dire telle que 
+$$
+\mbox{
+\framebox{\ \parbox{2.5cm}{$f^{-1}(f(x))=x$ \\ pour tout $x\in D_f$}\ }
+\quad et \quad 
+\framebox{\ \parbox{2.5cm}{$f(f^{-1}(y))=y$ \\ pour tout $y\in I_f$}\ }
+}
+$$
+\pause
+ce qui peut \^etre r\'esum\'e en une seule assertion: 
+$$
+\mbox{
+\framebox{\ $f^{-1}(y)=x \quad\Longleftrightarrow\quad y=f(x)$\ }
+}
+$$
+\pause
+Ceci implique que\quad 
+\framebox{\ $D_{f^{-1}}=I_f$\ }\quad et \quad 
+\framebox{\ $I_{f^{-1}}=D_f$\ }. 
+\vspace*{2mm}
+
+\pause
+En conclusion, on peut visualiser la r\'eciproque comme ceci:
+$$
+\begin{picture}(120,30)(-55,-10)
+\setlength{\unitlength}{1.5pt}
+\put(-57,10){$D_f=I_{f^{-1}}$}
+\put(-57,0){$x=f^{-1}(y)$}
+\qbezier(-20,3)(0,8)(20,3)
+\put(20,3){\vector(2,-1){2}}
+\put(0,7){$f$}
+\put(25,0){$y=f(x)$}
+\put(25,10){$I_f=D_{f^{-1}}$}
+\qbezier(-20,-2)(0,-7)(20,-2)
+\put(-20,-2){\vector(-2,1){2}}
+\put(-3,-11){$f^{-1}$}
+\end{picture}
+$$
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[plain]
+\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Exemples de r\'eciproques}
+\medskip 
+
+{\small 
+{\bf Exemples:}
+\begin{itemize}
+\bitem
+La r\'eciproque de l'exponentiel $f(x)=e^x$ est le logarithme 
+$f^{-1}(y)=\ln y$, car 
+$$
+f^{-1}(f(x))=\ln(e^x)=x \quad\mbox{et}\quad 
+f(f^{-1}(y))=e^{\ln y}=y, 
+$$
+c'est-\`a-dire\quad $e^x=y\quad\Longleftrightarrow\quad x=\ln y$. 
+\vspace*{2mm}
+
+\pause
+\bitem
+La r\'eciproque de la fonction $g(x)=x^3+1$ se trouve en posant $x^3+1=y$ 
+et en calculant $x=g^{-1}(y)$ comme fonction de $y$: 
+$$
+y=x^3+1 \quad\Longleftrightarrow\quad y-1=x^3 \quad\Longleftrightarrow\quad 
+x=\sqrt[3]{y-1}
+$$
+donc $g^{-1}(y)=\sqrt[3]{y-1}$. 
+\vspace*{2mm}
+
+\pause
+\bitem
+La r\'eciproque de la fonction $h(x)=\dfrac{5}{x^3+1}$ se trouve en posant 
+$\dfrac{5}{x^3+1}=y$ et en calculant $x=h^{-1}(y)$ comme fonction de $y$: 
+$$
+y=\dfrac{5}{x^3+1} \quad\Longleftrightarrow\quad x^3+1=\dfrac{5}{y} 
+\quad\Longleftrightarrow\quad 
+x=\sqrt[3]{\dfrac{5}{y}-1}
+$$
+donc $h^{-1}(y)=\sqrt[3]{\dfrac{5}{y}-1}$. 
+\end{itemize}
+
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\bf Propri\'et\'es des r\'eciproques}
+\medskip 
+
+{\bf \th\'eor\`eme:}\quad 
+La r\'eciproque d'une fonction $f$ \underline{existe} si et seulement si 
+$f$ est \underline{strictement monotone}. 
+\vspace*{1mm}
+
+\pause
+{\small 
+{\bf Id\'ee:}\quad 
+En effet, si $f$ n'est pas strictement monotone, il existe deux points 
+distincts $x_1$ et $x_2$ qui donnent la m\^eme valeur $y=f(x_1)=f(x_2)$. 
+
+Dans ce cas, comment va-t-on d\'efinir la r\'eciproque $f^{-1}$ au point $y$, 
+$f^{-1}(y)=x_1$ ou bien $f^{-1}(y)=x_2$? Ce choix est impossible.}
+\vspace*{1mm}
+
+\pause
+{\bf Propri\'et\'es:}
+\begin{itemize}
+\bitem
+Si $f$ est strictement monotone et on note $\Gamma_f$ son graphe, 
+la r\'eciproque $f^{-1}$ est aussi strictement monotone et son graphe 
+est l'image miroir de $\Gamma_f$ par rapport \`a la droite $y=x$. 
+$$
+\grapheFF \qquad \grapheFFINV
+$$
+
+\pause
+\bitem
+La r\'eciproque de la r\'eciproque de $f$ est $f$:\ 
+\framebox{\ $\big(f^{-1}\big)^{-1}=f$\ }.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[plain]
+\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf R\'eciproque des fonctions non monotones}
+\medskip 
+
+{\bf Probl\`eme:}
+\begin{itemize}
+\bitem
+Les \underline{polyn\^omes} $x^n$ de \underline{puissance impaire} et 
+l'\underline{exponentiel} $e^x$ sont monotones et admettent 
+une r\'eciproque, \`a savoir respectivement les \underline{racines} $\sqrt[n]{x}$ 
+d'\underline{ordre impair} et le \underline{logarithme} $\ln{x}$: 
+\begin{center}
+\framebox{\ $x=\sqrt[n]{y} \quad\Longleftrightarrow\quad x^n=y$\ } 
+\\ 
+\framebox{\ $x=\ln y \quad\Longleftrightarrow\quad e^x=y$\ }
+\end{center}
+ \vspace*{1mm}
+
+\pause
+\bitem
+Mais les \underline{polyn\^omes} $x^n$ de \underline{puissance paire} et  
+les \underline{fonctions circulaires} $\sin x$, $\cos x$ et $\tan x$ 
+ne sont pas monotones et n'admettent donc pas de r\'eciproque! 
+Que faire?
+\end{itemize}
+\vspace*{1mm}
+
+\pause
+{\bf Astuce:}\quad 
+Si une fonction $f$ n'est pas monotone, on peut restreindre 
+son domaine de d\'efinition \`a un ensemble $D\subset D_f$ tel que 
+\vspace*{-1mm}
+
+\qquad
+\parbox{9cm}{
+\begin{itemize}
+\item[i)]
+$f$ soit monotone sur $D$,
+\item[ii)]
+$f(D)=I_f$. 
+\end{itemize}}
+\vspace*{-1mm}
+
+Cette fonction ``\`a domaine restreint''\ 
+\framebox{\ $f:D\subset D_f\rightarrow I_f$\ }\  
+admet bien une r\'eciproque ``\`a image restreinte'':
+$$
+\mbox{\framebox{\ $f^{-1}:I_f\rightarrow D\subset D_f$\ }}. 
+$$
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\bf Exemples de r\'eciproques ``restreintes''}
+\medskip 
+
+{\small 
+{\bf Exemples:}
+\begin{itemize}
+\bitem
+Les \underline{polyn\^omes} $x^n$ de \underline{puissance paire} 
+restreints \`a l'ensemble $[0,\infty[ \subset \R$ ont comme 
+r\'eciproque les \underline{racines} $\sqrt[n]{x}$ d'\underline{ordre pair}:
+$$
+\mbox{\framebox{\ $x=\sqrt[n]{y} \qquad\Longleftrightarrow\qquad 
+x^n=y \quad \mbox{et}\quad x\geq 0 $\ }}
+$$
+Ex.:\quad 
+\raisebox{-.5\height}{\grapheXXTOT \quad \grapheXXRED \quad \grapheSQRT}
+
+\pause
+\bitem
+Les \underline{fonctions circulaires} $\sin x$, $\cos x$ et $\tan x$, 
+opportunement restreintes, ont comme r\'eciproque les 
+\underline{fonctions arc} $\arcsin x$, $\arccos x$ et $\arctan x$:  
+\begin{center}
+\framebox{\ $x=\arcsin{y} \qquad\Longleftrightarrow\qquad 
+\sin x =y \quad \mbox{et}\quad x\in [-\pi/2,\pi/2]$\ } 
+\\ 
+\framebox{\ $x=\arccos{y} \qquad\Longleftrightarrow\qquad 
+\cos x =y \quad \mbox{et}\quad x\in [0,\pi]$\ }
+\\  
+\framebox{\ $x=\arctan{y} \qquad\Longleftrightarrow\qquad 
+\tan x =y \quad \mbox{et}\quad x\in ]-\pi/2,\pi/2[$\ } 
+\end{center}
+Ex.:\quad 
+\raisebox{-.5\height}{\grapheSINTOT \quad \grapheSINRED \quad \grapheASINRED}
+\end{itemize}
+
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[plain]
+\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Exercice}
+\medskip 
+
+{\bf Exercice:} 
+{\em Calculer la r\'eciproque des fonctions suivantes.}
+\vspace*{2mm}
+
+\begin{itemize}
+\bitem
+$f(x)=3x^2-5$, avec $x\geq 0$
+\end{itemize}
+\vspace*{2mm}
+
+\pause
+{\bf R\'eponse:}\vspace*{-5mm} 
+$$
+y=3x^2-5 \quad\Leftrightarrow\quad 
+\frac{y+5}{3}=x^2 \quad\Leftrightarrow\quad 
+x=\sqrt{\frac{y+5}{3}}
+$$
+
+\pause
+\begin{itemize}
+\bitem
+$f(\theta)=\sqrt{\sin\theta+3}$, avec $-\pi/2\leq \theta\leq \pi/2$
+\end{itemize}
+\vspace*{2mm}
+
+\pause
+{\bf R\'eponse:} \vspace*{-2mm} 
+$$
+x=\sqrt{\sin\theta+3} \quad\Leftrightarrow\quad 
+x^2-3=\sin\theta \quad\Leftrightarrow\quad 
+\theta=\arcsin(x^2-3)
+$$
+
+\pause
+\begin{itemize}
+\bitem
+$f(z)=3\arctan(e^z)$ 
+\end{itemize}
+\vspace*{3mm}
+
+\pause
+{\bf R\'eponse:}  \vspace*{-2mm} 
+$$ 
+t/3=\arctan(e^z) \quad\Leftrightarrow\quad 
+\tan(t/3)=e^z \quad\Leftrightarrow\quad 
+z=\ln(\tan(t/3))
+$$
+avec\quad $-\pi/2<t/3<\pi/2$\quad et \quad $\tan(t/3)>0$,\quad 
+c'est-\`a-dire\quad $0<t/3<\pi/2$,\quad au final:\quad $0<t<3\pi/2$.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{frame}
+%\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{frame}
+%\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

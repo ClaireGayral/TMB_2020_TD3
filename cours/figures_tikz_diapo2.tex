@@ -1,0 +1,1084 @@
+
+%
+%  TMB-diapo.tex  2020-2021  A. Mikelic & L. Dupaigne
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% compiler avec pdflatex pour produire les slides avec pauses
+% compiler [handout] pour produire un fichier sans pauses, à imprimer
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\documentclass[10pt]{beamer}
+\documentclass[8pt,handout]{beamer} % to get handout of the presentation
+
+%\usetheme[height=1cm,width=1.7cm]{}%{sidebar}	
+
+%	
+% packages 
+%
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext,mathabx,bbm}
+\usepackage{textcomp,multicol,multirow,enumitem}
+\usepackage{pict2e,graphicx}
+\usepackage{mathrsfs}
+
+
+\usepackage[utf8]{inputenc}
+ \usepackage[francais]{babel}  % bof 
+
+%\setlength{\textwidth}{17cm}
+%\setlength{\oddsidemargin}{-1.05cm}
+%\setlength{\evensidemargin}{-1.05cm}
+%
+% packages pour dessins avec tikzpicture
+%
+%\usepackage{pgf,tikz,pgfplots}
+%\pgfplotsset{compat=1.15}
+%\usepackage{mathrsfs}
+%\usetikzlibrary{arrows}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+
+\usepackage{TMB-dessins}
+
+%
+% macros
+%
+\usepackage{TMB-macros}
+%\usepackage[paperheight=11cm, paperwidth=8.5cm]{geometry}
+%
+% macros pour beamer 
+%
+\newcommand{\uv}{\mbox{\small $u$,$v$}}
+\newcommand{\xy}{\mbox{\small $x$,$y$}}
+\newcommand{\xxyy}{\mbox{\footnotesize $\sqrt{x^2\!+\!y^2}$}}
+
+%\AtBeginSubsection[]
+%{
+%  \begin{frame}<beamer>
+%    \frametitle{Plan}
+%    \tableofcontents[currentsection,currentsubsection]
+%  \end{frame}
+%}
+
+\setbeamertemplate{navigation symbols}{} 
+
+\usepackage[footheight=.5em]{beamerthemeboxes}
+\addfootboxtemplate{\color{white}}{\color{black}\hfill\large{\insertframenumber}\hspace{1em}\null} %/\inserttotalframenumber}\hspace{1em}\null}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\quad\raisebox{-\height}{
+\begin{tikzpicture}[scale = 1]%, domain=0:6.28 ]
+    %% axis %% 
+    \draw[->,>=stealth'] (-1.5,0) -> (1.5,0)  
+        node[below right]{\scriptsize{$\vi$}};
+    \draw[->,>=stealth'] (0,-1.5) -> (0,1.5) 
+        node[above]{\scriptsize{$\vj$}} ;
+    \draw[->,>=stealth'] (1,-0.75) -> (1,1.25) ;%tan axis<
+    %% cercle unite  : 
+    \draw (0,0) circle (1); 
+    %% ticks : 
+    \draw (0,0) circle (0.03)[fill=black] node[below left] {\scriptsize $O$};
+    \draw (1,2pt) -- (1,-2pt) node[below right] {\scriptsize $1$};
+ 	\draw (2pt,1) -- (-2pt,1) node[above left] {\scriptsize $1$}; 
+    %%  dot : 
+    \draw (45:1) circle(0.03)[fill=black] 
+        node[above]{\scriptsize $P$};
+    \draw[densely dashed] (45:1) -- (0.707,0) circle(0.03)[fill=black] ;
+    \draw[densely dashed] (45:1) -- (0,0.707) circle(0.03)[fill=black];
+    \draw (1,1) circle(0.03)[fill=black];
+    \draw (1,0) circle(0.03)[fill=black];
+    \draw (0,0) -- (1,1);% node[ rotate = 45, midway, above left]{\scriptsize{$x$}}; 
+    \draw[->,densely dotted] (0:0.3) arc[radius=0.3, start angle=0, end angle=45] 
+        node[midway, right]{\scriptsize $x$};
+    %% cos, sin, tan : 
+    \draw[very thick] (0,0) -- (0,0.707) 
+        node[rotate = 90, midway, above]{\scriptsize $\sin x$}; 
+    \draw[very thick] (0,0) -- (0.707,0)    
+        node[midway,below]{\scriptsize $\cos x$}; 
+    \draw[very thick] (1,0) -- (1,1)
+        node[rotate = 270, midway, above]{\scriptsize $\tan x$}; 
+\end{tikzpicture}
+}
+
+\vspace{2cm}
+
+\quad\raisebox{-\height}{
+\begin{tikzpicture}[scale = 1]%, domain=0:6.28 ]
+    %% axis %% 
+    \draw[->,>=stealth'] (-1.5,0) -> (1.5,0)  
+        node[below right]{\scriptsize{$\vi$}};
+    \draw[->,>=stealth'] (0,-1.25) -> (0,1.5) 
+        node[above]{\scriptsize{$\vj$}} ;
+    %%  dot \sqrt(1.2^2 -1) = 0.663: 
+    \draw (1.2,0.663) circle(0.03)[fill=black] 
+        node[above]{\scriptsize $P$};
+    \draw[densely dashed] (1.2,0.663) -- (1.2,0) circle(0.03)[fill=black] ;
+    \draw[densely dashed] (1.2,0.663) -- (0,0.663) circle(0.03)[fill=black];
+    % \draw (0,0) -- (1.2,0.663); 
+    %% cosh, sinh : 
+    \draw[very thick] (0,0) -- (0,0.663) 
+        node[rotate = 90, midway, above]{\scriptsize $\sh x$}; 
+    \draw[very thick] (0,0) -- (1.2,0)    
+        node[midway,below]{\scriptsize $\ch x$}; 
+    %% X^2 - Y^2 = 1
+    \begin{scope}
+        \draw plot[variable=\x,domain=1:2,samples=50,smooth] 
+         ({\x},{(\x*\x - 1)^(1/2)}); %% (y, z, x)
+        \draw plot[variable=\x,domain=1:1.5,samples=50,smooth] 
+         ({\x},{-(\x*\x - 1)^(1/2)}); %% (y, z, x)
+    \end{scope} 
+\end{tikzpicture}
+}
+\vspace{2cm}
+
+%%%%%%%%%%%%%%%%%#################%%%%%%%%%%%%%%%%%%###############
+%
+%   TMB-dessins.sty  2015  
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Chapitre 5 - Fonctions
+%
+%%%%%%%%%%%%%%%%%%	Graphes des fonctions d'une variable 
+
+% \newcommand{\trh}{
+\begin{tikzpicture}[scale=1,font=\footnotesize]
+\draw[->] (-1,0) -- (2.8,0) ;
+\draw[->] (0,-0.5) -- (0,1.8) ;
+\draw[thick] plot[domain=-0.5:2.5] (\x,{0.5+2.5*atan(\x-1)/180}) ;
+\draw[thick] plot[domain=-0.5:2.5] (\x,{0.5+2.5*atan(\x-1)/180+0.5}) ;
+\draw[dashed] (2,0) -- (2,1.15) -- (2,1.65) ;
+\draw[->,thick] (2,1.15) -- (2,1.65) ;
+\draw (2,1.4) node[right] {$b$} ;
+\draw (2,-0.5) node{$x$} ;%(-0.5,1.15) node{$f(x)$} ;
+\draw (2,1.12) node{$\bullet$} ;
+\draw (2,1.12) node[right]{$f(x)$} ;
+\draw (2,1.62) node{$\bullet$} ;
+\draw (2,1.62) node[above]{$f(x)+b$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\trda}{
+\begin{tikzpicture}[scale=1,font=\footnotesize]
+\draw[->](-1.5,0) -- (4.5,0);
+\draw[->](0,-0.5) -- (0,2);
+\draw[domain=-1:1] plot (\x, {1/(1.5-\x*\x)});
+\draw[thick](-1,0) -- (1,0);
+\draw[thick] (0.5,0) node[below] {$D_f$} ;
+\draw[thick](2,0) -- (4,0);
+\draw[thick] (3,0) node[below] {$D_g=D_f+a$} ;
+\end{tikzpicture}
+% }
+
+
+% \newcommand{\trdb}{
+\begin{tikzpicture}[scale=1,font=\footnotesize]
+\draw[->](-1.5,0) -- (4.5,0);
+\draw[->](0,-0.5) -- (0,2);
+\draw[domain=-1:1] plot (\x, {1/(1.5-\x*\x)});
+\draw[thick, domain=2:4] plot (\x, {1/(1.5-(\x-3)*(\x-3))});
+\draw (-1,0) -- (1,0);
+%\draw (0.5,0) node[below] {$D_f$} ;
+\draw (2,0) -- (4,0);
+%\draw (3,0) node[below] {$D_g=D_f+a$} ;
+\draw (2.5,0.8) node{$\bullet$} ;
+\draw (2.5,0.8) node[above]{$g(x)=f(x-a)$} ;
+\draw (-0.5,0.8) node{$\bullet$} ;
+\draw (-0.5,0.8) node[left]{$f(x-a)$} ;
+\draw[dashed] (-0.5,0.8)--(2.5,0.8);
+\draw[dashed] (-0.5,0)--(-0.5,0.8);
+\draw (-0.5,0) node[below]{$x-a$};
+\draw[dashed] (2.5,0)--(2.5,0.8);
+\draw (2.5,0) node[below]{$x$};
+\end{tikzpicture}
+% }
+
+% \newcommand{\dilate}{
+\begin{tikzpicture}[scale=1,font=\footnotesize]
+\draw[->](-1.5,0) -- (2,0);
+\draw[->](0,-0.5) -- (0,2);
+\draw[domain=-1:1] plot (\x, {1/(1.5-\x*\x)});
+\draw[thick, domain=-1:1] plot (\x, {2/(1.5-\x*\x)});
+\draw (0,0.66) node{$\bullet$} ;
+\draw (0,0.66) node[left]{$f(0)$} ;
+\draw (0,1.32) node{$\bullet$} ;
+\draw (0,1.32) node[left]{$g(0)=\mu f(0)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\reflete}{
+\begin{tikzpicture}[scale=1,font=\footnotesize]
+\draw[->](-1.5,0) -- (2,0);
+\draw[->](0,-1.5) -- (0,2);
+\draw[domain=-1:1] plot (\x, {exp(\x)/2});
+\draw[thick, domain=-1:1] plot (\x, {-exp(\x)/2});
+%\draw (0,0.66) node{$\bullet$} ;
+%\draw (0,0.66) node[left]{$f(0)$} ;
+%\draw (0,1.32) node{$\bullet$} ;
+%\draw (0,1.32) node[left]{$g(0)=\mu f(0)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\dilateh}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[->](-2.2*pi,0) -- (2.2*pi,0);
+\draw[->](0,-1.5) -- (0,2);
+\draw[domain=-2*pi:2*pi, samples=200] plot (\x, {sin(\x r)});
+\draw[domain=-pi:pi, samples=200, thick] plot (\x, {sin(2*\x r)});
+%\draw (0,0.66) node{$\bullet$} ;
+%\draw (0,0.66) node[left]{$f(0)$} ;
+%\draw (0,1.32) node{$\bullet$} ;
+%\draw (0,1.32) node[left]{$g(0)=\mu f(0)$} ;
+\end{tikzpicture}
+% }
+
+
+% \newcommand{\restreint}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[->](-2.2*pi,0) -- (2.2*pi,0);
+\draw[->](0,-1.5) -- (0,2);
+\draw[domain=-2*pi:2*pi, samples=200] plot (\x, {cos(\x r)});
+\draw[domain=-pi:pi, samples=200, thick] plot (\x, {cos(\x r)});
+\draw[dashed, thick](-pi,-1.5)--(-pi,2);
+\draw[dashed, thick](pi,-1.5)--(pi,2);
+%\draw (0,0.66) node{$\bullet$} ;
+%\draw (0,0.66) node[left]{$f(0)$} ;
+%\draw (0,1.32) node{$\bullet$} ;
+%\draw (0,1.32) node[left]{$g(0)=\mu f(0)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\corestreint}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[->](-2.2*pi,0) -- (2.2*pi,0);
+\draw[->](0,-1.5) -- (0,2);
+%\draw[domain=-2*pi:2*pi, samples=200] plot (\x, {cos(\x r)});
+\draw[domain=-2*pi:2*pi, thick, samples=200] plot (\x, {cos(\x r)});
+\draw[dashed, thick](-2*pi,1)--(2*pi,1);
+\draw[dashed, thick](-2*pi,-1)--(2*pi,-1);
+%\draw (0,0.66) node{$\bullet$} ;
+%\draw (0,0.66) node[left]{$f(0)$} ;
+%\draw (0,1.32) node{$\bullet$} ;
+%\draw (0,1.32) node[left]{$g(0)=\mu f(0)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheF}{
+\begin{tikzpicture}[scale=1,font=\footnotesize]
+\draw[->] (-1,0) -- (2.8,0) ;
+\draw[->] (0,-0.5) -- (0,1.8) ;
+\draw[thick] plot[domain=-0.5:2.5] (\x,{0.5+2.5*atan(\x-1)/180}) ;
+\draw[dashed] (2,0) -- (2,1.15) -- (0,1.15) ;
+\draw (2,-0.5) node{$x$} (-0.5,1.15) node{$f(x)$} ;
+\draw (2,1.5) node{$(x,f(x))$} (2,1.12) node{$\bullet$} ;
+\draw (0.5,0.5) node{$\Gamma_f$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheX}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-2.5:2.5] (\x,\x) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=x$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXX}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-1.7:1.7] (\x,{\x*\x}) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=x^2$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXXbis}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-1.7:1.7] (\x,{\x*\x}) ;
+\draw (1.2,-0.4) node{$x$} (-2,3.3) node{$G$} ;
+\multiput(10,-13)(0,5){8}{\line(0,1){2}}
+\put(10,9){\circle*{2}}
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXXter}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,0) -- (0,3) ;
+\draw[thick] plot[domain=-1.7:1.7] (\x,{\x*\x}) ;
+%\draw (1.2,-0.4) node{$x$} ;%(-2,3.3) node{$G$} ;
+%\multiput(10,-13)(0,5){8}{\line(0,1){2}}
+%\put(10,9){\circle*{2}}
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXXX}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-1.4:1.4] (\x,{\x*\x*\x}) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=x^3$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXXXX}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-1.3:1.3] (\x,{\x*\x*\x*\x}) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=x^4$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXXXXa}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=0:1.3] (\x,{\x*\x*\x*\x}) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=x^4$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXXXXb}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-1.3:1.3] (\x,{\x*\x*\x*\x}) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=x^4$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXinv}{
+\begin{tikzpicture}[scale=.21,font=\footnotesize]
+\draw[->] (-6,0) -- (6,0) ;
+\draw[->] (0,-6) -- (0,6) ;
+\draw[thick] plot[domain=-5.6:-0.18] (\x,{1/\x}) ;
+\draw[thick] plot[domain=0.18:5.6] (\x,{1/\x}) ;
+%\draw (6,-0.8) node{$x$} (0,6.6) node{$f(x)=1/x$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXinvbis}{
+\begin{tikzpicture}[scale=.21,font=\footnotesize]
+\draw[->] (-6,0) -- (6,0) ;
+\draw[->] (0,-6) -- (0,6) ;
+\draw[thick] plot[domain=-5.6:-0.18] (\x,{1/\x}) ;
+\draw[thick] plot[domain=0.18:5.6] (\x,{1/\x}) ;
+\draw (1.2,-0.4) node{$x$} (1,6) node{$G$} ;
+\multiput(10,-13)(0,5){8}{\line(0,1){2}}
+\put(10,3.5){\circle*{2}}
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXXinv}{
+\begin{tikzpicture}[scale=.21,font=\footnotesize]
+\draw[->] (-6,0) -- (6,0) ;
+\draw[->] (0,-6) -- (0,6) ;
+\draw[thick] plot[domain=-5.6:-0.43] (\x,{1/(\x*\x)}) ;
+\draw[thick] plot[domain=0.43:5.6] (\x,{1/(\x*\x)}) ;
+%\draw (6,-0.8) node{$x$} (0,6.6) node{$f(x)=1/x^2$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXXXinv}{
+\begin{tikzpicture}[scale=.21,font=\footnotesize]
+\draw[->] (-6,0) -- (6,0) ;
+\draw[->] (0,-6) -- (0,6) ;
+\draw[thick] plot[domain=-5.6:-0.56] (\x,{1/(\x*\x*\x)}) ;
+\draw[thick] plot[domain=0.56:5.6] (\x,{1/(\x*\x*\x)}) ;
+\draw (6,-0.8) node{$x$} (0,6.6) node{$f(x)=1/x^3$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXXXXinv}{
+\begin{tikzpicture}[scale=.21,font=\footnotesize]
+\draw[->] (-6,0) -- (6,0) ;
+\draw[->] (0,-6) -- (0,6) ;
+\draw[thick] plot[domain=-5.6:-0.65] (\x,{1/(\x*\x*\x*\x)}) ;
+\draw[thick] plot[domain=0.65:5.6] (\x,{1/(\x*\x*\x*\x)}) ;
+\draw (6,-0.8) node{$x$} (0,6.6) node{$f(x)=1/x^4$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXsqrtII}{ 
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1) -- (0,3) ;
+\draw[thick] plot[domain=0:2.8] (\x,{sqrt(\x)}) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=\sqrt{x}$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXsqrtIII}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1) -- (0,3) ;
+\draw[thick] plot[domain=0:2.8] (\x,{sqrt(sqrt(\x))}) ;
+\draw[thick] plot[domain=-2.8:0] (\x,{-sqrt(sqrt(-\x))}) ;
+\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=\sqrt[3]{x}$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXsqrtIV}{ 
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1) -- (0,3) ;
+\draw[thick] plot[domain=0:2.8] (\x,{sqrt(sqrt(sqrt(\x)))}) ;
+\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=\sqrt[4]{x}$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXsqrtV}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1) -- (0,3) ;
+\draw[thick] plot[domain=0:2.8] (\x,{sqrt(sqrt(sqrt(sqrt(\x))))}) ;
+\draw[thick] plot[domain=-2.8:0] (\x,{-sqrt(sqrt(sqrt(sqrt(-\x))))}) ;
+\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=\sqrt[5]{x}$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXVA}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1) -- (0,3) ;
+\draw[thick] plot[domain=-2.5:2.5] (\x,{abs(\x)}) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=|x|$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXVAsmall}{
+\begin{tikzpicture}[scale=.35,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1) -- (0,3) ;
+\draw[thick] plot[domain=-2.5:2.5] (\x,{abs(\x)}) ;
+%\draw (2.7,-0.4) node{$x$} (-0.7,2.7) node{$|x|$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXXXVA}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1) -- (0,3) ;
+\draw[thick] plot[domain=-1.3:1.3] (\x,{abs(\x*\x*\x)}) ;
+\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=|x^3|$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXinvVA}{
+\begin{tikzpicture}[scale=.21,font=\footnotesize]
+\draw[->] (-6,0) -- (6,0) ;
+\draw[->] (0,-2) -- (0,6) ;
+\draw[thick] plot[domain=-5.6:-0.18] (\x,{abs(1/\x)}) ;
+\draw[thick] plot[domain=0.18:5.6] (\x,{1/\x}) ;
+\draw (6,-0.8) node{$x$} (0,6.6) node{$f(x)=|1/x|$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXsqrtIIIVA}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=0:2.8] (\x,{sqrt(sqrt(\x))}) ;
+\draw[thick] plot[domain=-2.8:0] (\x,{sqrt(sqrt(-\x))}) ;
+\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=|\sqrt[3]{x}|$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheSIN}{
+\begin{tikzpicture}[scale=.25,font=\footnotesize]
+\draw[->] (-5,0) -- (5,0) ;
+\draw[->] (0,-5) -- (0,5) ;
+\draw[thick] plot[domain=-4.5:4.5] (\x,{2*sin(\x r)}) ;
+%\draw (5,-0.6) node{$x$} (0,5.5) node{$f(x)=\sin(x)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheSINa}{
+\begin{tikzpicture}[scale=.25,font=\footnotesize]
+\draw[->] (-5,0) -- (5,0) ;
+\draw[->] (0,-5) -- (0,5) ;
+\draw[thick] plot[domain=0:3.1415] (\x,{2*sin(\x r)}) ;
+%\draw (5,-0.6) node{$x$} (0,5.5) node{$f(x)=\sin(x)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheSINb}{
+\begin{tikzpicture}[scale=.25,font=\footnotesize]
+\draw[->] (-5,0) -- (5,0) ;
+\draw[->] (0,-5) -- (0,5) ;
+\draw[thick] plot[domain=-3.1415:3.1415] (\x,{2*sin(\x r)}) ;
+%\draw (5,-0.6) node{$x$} (0,5.5) node{$f(x)=\sin(x)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheSINc}{
+\begin{tikzpicture}[scale=.25,font=\footnotesize]
+\draw[->] (-4,0) -- (7,0) ;
+\draw[->] (0,-5) -- (0,5) ;
+\draw[thick, domain=-pi:3*pi, samples=200] plot (\x,{2*sin(\x r)});
+%\draw[thick] plot[domain=--3.1415:9.4247] (\x,{2*sin(deg(\x))}) ;
+%\draw (5,-0.6) node{$x$} (0,5.5) node{$f(x)=\sin(x)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheCOS}{
+\begin{tikzpicture}[scale=.25,font=\footnotesize]
+\draw[->] (-5,0) -- (5,0) ;
+\draw[->] (0,-5) -- (0,5) ;
+\draw[thick] plot[domain=-4.5:4.5] (\x,{2*cos(\x r)}) ;
+%\draw (5,-0.6) node{$x$} (0,5.5) node{$f(x)=\cos(x)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheTAN}{
+\begin{tikzpicture}[scale=.25,font=\footnotesize]
+\draw[->] (-5,0) -- (5,0) ;
+\draw[->] (0,-5) -- (0,5) ;
+\draw[thick] plot[domain=-1.36:1.36] (\x,{tan(\x r)}) ;
+\draw[thick] plot[domain=1.78:4.5] (\x,{tan(\x r)}) ;
+\draw[thick] plot[domain=-4.5:-1.78] (\x,{tan(\x r)}) ;
+\draw[dashed] (-1.62,-4.8) -- (-1.62,4.8) ;
+\draw[dashed] (1.62,-4.8) -- (1.62,4.8) ;
+%\draw (5,-0.6) node{$x$} (0,5.5) node{$f(x)=\tan(x)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheCOT}{
+\begin{tikzpicture}[scale=.25,font=\footnotesize]
+\draw[->] (-5,0) -- (5,0) ;
+\draw[->] (0,-5) -- (0,5) ;
+\draw[thick] plot[domain=0.21:2.92] (\x,{cot(\x r)}) ;
+\draw[thick] plot[domain=3.35:4.8] (\x,{cot(\x r)}) ;
+\draw[thick] plot[domain=-0.21:-2.92] (\x,{cot(\x r)}) ;
+\draw[thick] plot[domain=-3.35:-4.8] (\x,{cot(\x r)}) ;
+\draw[dashed] (0,-4.8) -- (0,4.8) ;
+\draw[dashed] (3.14,-4.8) -- (3.14,4.8) ;
+\draw[dashed] (-3.14,-4.8) -- (-3.14,4.8) ;
+\draw (5,-0.6) node{$x$} (0,5.5) node{$f(x)=\cot(x)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheASIN}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-2) -- (0,3) ;
+\draw[thick] plot[domain=-1:1] (\x,{rad(asin(\x))}) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=\arcsin(x)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheACOS}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-2) -- (0,3) ;
+\draw[thick] plot[domain=-1:1] (\x,{rad(acos(\x))}) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=\arccos(x)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheATAN}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-2) -- (0,3) ;
+\draw[thick] plot[domain=-2.9:2.9] (\x,{rad(atan(\x))}) ;
+\draw[dashed] (-3,1.5) -- (3,1.5) ;
+\draw[dashed] (-3,-1.5) -- (3,-1.5) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=\arctan(x)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheACOT}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-2) -- (0,3) ;
+\draw[thick] plot[domain=-2.9:-0.01] (\x,{rad(atan(1/\x))+3.14}) ;
+\draw[thick] plot[domain=0.01:2.9] (\x,{rad(atan(1/\x))}) ;
+\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=\mathrm{arccot}(x)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheEXP}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1) -- (0,3) ;
+\draw[thick] plot[domain=-2.9:1.05] (\x,{exp(\x)}) ;
+%\draw (3,-0.4) node{$x$} (0,3.4) node{$f(x)=\exp(x)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheEXPinv}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1) -- (0,3) ;
+\draw[thick] plot[domain=-1.05:2.9] (\x,{exp(-\x)}) ;
+\draw (3,-0.4) node{$x$} (0,3.4) node{$f(x)=\exp(-x)=\frac{1}{\exp(x)}$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheLN}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=0.08:2.9] (\x,{ln(\x)}) ;
+%\draw (3,-0.4) node{$x$} (0,3.4) node{$f(x)=\ln(x)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheLNinv}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=0.08:2.9] (\x,{-ln(\x)}) ;
+\draw (3,-0.4) node{$x$} (0,3.4) node{$f(x)=-\ln(x)=\ln\left(\frac{1}{x}\right)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheSINH}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-2.5:2.5] (\x,{0.5*sinh(\x)}) ;
+%\draw (3,-0.4) node{$x$} (0,3.4) node{$f(x)=\sinh(x)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheCOSH}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-2.5:2.5] (\x,{0.5*cosh(\x)}) ;
+%\draw (3,-0.4) node{$x$} (0,3.4) node{$f(x)=\cosh(x)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheTANH}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-2.5:2.5] (\x,{tanh(\x)}) ;
+\draw[dashed] (-3,1) -- (3,1) ;
+\draw[dashed] (-3,-1) -- (3,-1) ;
+\draw (3,-0.4) node{$x$} (0,3.4) node{$f(x)=\tanh(x)$} ;
+\end{tikzpicture}
+% }
+
+%%%%%%%%%%%%%%%%%%      Croissance
+
+% \newcommand{\croissant}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-0.7,0) -- (1.5,0) ;
+\draw[->] (0,-0.5) -- (0,1.5) ;
+\draw[thick] plot[domain=-0.6:1.2] (\x,{(\x-0.3)^3+0.3}) ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\decroissant}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-0.7,0) -- (1.5,0) ;
+\draw[->] (0,-0.5) -- (0,1.5) ;
+\draw[thick] plot[domain=-0.6:1.2] (\x,{-(\x-0.3)^3+0.3}) ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\constant}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-0.7,0) -- (2.5,0) ;
+\draw[->] (0,-0.5) -- (0,2.2) ;
+\draw[thick] plot[domain=-0.6:1.2] (\x,{0.7}) ;
+\draw[thick] plot[domain=1.2:2] (\x,{0.7+(\x-1.2)^2}) ;
+\end{tikzpicture}
+% }
+
+%%%%%%%%%%%%%%%%%%      Convexité
+
+% \newcommand{\convexe}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+%\draw[->] (-0.7,0) -- (1.5,0) ;
+%\draw[->] (0,-0.5) -- (0,1.5) ;
+%\draw[thick] plot[domain=-0.6:1.2] (\x,{(\x-0.3)^2+0.3}) ;
+\draw[->] (-2,0) -- (2,0);
+\draw[->] (0,0) -- (0,2.2);
+\draw[thick, domain=-2:2.1] plot(\x, {\x*\x/2+1});
+\draw (-1,1.5) node{$\bullet$}; 
+\draw (-1,1.5) node[below]{$A$} ;
+\draw (0.5,1.1) node{$\bullet$}; 
+\draw (0.5,1.1) node[below]{$B$} ;
+\draw (-1,1.5) -- (0.5,1.1) ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\concave}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+%\draw[->] (-0.7,0) -- (1.5,0) ;
+%\draw[->] (0,-0.5) -- (0,1.5) ;
+%\draw[thick] plot[domain=-0.6:1.2] (\x,{(\x-0.3)^2+0.3}) ;
+\draw[->] (-2,0) -- (2,0);
+\draw[->] (0,0) -- (0,2.2);
+\draw[thick, domain=-2:2.1] plot(\x, {-\x*\x/2+1});
+\draw (-1,0.5) node{$\bullet$}; 
+\draw (-1,0.5) node[left]{$A$} ;
+\draw (0.5,0.9) node{$\bullet$}; 
+\draw (0.5,0.9) node[below]{$B$} ;
+\draw (-1,0.5) -- (0.5,0.9) ;
+\end{tikzpicture}
+% }
+
+%%%%%%%%%%%%%%%%%%      Parité
+
+% \newcommand{\pair}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\draw[->] (-2.5,0) -- (2.8,0) ;
+\draw[->] (0,-0.5) -- (0,1.5) ;
+\draw[thick] plot[domain=-2.5:2.5,smooth,samples=50] (\x,{cos((1.2*\x)^4 r)+0.1}) ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\impair}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\draw[->] (-2.5,0) -- (2.8,0) ;
+\draw[->] (0,-1) -- (0,1.5) ;
+\draw[thick] plot[domain=-2.5:2.5,smooth,samples=50] (\x,{sin((1.2*\x)^3 r)}) ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\periodique}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\draw[->] (-3,0) -- (4.2,0) ;
+\draw[->] (0,-1.5) -- (0,1.5) ;
+\draw[thick] plot[domain=-3:4,smooth,samples=50] 
+(\x,{0.5*sin(10*\x r)+0.5*cos(12*\x r)}) ;
+\end{tikzpicture}
+% }
+
+%%%%%%%%%%%%%%%%%    Exos sur les graphes
+
+% \newcommand{\exoLNA}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=0.1:2.8] (\x,{ln(\x)}) ;
+\draw (1,0) node{$\bullet$} (1,-0.5) node{$1$} ;
+\draw (3,-0.4) node{$x$} (0,3.4) node{$\ln(x)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\exoLNB}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=0.1:2.8] (\x,{2*ln(\x)+1}) ;
+\draw (1,0) node{$|$} (1,-0.7) node{$1$} ;
+\draw (0,1) node{$-$} (-0.5,1) node{$1$} ;
+\draw (3,-0.4) node{$x$} (0,3.4) node{$f(x)=2\ln(x)+1$} ;
+\draw (1,1) node{$\bullet$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\exoCOSA}{
+\begin{tikzpicture}[scale=.25,font=\footnotesize]
+\draw[->] (-8,0) -- (8,0) ;
+\draw[->] (0,-5) -- (0,5) ;
+\draw (0,2) node{$\bullet$} (-0.6,2.3) node{$1$} ;
+\draw (3.14,0) node{$|$} (3.14,1) node{$\pi$} ;
+\draw (6.28,0) node{$|$} (6.28,-1) node{$2\pi$} ;
+\draw[thick,smooth,samples=100] plot[domain=-7.5:7.5] (\x,{2*cos(\x r)}) ;
+\draw (8,-0.6) node{$x$} (0,5.5) node{$\cos(x)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\exoCOSB}{
+\begin{tikzpicture}[scale=.25,font=\footnotesize]
+\draw[->] (-8,0) -- (8,0) ;
+\draw[->] (0,-5) -- (0,5) ;
+\draw (0,2) node{$-$} (-0.6,2.3) node{$1$} ;
+\draw (3.14,0) node{$|$} (3.14,1) node{$\pi$} ;
+\draw (6.28,0) node{$|$} (6.28,1) node{$2\pi$} ;
+\draw[thick,smooth,‎samples=100] plot[domain=-7.5:7.5] (\x,{2*cos(2*\x r)-2}) ;
+\draw (8,-0.6) node{$\theta$} (0,5.5) node{$u(\theta)=\cos(2\theta)-1$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\exoSQRTA}{ 
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-1,0) -- (3,0) ;
+\draw[->] (0,-2) -- (0,2) ;
+\draw[thick] plot[domain=0:2.8] (\x,{sqrt(\x)}) ;
+\draw (3,-0.4) node{$t$} (0,2.3) node{$\sqrt{t}$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\exoSQRTB}{ 
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-1,0) -- (4,0) ;
+\draw[->] (0,-2) -- (0,2) ;
+\draw[thick] plot[domain=1:3.8] (\x,{sqrt(\x-1)}) ;
+\draw (4,-0.4) node{$t$} (0,2.3) node{$\sqrt{t-1}$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\exoSQRTC}{ 
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-1,0) -- (4,0) ;
+\draw[->] (0,-2) -- (0,2) ;
+\draw[thick] plot[domain=1:3.8] (\x,{-sqrt(\x-1)}) ;
+\draw (4,-0.4) node{$t$} (0,2.3) node{$z(t)=-\sqrt{t-1}$} ;
+\end{tikzpicture}
+% }
+
+%%%%%%%%%%%%%%%%%%     Réciproques
+
+% \newcommand{\grapheFF}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-2.5) -- (0,2.5) ;
+\draw[thick] plot[domain=-1.3:1] (\x,{tan(\x r)+1}) ;
+\draw[dashed] plot[domain=-2:2] ({\x},{\x}) ;
+\draw (2.8,-0.5) node{$x$} (-1,2.3) node{$f(x)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheFFINV}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-2.5) -- (0,2.5) ;
+\draw[thick] plot[domain=-2.9:2.9] (\x,{rad(atan(\x-1))}) ;
+\draw[dashed] plot[domain=-2:2] ({\x},{\x}) ;
+\draw (2.8,-0.5) node{$y$} (-1.5,2.3) node{$f^{-1}(y)$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXXTOT}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-2.5,0) -- (2.5,0) ;
+\draw[->] (0,-.5) -- (0,2) ;
+\draw[thick] plot[domain=-1.4:1.4] (\x,{\x*\x}) ;
+\draw (2.5,-0.4) node{$x$} (-0.6,1.8) node{$x^2$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheXXRED}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-2.5,0) -- (2.5,0) ;
+\draw[->] (0,-.5) -- (0,2) ;
+\draw[thick] plot[domain=0:1.3] (\x,{\x*\x}) ;
+\draw (2.5,-0.4) node{$x$} (-0.6,1.8) node{$x^2$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheSQRT}{ 
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-2.5,0) -- (2.5,0) ;
+\draw[->] (0,-.5) -- (0,2) ;
+\draw[thick] plot[domain=0:2.8] (\x,{sqrt(\x)}) ;
+\draw (2.5,-0.4) node{$y$} (-0.8,1.8) node{$\sqrt{y}$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheSINTOT}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1.5) -- (0,1.5) ;
+\draw[thick] plot[domain=-3:3] (\x,{sin(\x r)}) ;
+\draw (2.8,-0.6) node{$x$} (-1,1.5) node{$\sin x$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheSINRED}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-2.5,0) -- (2.5,0) ;
+\draw[->] (0,-1.5) -- (0,1.5) ;
+\draw[thick] plot[domain=-1.57:1.57] (\x,{sin(\x r)}) ;
+\draw (2.8,-0.6) node{$x$} (-1,1.5) node{$\sin x$} ;
+\end{tikzpicture}
+% }
+
+% \newcommand{\grapheASINRED}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-2,0) -- (2,0) ;
+\draw[->] (0,-1.5) -- (0,1.5) ;
+\draw[thick] plot[domain=-1:1] (\x,{rad(asin(\x))}) ;
+\draw (1.8,-0.4) node{$y$} (-2,1.5) node{$\arcsin y$} ;
+\end{tikzpicture}
+% }
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%##################%%%%%%%%%%%%%%%%%%%%%%%%%%%%#####################
+\vspace{2cm}
+\vspace{2cm}
+\vspace{2cm}
+\vspace{2cm}
+\vspace{2cm}
+\vspace{2cm}
+\vspace{2cm}
+
+
+
+$$
+\grapheF
+$$
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\grapheX \quad \grapheXX \quad \grapheXXX %\quad \grapheXXXX
+
+\grapheXinv \quad \grapheXXinv \quad \grapheXXXinv %\quad \grapheXXXXinv 
+
+\grapheXsqrtII \quad \grapheXsqrtIII \quad \grapheXsqrtIV %\quad \grapheXsqrtV
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[plain]
+\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf D'autres graphes \`a conna\^{\i}tre !} 
+\medskip 
+
+\grapheXVA \quad \grapheXXXVA \quad \grapheXinvVA \quad %\grapheXsqrtIIIVA 
+
+\grapheSIN \quad \grapheCOS \quad \grapheTAN %\quad \grapheCOT
+
+\grapheASIN \quad \grapheACOS \quad \grapheATAN %\quad \grapheACOT
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\bf D'autres encore... ouf !} 
+\medskip 
+
+\qquad \qquad \grapheEXP \qquad \grapheEXPinv 
+
+\qquad \qquad \grapheLN \qquad \grapheLNinv
+
+\grapheSINH \qquad \grapheCOSH \qquad \grapheTANH
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\raisebox{-.7\height}{\croissant}  
+
+\raisebox{-.7\height}{\decroissant}  
+
+\raisebox{-.7\height}{\constant}  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[plain]
+\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Fonctions convexes et concaves}
+\medskip 
+
+{\small 
+La deuxi\`eme propri\'et\'e qu'on voit sur le graphe est la 
+\underline{convexit\'e}.}
+\vspace*{2mm}
+
+{\bf D\'efinition:} 
+Soit $f:\R\rightarrow\R$ une fonction et $D\subset D_f$. On dit que: 
+\vspace*{1mm}
+
+\begin{itemize}
+\bitem
+\parbox[t]{6cm}{
+$f$ est {\bf convexe sur $D$} si elle a la forme 
+}
+\quad
+\raisebox{-.5\height}{\convexe}  
+\vspace*{1mm}
+
+\bitem
+\parbox[t]{6cm}{
+$f$ est {\bf concave sur $D$} si elle a la forme
+}
+\quad
+\raisebox{-.5\height}{\concave} 
+\vspace*{1mm}
+
+\bitem
+\parbox[t]{6cm}{
+$f$ est {\bf plate sur $D$} si elle est constante
+}
+\quad
+\raisebox{-.5\height}{\constant}  
+\end{itemize} 
+\vspace*{1mm}
+
+\pause
+{\small
+Si on n'indique pas l'ensemble $D$, on sous-entend qu'on parle de tout le 
+domaine de d\'efinition $D_f$.
+} 
+\vspace*{2mm}
+
+\pause
+{\small 
+{\bf Exemples:}
+\begin{itemize}
+\bitem
+Les polyn\^omes $x^n$ et les fractions $\frac{1}{x^n}$ sont convexes si $n$ 
+est pair. 
+\vspace*{1mm}
+
+Si $n$ est impair, ils sont concaves pour $x<0$ et convexes pour $x>0$.  
+\vspace*{1mm}
+
+\bitem
+Les racines $\sqrt[k]{x}$ sont concaves. 
+\vspace*{1mm}
+
+\bitem
+L'exponentiel $e^x$ est convexe. Le logarithme $\ln x$ est concave. 
+\end{itemize} 
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\raisebox{-.8\height}{\pair}
+\raisebox{-.8\height}{\impair} 
+\raisebox{-.8\height}{\periodique} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\raisebox{-\height}{\exoLNA} \qquad\qquad 
+\raisebox{-\height}{\exoLNB}
+
+
+\raisebox{-\height}{\exoSQRTA} \qquad
+\raisebox{-\height}{\exoSQRTB} \qquad
+\raisebox{-\height}{\exoSQRTC} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$$
+\grapheFF \qquad \grapheFFINV
+$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Ex.:\quad 
+\raisebox{-.5\height}{\grapheXXTOT \quad \grapheXXRED \quad \grapheSQRT}
+Ex.:\quad 
+\raisebox{-.5\height}{\grapheSINTOT \quad \grapheSINRED \quad \grapheASINRED}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}

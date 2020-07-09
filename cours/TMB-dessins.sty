@@ -1,0 +1,3018 @@
+%
+%   TMB-dessins.sty  2015  
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Chapitre 5 - Fonctions
+%
+%%%%%%%%%%%%%%%%%%	Graphes des fonctions d'une variable 
+
+\newcommand{\trh}{
+\begin{tikzpicture}[scale=1,font=\footnotesize]
+\draw[->] (-1,0) -- (2.8,0) ;
+\draw[->] (0,-0.5) -- (0,1.8) ;
+\draw[thick] plot[domain=-0.5:2.5] (\x,{0.5+2.5*atan(\x-1)/180}) ;
+\draw[thick] plot[domain=-0.5:2.5] (\x,{0.5+2.5*atan(\x-1)/180+0.5}) ;
+\draw[dashed] (2,0) -- (2,1.15) -- (2,1.65) ;
+\draw[->,thick] (2,1.15) -- (2,1.65) ;
+\draw (2,1.4) node[right] {$b$} ;
+\draw (2,-0.5) node{$x$} ;%(-0.5,1.15) node{$f(x)$} ;
+\draw (2,1.12) node{$\bullet$} ;
+\draw (2,1.12) node[right]{$f(x)$} ;
+\draw (2,1.62) node{$\bullet$} ;
+\draw (2,1.62) node[above]{$f(x)+b$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\trda}{
+\begin{tikzpicture}[scale=1,font=\footnotesize]
+\draw[->](-1.5,0) -- (4.5,0);
+\draw[->](0,-0.5) -- (0,2);
+\draw[domain=-1:1] plot (\x, {1/(1.5-\x*\x)});
+\draw[thick](-1,0) -- (1,0);
+\draw[thick] (0.5,0) node[below] {$D_f$} ;
+\draw[thick](2,0) -- (4,0);
+\draw[thick] (3,0) node[below] {$D_g=D_f+a$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\trdb}{
+\begin{tikzpicture}[scale=1,font=\footnotesize]
+\draw[->](-1.5,0) -- (4.5,0);
+\draw[->](0,-0.5) -- (0,2);
+\draw[domain=-1:1] plot (\x, {1/(1.5-\x*\x)});
+\draw[thick, domain=2:4] plot (\x, {1/(1.5-(\x-3)*(\x-3))});
+\draw (-1,0) -- (1,0);
+%\draw (0.5,0) node[below] {$D_f$} ;
+\draw (2,0) -- (4,0);
+%\draw (3,0) node[below] {$D_g=D_f+a$} ;
+\draw (2.5,0.8) node{$\bullet$} ;
+\draw (2.5,0.8) node[above]{$g(x)=f(x-a)$} ;
+\draw (-0.5,0.8) node{$\bullet$} ;
+\draw (-0.5,0.8) node[left]{$f(x-a)$} ;
+\draw[dashed] (-0.5,0.8)--(2.5,0.8);
+\draw[dashed] (-0.5,0)--(-0.5,0.8);
+\draw (-0.5,0) node[below]{$x-a$};
+\draw[dashed] (2.5,0)--(2.5,0.8);
+\draw (2.5,0) node[below]{$x$};
+\end{tikzpicture}
+}
+
+\newcommand{\dilate}{
+\begin{tikzpicture}[scale=1,font=\footnotesize]
+\draw[->](-1.5,0) -- (2,0);
+\draw[->](0,-0.5) -- (0,2);
+\draw[domain=-1:1] plot (\x, {1/(1.5-\x*\x)});
+\draw[thick, domain=-1:1] plot (\x, {2/(1.5-\x*\x)});
+\draw (0,0.66) node{$\bullet$} ;
+\draw (0,0.66) node[left]{$f(0)$} ;
+\draw (0,1.32) node{$\bullet$} ;
+\draw (0,1.32) node[left]{$g(0)=\mu f(0)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\reflete}{
+\begin{tikzpicture}[scale=1,font=\footnotesize]
+\draw[->](-1.5,0) -- (2,0);
+\draw[->](0,-1.5) -- (0,2);
+\draw[domain=-1:1] plot (\x, {exp(\x)/2});
+\draw[thick, domain=-1:1] plot (\x, {-exp(\x)/2});
+%\draw (0,0.66) node{$\bullet$} ;
+%\draw (0,0.66) node[left]{$f(0)$} ;
+%\draw (0,1.32) node{$\bullet$} ;
+%\draw (0,1.32) node[left]{$g(0)=\mu f(0)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\dilateh}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[->](-2.2*pi,0) -- (2.2*pi,0);
+\draw[->](0,-1.5) -- (0,2);
+\draw[domain=-2*pi:2*pi, samples=200] plot (\x, {sin(\x r)});
+\draw[domain=-pi:pi, samples=200, thick] plot (\x, {sin(2*\x r)});
+%\draw (0,0.66) node{$\bullet$} ;
+%\draw (0,0.66) node[left]{$f(0)$} ;
+%\draw (0,1.32) node{$\bullet$} ;
+%\draw (0,1.32) node[left]{$g(0)=\mu f(0)$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\restreint}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[->](-2.2*pi,0) -- (2.2*pi,0);
+\draw[->](0,-1.5) -- (0,2);
+\draw[domain=-2*pi:2*pi, samples=200] plot (\x, {cos(\x r)});
+\draw[domain=-pi:pi, samples=200, thick] plot (\x, {cos(\x r)});
+\draw[dashed, thick](-pi,-1.5)--(-pi,2);
+\draw[dashed, thick](pi,-1.5)--(pi,2);
+%\draw (0,0.66) node{$\bullet$} ;
+%\draw (0,0.66) node[left]{$f(0)$} ;
+%\draw (0,1.32) node{$\bullet$} ;
+%\draw (0,1.32) node[left]{$g(0)=\mu f(0)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\corestreint}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[->](-2.2*pi,0) -- (2.2*pi,0);
+\draw[->](0,-1.5) -- (0,2);
+%\draw[domain=-2*pi:2*pi, samples=200] plot (\x, {cos(\x r)});
+\draw[domain=-2*pi:2*pi, thick, samples=200] plot (\x, {cos(\x r)});
+\draw[dashed, thick](-2*pi,1)--(2*pi,1);
+\draw[dashed, thick](-2*pi,-1)--(2*pi,-1);
+%\draw (0,0.66) node{$\bullet$} ;
+%\draw (0,0.66) node[left]{$f(0)$} ;
+%\draw (0,1.32) node{$\bullet$} ;
+%\draw (0,1.32) node[left]{$g(0)=\mu f(0)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheF}{
+\begin{tikzpicture}[scale=1,font=\footnotesize]
+\draw[->] (-1,0) -- (2.8,0) ;
+\draw[->] (0,-0.5) -- (0,1.8) ;
+\draw[thick] plot[domain=-0.5:2.5] (\x,{0.5+2.5*atan(\x-1)/180}) ;
+\draw[dashed] (2,0) -- (2,1.15) -- (0,1.15) ;
+\draw (2,-0.5) node{$x$} (-0.5,1.15) node{$f(x)$} ;
+\draw (2,1.5) node{$(x,f(x))$} (2,1.12) node{$\bullet$} ;
+\draw (0.5,0.5) node{$\Gamma_f$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheX}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-2.5:2.5] (\x,\x) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=x$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXX}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-1.7:1.7] (\x,{\x*\x}) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=x^2$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXXbis}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-1.7:1.7] (\x,{\x*\x}) ;
+\draw (1.2,-0.4) node{$x$} (-2,3.3) node{$G$} ;
+\multiput(10,-13)(0,5){8}{\line(0,1){2}}
+\put(10,9){\circle*{2}}
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXXter}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,0) -- (0,3) ;
+\draw[thick] plot[domain=-1.7:1.7] (\x,{\x*\x}) ;
+%\draw (1.2,-0.4) node{$x$} ;%(-2,3.3) node{$G$} ;
+%\multiput(10,-13)(0,5){8}{\line(0,1){2}}
+%\put(10,9){\circle*{2}}
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXXX}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-1.4:1.4] (\x,{\x*\x*\x}) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=x^3$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXXXX}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-1.3:1.3] (\x,{\x*\x*\x*\x}) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=x^4$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXXXXa}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=0:1.3] (\x,{\x*\x*\x*\x}) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=x^4$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXXXXb}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-1.3:1.3] (\x,{\x*\x*\x*\x}) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=x^4$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXinv}{
+\begin{tikzpicture}[scale=.21,font=\footnotesize]
+\draw[->] (-6,0) -- (6,0) ;
+\draw[->] (0,-6) -- (0,6) ;
+\draw[thick] plot[domain=-5.6:-0.18] (\x,{1/\x}) ;
+\draw[thick] plot[domain=0.18:5.6] (\x,{1/\x}) ;
+%\draw (6,-0.8) node{$x$} (0,6.6) node{$f(x)=1/x$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXinvbis}{
+\begin{tikzpicture}[scale=.21,font=\footnotesize]
+\draw[->] (-6,0) -- (6,0) ;
+\draw[->] (0,-6) -- (0,6) ;
+\draw[thick] plot[domain=-5.6:-0.18] (\x,{1/\x}) ;
+\draw[thick] plot[domain=0.18:5.6] (\x,{1/\x}) ;
+\draw (1.2,-0.4) node{$x$} (1,6) node{$G$} ;
+\multiput(10,-13)(0,5){8}{\line(0,1){2}}
+\put(10,3.5){\circle*{2}}
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXXinv}{
+\begin{tikzpicture}[scale=.21,font=\footnotesize]
+\draw[->] (-6,0) -- (6,0) ;
+\draw[->] (0,-6) -- (0,6) ;
+\draw[thick] plot[domain=-5.6:-0.43] (\x,{1/(\x*\x)}) ;
+\draw[thick] plot[domain=0.43:5.6] (\x,{1/(\x*\x)}) ;
+%\draw (6,-0.8) node{$x$} (0,6.6) node{$f(x)=1/x^2$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXXXinv}{
+\begin{tikzpicture}[scale=.21,font=\footnotesize]
+\draw[->] (-6,0) -- (6,0) ;
+\draw[->] (0,-6) -- (0,6) ;
+\draw[thick] plot[domain=-5.6:-0.56] (\x,{1/(\x*\x*\x)}) ;
+\draw[thick] plot[domain=0.56:5.6] (\x,{1/(\x*\x*\x)}) ;
+\draw (6,-0.8) node{$x$} (0,6.6) node{$f(x)=1/x^3$} ;
+\end{tikzpicture}
+}
+\newcommand{\grapheXXXXinv}{
+\begin{tikzpicture}[scale=.21,font=\footnotesize]
+\draw[->] (-6,0) -- (6,0) ;
+\draw[->] (0,-6) -- (0,6) ;
+\draw[thick] plot[domain=-5.6:-0.65] (\x,{1/(\x*\x*\x*\x)}) ;
+\draw[thick] plot[domain=0.65:5.6] (\x,{1/(\x*\x*\x*\x)}) ;
+\draw (6,-0.8) node{$x$} (0,6.6) node{$f(x)=1/x^4$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXsqrtII}{ 
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1) -- (0,3) ;
+\draw[thick] plot[domain=0:2.8] (\x,{sqrt(\x)}) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=\sqrt{x}$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXsqrtIII}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1) -- (0,3) ;
+\draw[thick] plot[domain=0:2.8] (\x,{sqrt(sqrt(\x))}) ;
+\draw[thick] plot[domain=-2.8:0] (\x,{-sqrt(sqrt(-\x))}) ;
+\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=\sqrt[3]{x}$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXsqrtIV}{ 
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1) -- (0,3) ;
+\draw[thick] plot[domain=0:2.8] (\x,{sqrt(sqrt(sqrt(\x)))}) ;
+\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=\sqrt[4]{x}$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXsqrtV}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1) -- (0,3) ;
+\draw[thick] plot[domain=0:2.8] (\x,{sqrt(sqrt(sqrt(sqrt(\x))))}) ;
+\draw[thick] plot[domain=-2.8:0] (\x,{-sqrt(sqrt(sqrt(sqrt(-\x))))}) ;
+\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=\sqrt[5]{x}$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXVA}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1) -- (0,3) ;
+\draw[thick] plot[domain=-2.5:2.5] (\x,{abs(\x)}) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=|x|$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXVAsmall}{
+\begin{tikzpicture}[scale=.35,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1) -- (0,3) ;
+\draw[thick] plot[domain=-2.5:2.5] (\x,{abs(\x)}) ;
+%\draw (2.7,-0.4) node{$x$} (-0.7,2.7) node{$|x|$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXXXVA}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1) -- (0,3) ;
+\draw[thick] plot[domain=-1.3:1.3] (\x,{abs(\x*\x*\x)}) ;
+\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=|x^3|$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXinvVA}{
+\begin{tikzpicture}[scale=.21,font=\footnotesize]
+\draw[->] (-6,0) -- (6,0) ;
+\draw[->] (0,-2) -- (0,6) ;
+\draw[thick] plot[domain=-5.6:-0.18] (\x,{abs(1/\x)}) ;
+\draw[thick] plot[domain=0.18:5.6] (\x,{1/\x}) ;
+\draw (6,-0.8) node{$x$} (0,6.6) node{$f(x)=|1/x|$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXsqrtIIIVA}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=0:2.8] (\x,{sqrt(sqrt(\x))}) ;
+\draw[thick] plot[domain=-2.8:0] (\x,{sqrt(sqrt(-\x))}) ;
+\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=|\sqrt[3]{x}|$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheSIN}{
+\begin{tikzpicture}[scale=.25,font=\footnotesize]
+\draw[->] (-5,0) -- (5,0) ;
+\draw[->] (0,-5) -- (0,5) ;
+\draw[thick] plot[domain=-4.5:4.5] (\x,{2*sin(\x r)}) ;
+%\draw (5,-0.6) node{$x$} (0,5.5) node{$f(x)=\sin(x)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheSINa}{
+\begin{tikzpicture}[scale=.25,font=\footnotesize]
+\draw[->] (-5,0) -- (5,0) ;
+\draw[->] (0,-5) -- (0,5) ;
+\draw[thick] plot[domain=0:3.1415] (\x,{2*sin(\x r)}) ;
+%\draw (5,-0.6) node{$x$} (0,5.5) node{$f(x)=\sin(x)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheSINb}{
+\begin{tikzpicture}[scale=.25,font=\footnotesize]
+\draw[->] (-5,0) -- (5,0) ;
+\draw[->] (0,-5) -- (0,5) ;
+\draw[thick] plot[domain=-3.1415:3.1415] (\x,{2*sin(\x r)}) ;
+%\draw (5,-0.6) node{$x$} (0,5.5) node{$f(x)=\sin(x)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheSINc}{
+\begin{tikzpicture}[scale=.25,font=\footnotesize]
+\draw[->] (-4,0) -- (7,0) ;
+\draw[->] (0,-5) -- (0,5) ;
+\draw[thick, domain=-pi:3*pi, samples=200] plot (\x,{2*sin(\x r)});
+%\draw[thick] plot[domain=--3.1415:9.4247] (\x,{2*sin(deg(\x))}) ;
+%\draw (5,-0.6) node{$x$} (0,5.5) node{$f(x)=\sin(x)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheCOS}{
+\begin{tikzpicture}[scale=.25,font=\footnotesize]
+\draw[->] (-5,0) -- (5,0) ;
+\draw[->] (0,-5) -- (0,5) ;
+\draw[thick] plot[domain=-4.5:4.5] (\x,{2*cos(\x r)}) ;
+%\draw (5,-0.6) node{$x$} (0,5.5) node{$f(x)=\cos(x)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheTAN}{
+\begin{tikzpicture}[scale=.25,font=\footnotesize]
+\draw[->] (-5,0) -- (5,0) ;
+\draw[->] (0,-5) -- (0,5) ;
+\draw[thick] plot[domain=-1.36:1.36] (\x,{tan(\x r)}) ;
+\draw[thick] plot[domain=1.78:4.5] (\x,{tan(\x r)}) ;
+\draw[thick] plot[domain=-4.5:-1.78] (\x,{tan(\x r)}) ;
+\draw[dashed] (-1.62,-4.8) -- (-1.62,4.8) ;
+\draw[dashed] (1.62,-4.8) -- (1.62,4.8) ;
+%\draw (5,-0.6) node{$x$} (0,5.5) node{$f(x)=\tan(x)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheCOT}{
+\begin{tikzpicture}[scale=.25,font=\footnotesize]
+\draw[->] (-5,0) -- (5,0) ;
+\draw[->] (0,-5) -- (0,5) ;
+\draw[thick] plot[domain=0.21:2.92] (\x,{cot(\x r)}) ;
+\draw[thick] plot[domain=3.35:4.8] (\x,{cot(\x r)}) ;
+\draw[thick] plot[domain=-0.21:-2.92] (\x,{cot(\x r)}) ;
+\draw[thick] plot[domain=-3.35:-4.8] (\x,{cot(\x r)}) ;
+\draw[dashed] (0,-4.8) -- (0,4.8) ;
+\draw[dashed] (3.14,-4.8) -- (3.14,4.8) ;
+\draw[dashed] (-3.14,-4.8) -- (-3.14,4.8) ;
+\draw (5,-0.6) node{$x$} (0,5.5) node{$f(x)=\cot(x)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheASIN}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-2) -- (0,3) ;
+\draw[thick] plot[domain=-1:1] (\x,{rad(asin(\x))}) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=\arcsin(x)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheACOS}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-2) -- (0,3) ;
+\draw[thick] plot[domain=-1:1] (\x,{rad(acos(\x))}) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=\arccos(x)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheATAN}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-2) -- (0,3) ;
+\draw[thick] plot[domain=-2.9:2.9] (\x,{rad(atan(\x))}) ;
+\draw[dashed] (-3,1.5) -- (3,1.5) ;
+\draw[dashed] (-3,-1.5) -- (3,-1.5) ;
+%\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=\arctan(x)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheACOT}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-2) -- (0,3) ;
+\draw[thick] plot[domain=-2.9:-0.01] (\x,{rad(atan(1/\x))+3.14}) ;
+\draw[thick] plot[domain=0.01:2.9] (\x,{rad(atan(1/\x))}) ;
+\draw (3,-0.4) node{$x$} (0,3.3) node{$f(x)=\mathrm{arccot}(x)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheEXP}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1) -- (0,3) ;
+\draw[thick] plot[domain=-2.9:1.05] (\x,{exp(\x)}) ;
+%\draw (3,-0.4) node{$x$} (0,3.4) node{$f(x)=\exp(x)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheEXPinv}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1) -- (0,3) ;
+\draw[thick] plot[domain=-1.05:2.9] (\x,{exp(-\x)}) ;
+\draw (3,-0.4) node{$x$} (0,3.4) node{$f(x)=\exp(-x)=\frac{1}{\exp(x)}$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheLN}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=0.08:2.9] (\x,{ln(\x)}) ;
+%\draw (3,-0.4) node{$x$} (0,3.4) node{$f(x)=\ln(x)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheLNinv}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=0.08:2.9] (\x,{-ln(\x)}) ;
+\draw (3,-0.4) node{$x$} (0,3.4) node{$f(x)=-\ln(x)=\ln\left(\frac{1}{x}\right)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheSINH}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-2.5:2.5] (\x,{0.5*sinh(\x)}) ;
+%\draw (3,-0.4) node{$x$} (0,3.4) node{$f(x)=\sinh(x)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheCOSH}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-2.5:2.5] (\x,{0.5*cosh(\x)}) ;
+%\draw (3,-0.4) node{$x$} (0,3.4) node{$f(x)=\cosh(x)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheTANH}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-2.5:2.5] (\x,{tanh(\x)}) ;
+\draw[dashed] (-3,1) -- (3,1) ;
+\draw[dashed] (-3,-1) -- (3,-1) ;
+\draw (3,-0.4) node{$x$} (0,3.4) node{$f(x)=\tanh(x)$} ;
+\end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%      Croissance
+
+\newcommand{\croissant}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-0.7,0) -- (1.5,0) ;
+\draw[->] (0,-0.5) -- (0,1.5) ;
+\draw[thick] plot[domain=-0.6:1.2] (\x,{(\x-0.3)^3+0.3}) ;
+\end{tikzpicture}
+}
+
+\newcommand{\decroissant}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-0.7,0) -- (1.5,0) ;
+\draw[->] (0,-0.5) -- (0,1.5) ;
+\draw[thick] plot[domain=-0.6:1.2] (\x,{-(\x-0.3)^3+0.3}) ;
+\end{tikzpicture}
+}
+
+\newcommand{\constant}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-0.7,0) -- (2.5,0) ;
+\draw[->] (0,-0.5) -- (0,2.2) ;
+\draw[thick] plot[domain=-0.6:1.2] (\x,{0.7}) ;
+\draw[thick] plot[domain=1.2:2] (\x,{0.7+(\x-1.2)^2}) ;
+\end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%      Convexité
+
+\newcommand{\convexe}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+%\draw[->] (-0.7,0) -- (1.5,0) ;
+%\draw[->] (0,-0.5) -- (0,1.5) ;
+%\draw[thick] plot[domain=-0.6:1.2] (\x,{(\x-0.3)^2+0.3}) ;
+\draw[->] (-2,0) -- (2,0);
+\draw[->] (0,0) -- (0,2.2);
+\draw[thick, domain=-2:2.1] plot(\x, {\x*\x/2+1});
+\draw (-1,1.5) node{$\bullet$}; 
+\draw (-1,1.5) node[below]{$A$} ;
+\draw (0.5,1.1) node{$\bullet$}; 
+\draw (0.5,1.1) node[below]{$B$} ;
+\draw (-1,1.5) -- (0.5,1.1) ;
+\end{tikzpicture}
+}
+
+\newcommand{\concave}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+%\draw[->] (-0.7,0) -- (1.5,0) ;
+%\draw[->] (0,-0.5) -- (0,1.5) ;
+%\draw[thick] plot[domain=-0.6:1.2] (\x,{(\x-0.3)^2+0.3}) ;
+\draw[->] (-2,0) -- (2,0);
+\draw[->] (0,0) -- (0,2.2);
+\draw[thick, domain=-2:2.1] plot(\x, {-\x*\x/2+1});
+\draw (-1,0.5) node{$\bullet$}; 
+\draw (-1,0.5) node[left]{$A$} ;
+\draw (0.5,0.9) node{$\bullet$}; 
+\draw (0.5,0.9) node[below]{$B$} ;
+\draw (-1,0.5) -- (0.5,0.9) ;
+\end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%      Parité
+
+\newcommand{\pair}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\draw[->] (-2.5,0) -- (2.8,0) ;
+\draw[->] (0,-0.5) -- (0,1.5) ;
+\draw[thick] plot[domain=-2.5:2.5,smooth,samples=50] (\x,{cos((1.2*\x)^4 r)+0.1}) ;
+\end{tikzpicture}
+}
+
+\newcommand{\impair}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\draw[->] (-2.5,0) -- (2.8,0) ;
+\draw[->] (0,-1) -- (0,1.5) ;
+\draw[thick] plot[domain=-2.5:2.5,smooth,samples=50] (\x,{sin((1.2*\x)^3 r)}) ;
+\end{tikzpicture}
+}
+
+\newcommand{\periodique}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\draw[->] (-3,0) -- (4.2,0) ;
+\draw[->] (0,-1.5) -- (0,1.5) ;
+\draw[thick] plot[domain=-3:4,smooth,samples=50] 
+(\x,{0.5*sin(10*\x r)+0.5*cos(12*\x r)}) ;
+\end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%    Exos sur les graphes
+
+\newcommand{\exoLNA}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=0.1:2.8] (\x,{ln(\x)}) ;
+\draw (1,0) node{$\bullet$} (1,-0.5) node{$1$} ;
+\draw (3,-0.4) node{$x$} (0,3.4) node{$\ln(x)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\exoLNB}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=0.1:2.8] (\x,{2*ln(\x)+1}) ;
+\draw (1,0) node{$|$} (1,-0.7) node{$1$} ;
+\draw (0,1) node{$-$} (-0.5,1) node{$1$} ;
+\draw (3,-0.4) node{$x$} (0,3.4) node{$f(x)=2\ln(x)+1$} ;
+\draw (1,1) node{$\bullet$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\exoCOSA}{
+\begin{tikzpicture}[scale=.25,font=\footnotesize]
+\draw[->] (-8,0) -- (8,0) ;
+\draw[->] (0,-5) -- (0,5) ;
+\draw (0,2) node{$\bullet$} (-0.6,2.3) node{$1$} ;
+\draw (3.14,0) node{$|$} (3.14,1) node{$\pi$} ;
+\draw (6.28,0) node{$|$} (6.28,-1) node{$2\pi$} ;
+\draw[thick,smooth,samples=100] plot[domain=-7.5:7.5] (\x,{2*cos(\x r)}) ;
+\draw (8,-0.6) node{$x$} (0,5.5) node{$\cos(x)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\exoCOSB}{
+\begin{tikzpicture}[scale=.25,font=\footnotesize]
+\draw[->] (-8,0) -- (8,0) ;
+\draw[->] (0,-5) -- (0,5) ;
+\draw (0,2) node{$-$} (-0.6,2.3) node{$1$} ;
+\draw (3.14,0) node{$|$} (3.14,1) node{$\pi$} ;
+\draw (6.28,0) node{$|$} (6.28,1) node{$2\pi$} ;
+\draw[thick,smooth,‎samples=100] plot[domain=-7.5:7.5] (\x,{2*cos(2*\x r)-2}) ;
+\draw (8,-0.6) node{$\theta$} (0,5.5) node{$u(\theta)=\cos(2\theta)-1$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\exoSQRTA}{ 
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-1,0) -- (3,0) ;
+\draw[->] (0,-2) -- (0,2) ;
+\draw[thick] plot[domain=0:2.8] (\x,{sqrt(\x)}) ;
+\draw (3,-0.4) node{$t$} (0,2.3) node{$\sqrt{t}$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\exoSQRTB}{ 
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-1,0) -- (4,0) ;
+\draw[->] (0,-2) -- (0,2) ;
+\draw[thick] plot[domain=1:3.8] (\x,{sqrt(\x-1)}) ;
+\draw (4,-0.4) node{$t$} (0,2.3) node{$\sqrt{t-1}$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\exoSQRTC}{ 
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-1,0) -- (4,0) ;
+\draw[->] (0,-2) -- (0,2) ;
+\draw[thick] plot[domain=1:3.8] (\x,{-sqrt(\x-1)}) ;
+\draw (4,-0.4) node{$t$} (0,2.3) node{$z(t)=-\sqrt{t-1}$} ;
+\end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%     Réciproques
+
+\newcommand{\grapheFF}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-2.5) -- (0,2.5) ;
+\draw[thick] plot[domain=-1.3:1] (\x,{tan(\x r)+1}) ;
+\draw[dashed] plot[domain=-2:2] ({\x},{\x}) ;
+\draw (2.8,-0.5) node{$x$} (-1,2.3) node{$f(x)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheFFINV}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-2.5) -- (0,2.5) ;
+\draw[thick] plot[domain=-2.9:2.9] (\x,{rad(atan(\x-1))}) ;
+\draw[dashed] plot[domain=-2:2] ({\x},{\x}) ;
+\draw (2.8,-0.5) node{$y$} (-1.5,2.3) node{$f^{-1}(y)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXXTOT}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-2.5,0) -- (2.5,0) ;
+\draw[->] (0,-.5) -- (0,2) ;
+\draw[thick] plot[domain=-1.4:1.4] (\x,{\x*\x}) ;
+\draw (2.5,-0.4) node{$x$} (-0.6,1.8) node{$x^2$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheXXRED}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-2.5,0) -- (2.5,0) ;
+\draw[->] (0,-.5) -- (0,2) ;
+\draw[thick] plot[domain=0:1.3] (\x,{\x*\x}) ;
+\draw (2.5,-0.4) node{$x$} (-0.6,1.8) node{$x^2$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheSQRT}{ 
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-2.5,0) -- (2.5,0) ;
+\draw[->] (0,-.5) -- (0,2) ;
+\draw[thick] plot[domain=0:2.8] (\x,{sqrt(\x)}) ;
+\draw (2.5,-0.4) node{$y$} (-0.8,1.8) node{$\sqrt{y}$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheSINTOT}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-1.5) -- (0,1.5) ;
+\draw[thick] plot[domain=-3:3] (\x,{sin(\x r)}) ;
+\draw (2.8,-0.6) node{$x$} (-1,1.5) node{$\sin x$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheSINRED}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-2.5,0) -- (2.5,0) ;
+\draw[->] (0,-1.5) -- (0,1.5) ;
+\draw[thick] plot[domain=-1.57:1.57] (\x,{sin(\x r)}) ;
+\draw (2.8,-0.6) node{$x$} (-1,1.5) node{$\sin x$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\grapheASINRED}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-2,0) -- (2,0) ;
+\draw[->] (0,-1.5) -- (0,1.5) ;
+\draw[thick] plot[domain=-1:1] (\x,{rad(asin(\x))}) ;
+\draw (1.8,-0.4) node{$y$} (-2,1.5) node{$\arcsin y$} ;
+\end{tikzpicture}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Chapitre 6 - Dérivées
+%
+%%%%%%%%%%%%%%%%%%	Limites
+
+\newcommand{\limF}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\draw[->] (-5,0) -- (5,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw[thick] plot[domain=-5:-1] (\x,{(\x+1)/\x}) ;
+\draw[thick] plot[domain=1:5] (\x,{exp(\x)(\x-1)(\x-2)/\x}) ;
+\draw[dashed] (2,0) -- (2,1.15) -- (0,1.15) ;
+\draw (2,-0.5) node{$x$} (-0.5,1.15) node{$f(x)$} ;
+\end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%      Fonctions continues
+
+\newcommand{\continue}{
+\begin{tikzpicture}[scale=.9,font=\footnotesize]
+\draw[->] (-5.5,0) -- (-2.5,0) ;
+\draw[->] (-4,-0.2) -- (-4,1) ;
+\draw[thick] plot[domain=-1:1, samples=50] ({-4+\x},{0.2+0.5*(\x)^3}) ;
+\draw (-4,-0.7) node{continue} ;
+\draw (-4,-1.45) node{} ;
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}[scale=.9,font=\footnotesize]
+\draw[->] (-1.5,0) -- (1.5,0) ;
+\draw[->] (0,-0.2) -- (0,1) ;
+\draw[thick] plot[domain=-1:0.3, samples=50] ({\x},{0.2+0.5*(\x)^3})
+	plot[domain=0.3:1, samples=50] ({\x},{0.5+0.5*(\x)^3}) ;
+\draw (0.3,0) node{{\tiny $\bullet$}} (0.3,-0.2) node{$a$} ;
+\draw (0,-0.7) node{non continue en $a$} ;
+\draw (0,-1.2) node{$\displaystyle\lim_{x\to a} f(x)$ n'existe pas} ;
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}[scale=.9,font=\footnotesize]
+\draw[->] (2.5,0) -- (5.5,0) ;
+\draw[->] (4,-0.2) -- (4,1) ;
+\draw[thick] plot[domain=-1:0.25, samples=50] ({4+\x},{0.2+0.5*(\x)^3})
+	plot[domain=0.35:1, samples=50] ({4+\x},{0.2+0.5*(\x)^3}) ;
+\draw (4.3,0.6) node{$\bullet$} (4.3,0.2) node{$\circ$} ;
+\draw (4.3,0) node{{\tiny $\bullet$}} (4.3,-0.2) node{$a$} ;
+\draw (4,-0.7) node{non continue en $a$} ;
+\draw (4,-1.2) node{$\displaystyle\lim_{x\to a} f(x)\neq f(a)$} ;
+\end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%	Dérivées
+
+\newcommand{\tangenteA}{
+\begin{tikzpicture}[scale=.45,font=\footnotesize]
+\draw[->] (-2,0) -- (5,0) ;
+\draw[->] (0,-2) -- (0,4) ;
+\draw[thick] plot[domain=-1.2:4.2, samples=50] (\x,{-0.3*(\x+1)*(\x-1)*(\x-4)});
+\draw (4.2,1.5) node{$\Gamma_f$} ;
+\draw (2,1.8) node{$\bullet$} ;
+\draw[dashed] (2,0) -- (2,1.8) (0,1.8) -- (2,1.8) ;
+\draw (2,0) node{{\tiny $\bullet$}} (2,-0.5) node{$a$} ;
+\draw (0,1.8) node{{\tiny $\bullet$}} (-0.7,1.8) node{$f(a)$} ;
+\draw plot[domain=0.3:3.2, samples=50] (\x,{1.5*\x-1.2});
+\draw (2.5,3.5) node{$\Delta_a$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\tangenteB}{
+\begin{tikzpicture}[scale=.4,font=\footnotesize]
+\draw[->] (-1.5,0) -- (8.2,0) ;
+\draw[->] (0,-2) -- (0,8) ;
+\draw (7.9,-0.5) node{$x$} (-0.5,7.7) node{$y$} ;
+\draw[thick] plot[domain=-0.7:5.2, samples=50] (\x,{-3*(\x+1)*(\x-1)*(\x-5)/8});
+%\draw (4.2,1.5) node{$\Gamma_f$} ;
+%
+\draw (3,6) node{$\bullet$} ;
+\draw[dashed] (3,0) -- (3,6) (0,6) -- (3,6) ;
+\draw (3,0) node{{\tiny $\bullet$}} (3,-0.5) node{$a$} ;
+\draw (0,6) node{{\tiny $\bullet$}} (-0.7,6.2) node{$f(a)$} ;
+\draw plot[domain=-1.3:4, samples=50] (\x,{1.5*\x+1.5});
+\draw (1,4) node{$\Delta_a$} ;
+\draw [->] (0.3,0) arc (0:60:1.2) ;
+\draw (0.7,0.8) node{$\theta_a$} ;
+%
+\draw (4,5.625) node{$\bullet$} ;
+\draw[dashed] (4,0) -- (4,5.625) (0,5.625) -- (4,5.625) ;
+\draw (4,0) node{{\tiny $\bullet$}} (4,-0.5) node{$b$} ;
+\draw (0,5.625) node{{\tiny $\bullet$}} (-0.7,5.3) node{$f(b)$} ;
+\draw plot[domain=3.2:6.5, samples=50] (\x,{-21*\x/8+129/8});
+\draw (5.5,4) node{$\Delta_b$} ;
+\draw [->] (7.2,0) arc (0:105:1.1) ;
+\draw (7.7,0.8) node{$\theta_b$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\derivable}{
+\begin{tikzpicture}[scale=.9,font=\footnotesize]
+\draw[->] (-5.3,0) -- (-2.8,0) ;
+\draw[->] (-4,-0.2) -- (-4,1) ;
+\draw[thick] plot[domain=-1:0.3, samples=50] (-4+\x,{0.2+0.5*(\x)^3})
+	plot[domain=0.3:1, samples=50] (-4+\x,{0.5+0.5*(\x)^3}) ;
+\draw (-3.7,0) node{{\tiny $\bullet$}} (-3.7,-0.2) node{$a$} ;
+\draw (-4,-0.5) node{non continue en $a$} ;
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[scale=.9,font=\footnotesize]
+\draw[->] (-1.3,0) -- (1.3,0) ;
+\draw[->] (0,-0.2) -- (0,1) ;
+\draw[thick] plot[domain=-1:0.3, samples=50] (\x,{0.2+0.5*(\x)^3})
+	plot[domain=0.3:1, samples=50] (\x,{-0.33+sqrt(\x)}) ;
+\draw (0.3,0) node{{\tiny $\bullet$}} (0.3,-0.2) node{$a$} ;
+\draw (0,-0.5) node{continue, non d\'erivable en $a$} ;
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[scale=.9,font=\footnotesize]
+\draw[->] (2.8,0) -- (5.3,0) ;
+\draw[->] (4,-0.2) -- (4,1) ;
+\draw[thick] plot[domain=-1:1, samples=50] (4+\x,{0.2+0.5*(\x)^3}) ;
+\draw (4,-0.5) node{d\'erivable} ;
+\end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%%%%     Extrema
+
+\newcommand{\paraboleA}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\draw[->] (-1.2,0) -- (4,0) ;
+\draw[->] (0,-.2) -- (0,4) ;
+\draw[thick] plot[domain=-0.6:2.6, samples=50] (\x,{(\x-1)^2+1});
+\draw (3,3) node{$\Gamma_f$} ;
+\draw (1,1) node{$\bullet$} ;
+\draw[dashed] (1,0) -- (1,1) ;
+\draw (1,0) node{{\tiny $\bullet$}} (1,-0.5) node{$a$} ;
+\draw (0,1) node{{\tiny $\bullet$}} (-0.7,0.5) node{$f(a)$} ;
+\draw plot[domain=-1.2:3.2, samples=50] (\x,{1});
+\draw (2.5,0.5) node{$\Delta_a$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\minimumOLD}{
+\begin{tikzpicture}[scale=.8,font=\footnotesize]
+\draw[->] (-5.5,0) -- (-2.5,0) ;
+\draw[->] (-4,-0.2) -- (-4,1) ;
+\draw[thick] plot[domain=-1:1, samples=50] (-4+\x,{0.5+(\x+0.7)*(\x-0.5)^2)}) ;
+\draw[dashed] (-3.5,0) -- (-3.5,0.5) (-4.2,0.5) -- (-2.8,0.5) ;
+\draw (-3.5,-0.2) node{$a$} ;
+\draw (-4,-0.5) node{minimum local} ;
+\end{tikzpicture}
+}
+
+\newcommand{\minimum}{
+\begin{tikzpicture}[scale=.8,font=\footnotesize]
+\draw[->] (-1.5,0) -- (1.5,0) ;
+\draw[->] (0,-0.2) -- (0,1) ;
+\draw[thick] plot[domain=-1:1, samples=50] (\x,{0.5+(\x+0.7)*(\x-0.5)^2)}) ;
+\draw (0.5,0.5) node{$\bullet$} ;
+\draw[dashed] (0.5,0) -- (0.5,0.5) ;
+\draw plot[domain=-0.3:1.3, samples=50] (\x,{0.5});
+\draw (0.5,0) node{{\tiny $\bullet$}} (0.5,-0.2) node{$a$} ;
+\draw (0,-0.5) node{minimum local} ;
+\end{tikzpicture}
+}
+
+\newcommand{\maximum}{
+\begin{tikzpicture}[scale=.8,font=\footnotesize]
+\draw[->] (-1.5,0) -- (1.5,0) ;
+\draw[->] (0,-0.2) -- (0,1) ;
+\draw[thick] plot[domain=-1:1, samples=50] (\x,{0.5-(\x+0.7)*(\x-0.5)^2)}) ;
+\draw (0.5,0.5) node{$\bullet$} ;
+\draw[dashed] (0.5,0) -- (0.5,0.5) ;
+\draw plot[domain=-0.3:1.3, samples=50] (\x,{0.5});
+\draw (0.5,0) node{{\tiny $\bullet$}} (0.5,-0.2) node{$a$} ;
+\draw (0,-0.5) node{maximum local} ;
+\end{tikzpicture}
+}
+
+\newcommand{\inflexionA}{
+\begin{tikzpicture}[scale=.8,font=\footnotesize]
+\draw[->] (-1,0) -- (2,0) ;
+\draw[->] (0,-0.2) -- (0,1) ;
+\draw[thick] plot[domain=-0.3:1.4, samples=50] (\x,{0.5-(\x-0.5)^3)}) ;
+\draw (0.5,0.5) node{$\bullet$} ;
+\draw[dashed] (0.5,0) -- (0.5,0.5) ;
+\draw plot[domain=-0.5:1.5, samples=50] (\x,{0.5});
+\draw (0.5,0) node{{\tiny $\bullet$}} (0.5,-0.2) node{$a$} ;
+\draw (0.3,-0.5) node{point d'inflexion} ;
+\end{tikzpicture}
+}
+\newcommand{\inflexionB}{
+\begin{tikzpicture}[scale=.8,font=\footnotesize]
+\draw[->] (-1,0) -- (2,0) ;
+\draw[->] (0,-0.2) -- (0,1) ;
+\draw[thick] plot[domain=-0.5:1.7, samples=50] (\x,{0.5-(\x+0.4)*(\x-1.4)*(\x-0.5))}) ;
+\draw (0.5,0.5) node{$\bullet$} ;
+\draw[dashed] (0.5,0) -- (0.5,0.5) ;
+\draw plot[domain=-0.2:1.1, samples=50] (\x,{0.81*(\x-0.5)+0.5});
+\draw (0.5,0) node{{\tiny $\bullet$}} (0.5,-0.2) node{$a$} ;
+\draw (0.3,-0.5) node{point d'inflexion} ;
+\end{tikzpicture}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Chapitre 7 - Intégrales
+%
+%%%%%%%%%%%%%%%%%%	Intégrales de Riemann
+
+
+\newcommand{\subdivisionA}{
+\begin{tikzpicture}[scale=0.75,font=\footnotesize]
+\draw[->] (-1,0) -- +(11.5,0) ;
+\draw (10.3,-0.3) node{$\mathbb{R}$} ;
+\draw (0.5,0) node{$\bullet$} +(-0.5,0.3) node{$a=a_0$} (9,0) node{$\bullet$} +(0.5,0.3) node{$a_n=b$} ;
+\foreach \t in {1,2,3,4,5}
+	{\draw ({0.5+(7/6)*\t},0) node{$\bullet$} +(0,0.3) node{$a_\t$} ;
+%	\draw ({0.5+(7/6)*(\t-0.5) +0.2*cos(2.5*\t r)},0) node{$|$} +(0,-0.3) node{$x_\t$};
+	}
+\draw[<->] ({0.6},-0.2) -- ({0.4+(7/6)},-0.2) ;
+\draw ({0.5+(7/6)*(0.5)},-0.4) node{$\delta$} ;
+\draw (7.7,0.3) node{$\cdots$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\subdivisionB}{
+\begin{tikzpicture}[scale=0.75,font=\footnotesize]
+\draw[->] (-1,0) -- +(11.5,0) ;
+\draw (10.3,-0.3) node{$\mathbb{R}$} ;
+\draw (0.5,0) node{$\bullet$} +(-0.5,0.3) node{$a=a_0$} (9,0) node{$\bullet$} +(0.5,0.3) node{$a_n=b$} ;
+\foreach \t in {1,2,3,4,5}
+	{\draw ({0.5+(7/6)*\t},0) node{$\bullet$} +(0,0.3) node{$a_\t$} ;
+	\draw ({0.5+(7/6)*(\t-0.5) +0.2*cos(2.5*\t r)},0) node{$|$} +(0,-0.3) node{$x_\t$};
+	}
+%\draw[<->] ({0.6},-0.5) -- ({0.4+(7/6)},-0.5) ;
+%\draw ({0.5+(7/6)*(0.5)},-0.7) node{$\delta$} ;
+\draw (7.7,-0.3) node{$\cdots$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\sommeRiemann}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\foreach \t in {0,1,...,19.9}
+	{\filldraw[fill=gray!40, draw=black]
+		({(30+\t*21)/60},0) rectangle ({(30+(\t+1)*21)/60},{-cos(30+10.5+\t*21)}) ;}
+\draw[->] (0,0) -- +(8.5,0) ;
+\draw[->] (0,-1.4) -- +(0,3) ;
+\draw (8.5,-0.3) node{$x$} (0.7,1.3) node{$f(x)$} ;
+\draw (0.5,0) node{$\bullet$} +(0,0.4) node{$a$} (7.5,0) node{$\bullet$} +(0,0.4) node{$b$} ;
+\draw[thick] plot[domain=30:450, samples=100] ({\x/60},{-cos(\x)}) ;
+\draw[thick] (0.7,-1.3) node{$-$} +(2.3,0) node{$+$} +(5.5,0) node{$-$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\intRiemann}{
+\begin{tikzpicture}[scale=0.45,font=\footnotesize]
+\fill[color=gray!40] (0.5,0) --
+plot[domain=0.5:(2*pi+pi/2), samples=100] (\x,{-cos(\x r)}) -- cycle ;
+\draw[->] (0,0) -- +(8.5,0) ;
+\draw[->] (0,-1.1) -- +(0,2.6) ;
+\draw (8.3,-0.4) node{$x$} (0.8,1.2) node{$f(x)$} ;
+\draw (0.5,0) node{$\bullet$} +(0,0.4) node{$a$} (7.8,0) node{$\bullet$} +(0,0.4) node{$b$} ;
+\draw[thick] plot[domain=0.5:(2*pi+pi/2), samples=100] (\x,{-cos(\x r)}) ;
+\end{tikzpicture}
+}
+
+\newcommand{\intAire}{
+\begin{tikzpicture}[scale=0.6,font=\footnotesize]
+\fill[color=gray!40] (0.5,0) --
+plot[domain=0.5:(2*pi+pi/2), samples=100] (\x,{-cos(\x r)}) -- cycle ;
+\draw[->] (-0.5,0) -- +(9,0) ;
+\draw[->] (0,-1) -- +(0,3) ;
+\draw (8.5,-0.3) node{$x$} (-1.3,1.5) node{$y=f(x)$} ;
+\draw[dashed] plot[domain=0.5:(2*pi+pi/2), samples=100] (\x,{abs(cos(\x r))}) ;
+\draw[thick] plot[domain=0.5:(2*pi+pi/2), samples=100] (\x,{-cos(\x r)}) ;
+\draw[thick] (0.8,-0.4) node{$-$} (0.8,0.4) node{$+$} (3,0.4) node{$+$} (6.2,-0.4) node{$-$} (6.2,0.4) node{$+$};
+\draw (0.6,1.3) node{$|f|$} +(2.5,0) node{$f=|f|$} +(5.75,0) node{$|f|$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\exAireDisque}{
+\begin{tikzpicture}[scale=0.55,font=\footnotesize]
+\fill[color=gray!40] plot[domain=0:180] ({cos(\x)},{sin(\x)}) -- cycle ;
+\draw[->] (-1.5,0) -- +(3,0) ;
+\draw[->] (0,-1.5) -- +(0,3) ;
+\draw (1.5,-0.5) node{\tiny$x$} ;
+\draw[thick] (0,0) circle (1) ;
+\draw (-1,0) node{\tiny$\bullet$} (-1.3,0.3) node{\tiny$-1$} ;
+\draw (1,0) node{\tiny$\bullet$} (1.2,0.3) node{\tiny$1$} ;
+\draw (1.7,1.3) node{\tiny$y=\sqrt{1-x^2}$} ; 
+\draw (-0.4,0.4) node{\tiny$D^+$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\primitive}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\fill[color=gray!40] (0.5,0) --
+plot[domain=0.5:(pi+pi/6), samples=100] (\x,{-cos(\x r)}) -- (pi+pi/6,0) -- cycle ;
+\draw[thick] plot[domain=0.5:(2*pi+pi/2), samples=100] (\x,{-cos(\x r)}) ; 
+\draw[->] (0,0) -- +(8.5,0) ;
+\draw[->] (0,-1.1) -- +(0,2.6) ;
+\draw (pi+pi/6,0) node{$\bullet$} (pi+pi/6,-0.4) node{$x$} ; 
+\draw (0.8,1.2) node{$f(x)$} (pi+pi/6,1.3) node{$F(x)$} ;
+\draw (0.5,0) node{$\bullet$} +(0,0.4) node{$a$} (7.8,0) node{$\bullet$} +(0,0.4) node{$b$} ;
+\end{tikzpicture}
+}
+
+
+%%%%%%%%%%%%%%%%%%			Intégrales multiples
+
+
+\newcommand{\subdivisionII}{
+\begin{tikzpicture}[scale=0.65,font=\footnotesize]
+\filldraw[thick, draw=black, fill=gray!40] (-1.5,1.5) -- (1.5,1.5) -- (1.5,1) -- (2,1) -- (2,0.5) --
+	(2.5,0.5) -- (2.5,-0.5) -- (1.5,-0.5) -- (1.5,-1) --
+	(-1.5,-1) -- (-1.5,-0.5) -- (-2,-0.5) -- (-2,0.5) -- (-1.5,0.5) -- cycle ;
+\filldraw[thick, draw=black, fill=white] (-1,1) -- (0.5,1) -- (0.5,0.5) -- (1.5,0.5) -- (1.5,0) --
+	(1,0) -- (1,-0.5) -- (-1,-0.5) -- cycle ;
+\draw (-4.5,-2.5) grid[scale=0.5] (5.5,3.5) ;
+\draw[thick] plot[domain=0:360, samples=100]
+	({1.5*(1+0.5*sin(1.5*\x)^2)*cos(\x+45)},{0.25+sin(\x+45)}) ;
+\draw (0,0) node[fill=white]{$S_{int}$} (2.5,1.5) node[fill=white]{$S_{ext}$} (-2,1.4) node[fill=white]{$D$} (2.5,-1) node[fill=white]{$\partial D$} ;
+\draw[->] (-1.8,1.2) -- (-1.2,0.2) ;
+\draw[->] (2.3,-0.75) -- (1.8,-0.3) ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\DefIntDouble}{
+\begin{tikzpicture}[scale=0.4,font=\footnotesize]
+\filldraw[draw=black, fill=gray!40, thick]
+	(2,-2,0) +(-0.5,0,0.5) -- +(0.5,0,0.5) -- +(0.5,0,-0.5) --
+	+(0.5,3.5,-0.5) -- +(-0.5,3.5,-0.5) --+(-0.5,3.5,0.5) -- cycle ;
+\draw[thick]
+	(2,-2,0) +(-0.5,0,0.5) -- +(-0.5,0,-0.5) -- +(0.5,0,-0.5)
+	+(0.5,3.5,-0.5) -- +(0.5,3.5,0.5) --+(-0.5,3.5,0.5) 
+	+(0.5,0,0.5) -- +(0.5,3.5,0.5)
+	+(-0.5,0,-0.5) -- +(-0.5,3.5,-0.5)
+	+(0,0,0) node{$\bullet$} +(0,3.5,0) node{$\bullet$} ;
+
+\draw[->] (-5,-2,-3) -- (3,-2,-3) ;
+\draw[->] (-5,-2,-3) -- (-5,-2,2.8) ;
+\draw[->] (-5,-2,-3) -- (-5,3,-3) ;
+\draw (-4.3,-1.8,2.8) node{$x$} (3.5,-2,-3) node{$y$} (-3.7,2.7,-3) node{$f(x,y)$} (-1,-2,0) node{$D$};
+
+\draw[thick]
+plot [domain=-2:2,samples=100] ({-2-sqrt(4-\x*\x},-2,\x) -- (2,-2,2) --
+plot [domain=-2:2,samples=100] ({2+sqrt(4-\x*\x},-2,-\x) --
+   (-2,-2,-2) -- cycle ;
+
+\foreach \t in {-1.8,-1.5,...,1.8}
+{\draw plot [domain=(-2-sqrt(4-(\t)^2)):(2+sqrt(4-(\t)^2)), samples=100] % x fix??
+(\x,{2*(1-(\t/2)^2)*(1-\x/4)*(1+\x/4)},\t)
+;}
+
+\foreach \t in {-3.8,-3.5,...,-1.9}
+{\draw plot [domain=(-sqrt(4-(\t+2)^2)):(sqrt(4-(\t+2)^2)), samples=100] % y fix??
+(\t,{2*(1-(\x/2)^2)*(1-\t/4)*(1+\t/4)},\x) ;}
+
+\foreach \t in {2,2.3,...,3.8}
+{\draw plot [domain=(-sqrt(4-(\t-2)^2)):(sqrt(4-(\t-2)^2)), samples=100] % y fix??
+(\t,{2*(1-(\x/2)^2)*(1-\t/4)*(1+\t/4)},\x) ;}
+
+\foreach \t in {-1.8,-1.5,...,1.9}
+{\draw plot [domain=-2:2, samples=100] % y fix??
+(\t,{2*(1-(\x/2)^2)*(1-\t/4)*(1+\t/4)},\x) ;}
+
+\draw plot [domain=270:450, samples=100]
+({2+2*cos(\x)},
+{2*(1-(2*sin(\x)/2)^2)*(1-(2+2*cos(\x))/4)*(1+(2+2*cos(\x))/4)},
+{2*sin(\x)}) ;
+
+\draw plot [domain=90:270, samples=100]
+({-2+2*cos(\x)},
+{2*(1-(2*sin(\x)/2)^2)*(1-(2+2*cos(\x))/4)*(1+(-2+2*cos(\x))/4)},
+{2*sin(\x)}) ;
+
+\draw plot[domain=-2:2,samples=100]
+(\x,{2*(1-(2/2)^2)*(1-\x/4)*(1+\x/4)},2) ;
+
+\draw plot[domain=-2:2,samples=100]
+(\x,{2*(1-(-2/2)^2)*(1-\x/4)*(1+\x/4)},-2) ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\IntDoubleVolume}{
+\begin{tikzpicture}[scale=0.75,font=\footnotesize]
+\draw[->] (-3,0,-2.5) -- +(5.5,0,0) ;
+\draw[->] (-3,-0.5,-2.5) -- +(0,2,0) ;
+\draw[->] (-3,0,-2.5) -- +(0,0,5) ;
+\draw (-3,0,-2.5) +(5.5,-0.5,0) node{$y$} +(-0.5,1.5,0) node{$z$} +(-0.5,0,5) node{$x$} ;
+\foreach \t in {-1,-0.8,...,1.1}
+	{\draw plot[domain=-1:1, samples=50] (2*\x,{-3*(1-(\t)^2)*(1-\x)*\x*(1+\x)},2*\t) ;
+	\draw plot[domain=-1:1, samples=50] (2*\t,{-3*(1-(\x)^2)*(1-\t)*\t*(1+\t)},2*\x) ;}
+\foreach \t in {0,0.2,...,1.1}
+	{\draw[dashed] plot[domain=-1:1, samples=50] (2*\t,{3*(1-(\x)^2)*(1-\t)*\t*(1+\t)},2*\x) ;}
+\foreach \t in {-1,-0.8,...,1.1}
+	{\draw[dashed] plot[domain=0:1, samples=50] (2*\x,{3*(1-(\t)^2)*(1-\x)*\x*(1+\x)},2*\t) ;}
+\draw[thick] (-2,0,-2) -- (2,0,-2) -- (2,0,2) -- (-2,0,2) -- cycle
+	(0,0,-2) -- (0,0,2) ;
+\draw (-1.5,-1.5,0) node{positif} (0.5,-1.5,0) node{n\'egatif} ;
+\draw (-1,1.5,0) node{$f=|f|$} (1.5,1.5,0) node{$|f|$} (2.2,-0.5,0) node{$f$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\exIntegraleSph}{
+\begin{tikzpicture}[scale=0.55,font=\footnotesize]
+\foreach \t in {0,30,...,179}
+	{\draw plot[domain=0:180, samples=50]
+		({2*cos(\x)*sin(\t)},{2*sin(\x)},{2*cos(\x)*cos(\t)}) ; }
+\foreach \t in {0,0.4,...,1.99}
+	{\draw plot[domain=0:360, samples=50]
+		({sqrt(4-(\t)^2)*cos(\x)},{\t},{sqrt(4-(\t)^2)*sin(\x)}) ; }
+\draw[dashed] ({sqrt(4-(1.6)^2)*sin(60)},{1.6},{sqrt(4-(1.6)^2)*cos(60)})
+	node{$\bullet$} -- ({sqrt(4-(1.6)^2)*sin(60)},{0},{sqrt(4-(1.6)^2)*cos(60)})
+	node{$\bullet$} ;
+\draw[->] (-2.5,0,0) -- (2.5,0,0) ;
+\draw[->] (0,-1.5,0) -- (0,2.5,0) ;
+\draw[->] (0,0,-3) -- (0,0,3) ;
+\draw (3,0,0) node{$y$} (-0.4,2.5,0) node{$z$} (0,0,4) node{$x$} ;
+\draw ({0.2+sqrt(4-(1.6)^2)*sin(60)},{-0.7},{sqrt(4-(1.6)^2)*cos(60)}) node{$(x,y)$}
+	({2.5+sqrt(4-(1.6)^2)*sin(60)},{2.2},{sqrt(4-(1.6)^2)*cos(60)}) node{$z=\sqrt{x^2+y^2}$}
+	(-2,2,0) node{$B^+$} ;
+\end{tikzpicture}
+}
+
+
+
+
+
+
+\newcommand{\FubiniI}{
+\begin{tikzpicture}[scale=0.45,font=\footnotesize]
+\filldraw[fill=gray!40, draw=black, thick] plot[domain=0:360,samples=100]
+	({3*cos(\x)},{1.5*sin(\x)+0.5*sqrt(0.1+cos(\x)^2)}) ;
+\draw[->] (-3.5,-2.5) -- (3.5,-2.5) ;
+\draw[->] (-3.5,-2.5) -- (-3.5,2.5) ;
+\draw (3.9,-2.5) node{$x$} (-3.8,2.5) node{$y$} ;
+\draw[dashed] (-1,2.2) -- (-1,-3)
+	(-3,0.7) -- (-3,-3) (3,0.7) -- (3,-3)
+	(-3.7,-1.2) -- (-1,-1.2) (-3.7,1.65) -- (-1,1.65) ;
+\draw (-1,-1.25) -- (-1,1.6) ;
+\draw (3,-3.1) node{$b$} (-1,-3) node{$x$} (-3,-3.1) node{$a$}
+	(-4.3,-1.25) node{$c(x)$} (-4.3,1.6) node{$d(x)$} ;
+\end{tikzpicture}
+}
+
+
+
+\newcommand{\FubiniII}{
+\begin{tikzpicture}[scale=0.45,font=\footnotesize]
+\filldraw[fill=gray!40, draw=black, thick] plot[domain=0:360,samples=100]
+	({3*cos(\x)},{1.5*sin(\x)+0.5*sqrt(0.1+cos(\x)^2)}) ;
+\draw[->] (-3.5,-2.5) -- (3.5,-2.5) ;
+\draw[->] (-3.5,-2.5) -- (-3.5,2.5) ;
+\draw (3.5,-2.1) node{$x$} (-3.8,2.5) node{$y$} ;
+\draw[dashed] (-3.7,0) -- (3.5,0)
+	(-3.7,1.66) -- (1,1.66) (-3.7,-1.34) -- (0,-1.34)
+	(-2.85,0) -- (-2.85,-2.7) (2.85,-2.7) -- (2.85,0) ;
+\draw (-2.8,0) -- (2.8,0) ;
+\draw (-4,1.66) node{$d$} (-4,0) node{$y$} (-4,-1.34) node{$c$}
+	(-2.85,-3) node{$a(y)$} (2.85,-3) node{$b(y)$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\ExDomParabole}{
+\begin{tikzpicture}[scale=0.55,font=\footnotesize]
+\fill[color=gray!40] plot[domain=-1:1] (\x,{\x*\x}) -- cycle ;
+\draw[thick] plot[domain=-1.5:1.5] (\x,{\x*\x})
+	(-1.5,1) -- (1.5,1) ;
+\draw[->] (-2,0) -- (2,0) ;
+\draw[->] (0,-0.5) -- (0,2.2) ;
+\draw (2,-0.3) node{$x$} (-0.4,2) node{$y$} ;
+\draw (2,.7) node{$y=1$} (2.4,1.9) node{$y=x^2$} ;
+\draw (0,1) node{$\bullet$} (-0.3,1.3) node{$1$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\ExDomCercle}{
+\begin{tikzpicture}[scale=0.6,font=\footnotesize]
+\filldraw[thick, draw=black, fill=gray!40] (0,0) circle (1) ;
+\draw[->] (-2,0) -- (2,0) ;
+\draw[->] (0,-2) -- (0,2) ;
+\draw (2,0.3) node{$x$} (-0.3,2) node{$y$} ;
+\draw (1/2,{-sqrt(3)/2}) -- (1/2,{sqrt(3)/2}) ;
+\draw (-1,0) node{$\bullet$} (1,0) node{$\bullet$} ;
+\draw (-1.4,-0.2) node{$-1$} (1.2,-0.2) node{$1$} (-0.4,0.4) node{$D$} ;
+\draw (1.3,-1.1) node{$-\sqrt{1-x^2}$} (1.3,1.1) node{$\sqrt{1-x^2}$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\integraleDomIII}{
+\begin{tikzpicture}[scale=0.45,font=\footnotesize]
+\fill[ball color=gray!40] plot[domain=0:360,samples=100]
+	({3*cos(\x)},{1.5*sin(\x)+0.5*sqrt(0.1+cos(\x)^2)*sin(\x)}) ;
+\draw plot[domain=0:360,samples=100]
+	({3*cos(\x)},{1.5*sin(\x)+0.5*sqrt(0.1+cos(\x)^2)*sin(\x)}) ;
+\draw (0,0,4/3) -- (4/3,0,4/3) -- (4/3,0,0) -- (4/3,4/3,0) --
+	(0,4/3,0) -- (0,4/3,4/3) -- cycle ;
+\draw (0,4/3,4/3) -- (4/3,4/3,4/3) -- (4/3,4/3,0)
+	(0,2/3,4/3) -- (4/3,2/3,4/3) -- (4/3,2/3,0)
+	(2/3,0,4/3) -- (2/3,4/3,4/3) -- (2/3,4/3,0)
+	(4/3,0,2/3) -- (4/3,4/3,2/3) -- (0,4/3,2/3)
+	(4/3,0,4/3) -- (4/3,4/3,4/3) ;
+\draw (1/3,1/3,4/3) node{$\bullet$} (1,1/3,4/3) node{$\bullet$}
+	(1/3,1,4/3) node{$\bullet$} (1,1,4/3) node{$\bullet$} ;
+\draw (-2,0) node{$D$} (3,2) node{$\mathbb{R}^3$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\integraleAire}{
+\begin{tikzpicture}[scale=0.4,font=\footnotesize]
+\fill[color=gray!30] plot[domain=-15:165, samples=100]
+	({3*cos(\x)},0,{1.5*sin(\x)+0.7*sqrt(0.1+cos(\x)^2)*sin(\x)}) --
+	plot[domain=165:345,samples=100]
+	({3*cos(\x)},2,{1.5*sin(\x)+0.7*sqrt(0.1+cos(\x)^2)*sin(\x)}) -- cycle ;
+\filldraw[fill=gray!60, draw=black] plot[domain=0:360,samples=100]
+	({3*cos(\x)},0,{1.5*sin(\x)+0.7*sqrt(0.1+cos(\x)^2)*sin(\x)}) ;
+\filldraw[fill=gray!60, draw=black] plot[domain=0:360,samples=100]
+	({3*cos(\x)},2,{1.5*sin(\x)+0.7*sqrt(0.1+cos(\x)^2)*sin(\x)}) ;
+\draw ({3*cos(-15)},0,{1.5*sin(-15)+0.7*sqrt(0.1+cos(-15)^2)*sin(-15)}) --
+	({3*cos(-15)},2,{1.5*sin(-15)+0.7*sqrt(0.1+cos(-15)^2)*sin(-15)})
+	({3*cos(165)},0,{1.5*sin(165)+0.7*sqrt(0.1+cos(165)^2)*sin(165)}) --
+	({3*cos(165)},2,{1.5*sin(165)+0.7*sqrt(0.1+cos(165)^2)*sin(165)})  ;
+\draw[->] (-4.5,0,-2) -- (4,0,-2) ;
+\draw[->] (-4.5,0,-2) -- (-4.5,2,-2) ;
+\draw[->] (-4.5,0,-2) -- (-4.5,0,2) ;
+\draw (4,0.5,-2) node{$y$} (-4,2,-2) node{$z$} (-4,0,2) node{$x$} (0,0,0) node{$D$}
+	({0.25+3*cos(-15)},1,{1.5*sin(-15)+0.7*sqrt(0.1+cos(-15)^2)*sin(-15)}) node{$1$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\AireDomI}{
+\begin{tikzpicture}[scale=0.25,font=\footnotesize]
+\filldraw[fill=gray!40, draw=black, thick] plot[domain=0:360,samples=100]
+	({3*cos(\x)},{1.5*sin(\x)+0.5*sqrt(0.1+cos(\x)^2)}) ;
+\draw[->] (-3.5,-2.5) -- (3.5,-2.5) ;
+\draw[->] (-3.5,-2.5) -- (-3.5,2.5) ;
+\draw (3.9,-2.5) node{$x$} (-3.8,2.5) node{$y$} ;
+\draw (0,0) node{$D$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\AireDomII}{
+\begin{tikzpicture}[scale=0.25,font=\footnotesize]
+\filldraw[fill=gray!40, draw=black] plot[domain=-1:1,samples=100] ({3*\x},{-1+2/(2-\x)}) --
+	(3,-2.5) -- (-3,-2.5) -- cycle ;
+\draw[thick] plot[domain=-1.3:1.3,samples=100] ({3*\x},{-1+2/(2-\x)}) ;
+\draw[->] (-3.5,-2.5) -- (3.5,-2.5) ;
+\draw[->] (-3.5,-2.5) -- (-3.5,2.5) ;
+\draw (3.9,-2.5) node{$x$} (-3.8,2.5) node{$y$} (3.5,0.8) node{$f$} ;
+\draw (0,-1) node{$D$} (3,-2.8) node{$b$} (-3,-2.8) node{$a$} ;
+\end{tikzpicture}
+}
+
+
+
+\newcommand{\ExoDomInt}{
+\begin{tikzpicture}[scale=0.65,font=\footnotesize]
+\draw[->] (-3,0) -- (1,0) ;
+\draw[->] (0,-1) -- (0,2) ;
+\draw (1,-0.3) node{$x$} (-0.3,2) node{$y$} ;
+\fill[color=gray!40] plot[domain=-1:0,samples=100] (2*\x,{(\x)^3+1}) --
+	plot[domain=0:1,samples=100] (-2*\x,{(-\x+1)^2}) -- cycle ;
+\draw[thick] plot[domain=-1.2:0.2,samples=100] (2*\x,{(\x)^3+1})
+	plot[domain=-1.5:0.2,samples=100] (2*\x,{(\x+1)^2}) ;
+\draw (0.4,0.3) node{$y\!=\!(x\!+\!1)^2$} (-1.3,1.2) node{$y\!=\!x^3\!+\!1$} ;
+\draw[thick] (-2,0) node{$\bullet$} (0,1) node{$\bullet$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\VolumeDomI}{
+\begin{tikzpicture}[scale=0.3,font=\footnotesize]
+\draw[->] (-3.5,-2,0) -- (3.5,-2,0) ;
+\draw[->] (-3.5,-2,0) -- (-3.5,2,0) ;
+\draw[->] (-3.5,-2,0) -- (-3.5,-2,3) ;
+\draw (3.5,-2.5,0) node{$y$} (-4,2,0) node{$z$} (-3.3,-2.2,3) node{$x$} ;
+\fill[ball color=gray!40] plot[domain=0:360,samples=100]
+	({3*cos(\x)},{1.5*sin(\x)+0.5*sqrt(0.1+cos(\x)^2)*sin(\x)}) ;
+\draw[thick] plot[domain=0:360,samples=100]
+	({3*cos(\x)},{1.5*sin(\x)+0.5*sqrt(0.1+cos(\x)^2)*sin(\x)}) ;
+\foreach \t in {50,75,...,141}
+	{\draw plot[domain=-1:1,samples=100]
+	({3*cos(\t)},{\x*(1.5*sin(\t)+0.5*sqrt(0.1+cos(\t)^2)*sin(\t))},{1.5*(1+\x)*(1-\x)}) ;}
+\foreach \t in {150,180,200}
+	{\draw plot[domain=-1:1,samples=100]
+	({\x*3*cos(\t)},{(1.5*sin(\t)+0.5*sqrt(0.1+cos(\t)^2)*sin(\t))},{1.5*(1+\x)*(1-\x)}) ;}
+\draw (3.5,0) node{$\Omega$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\VolumeDomII}{
+\begin{tikzpicture}[scale=0.25,font=\footnotesize]
+\fill[color=gray!40]
+	plot [domain=103:180, samples=100]
+		({2+2*sin(\x)},{4/(1+(2+2*sin(\x))^2+(2*cos(\x))^2)},{2*cos(\x)}) --
+	plot [domain=180:283, samples=100]
+		({-2+2*sin(\x)},{4/(1+(-2+2*sin(\x))^2+(2*cos(\x))^2)},{2*cos(\x)}) --
+	plot [domain=283:360, samples=100]
+		({-2+2*sin(\x)},{-2},{2*cos(\x)}) --
+	plot [domain=0:103, samples=100]
+		({2+2*sin(\x)},{-2},{2*cos(\x)}) --
+	cycle ;
+
+\foreach \t in {-0.9,-0.3,0}
+	{\fill[color=gray!40]
+		plot [domain=(-2-sqrt(4-(\t)^2)):(2+sqrt(4-(\t)^2)), samples=100] % x fix??
+		(\x,{4/(1+(\x)^2+(\t)^2)},\t) -- cycle ;}
+
+\draw[thick,->] (-6,-2,-3) -- (4,-2,-3) ;
+\draw[thick,->] (-6,-2,-3) -- (-6,-2,2) ;
+\draw[thick,->] (-6,-2,-3) -- (-6,3,-3) ;
+\draw (-5,-1.6,2) node{$x$} (3.8,-3,-3) node{$y$} (-6.5,2.7,-3) node{$z$} ;
+\draw (0,2,-3) node{$f$} ;
+
+\filldraw[draw=black, thick, fill=gray!80]
+plot [domain=-2:2,samples=100] ({-2-sqrt(4-\x*\x},-2,\x) -- (2,-2,2) --
+plot [domain=-2:2,samples=100] ({2+sqrt(4-\x*\x},-2,-\x) --
+   (-2,-2,-2) -- cycle ;
+
+\foreach \t in {-1.8,-1.5,...,1.8}
+{\draw plot [domain=(-2-sqrt(4-(\t)^2)):(2+sqrt(4-(\t)^2)), samples=100] % x fix??
+(\x,{4/(1+(\x)^2+(\t)^2)},\t)
+;}
+
+\foreach \t in {-3.8,-3.5,...,-2}
+{\draw plot [domain=(-sqrt(4-(\t+2)^2)):(sqrt(4-(\t+2)^2)), samples=100] % y fix??
+(\t,{4/(1+(\t)^2+(\x)^2)},\x) ;}
+
+\foreach \t in {2,2.3,...,3.8}
+{\draw plot [domain=(-sqrt(4-(\t-2)^2)):(sqrt(4-(\t-2)^2)), samples=100] % y fix??
+(\t,{4/(1+(\t)^2+(\x)^2)},\x) ;}
+
+\foreach \t in {-1.8,-1.5,...,1.8}
+{\draw plot [domain=-2:2, samples=100] % y fix??
+(\t,{4/(1+(\t)^2+(\x)^2)},\x) ;}
+
+\draw [thick] plot [domain=270:450, samples=100]
+({2+2*cos(\x)},
+{4/(1+(2+2*cos(\x))^2+(2*sin(\x))^2)},
+{2*sin(\x)}) ;
+
+\draw [thick] plot [domain=90:270, samples=100]
+({-2+2*cos(\x)},
+{4/(1+(-2+2*cos(\x))^2+(2*sin(\x))^2)},
+{2*sin(\x)}) ;
+
+\draw [thick] plot[domain=-2:2,samples=100]
+(\x,{4/(1+(\x)^2+(2)^2)},2) ;
+
+\draw [thick] plot[domain=-2:2,samples=100]
+(\x,{4/(1+(\x)^2+(-2)^2)},-2) ;
+
+\draw ({2+2*cos(-13)},{4/(1+(2+2*cos(-13))^2+(2*sin(-13))^2)},{2*sin(-13)}) --
+	({2+2*cos(-13)},{-2},{2*sin(-13)});
+\draw ({-2+2*cos(163)},{4/(1+(-2+2*cos(163))^2+(2*sin(163))^2)},{2*sin(163)}) --
+	({-2+2*cos(163)},{-2},{2*sin(163)}) ;
+\draw (0,-0.6,0) node{$\Omega$} ;
+\draw (0,-2,0) node{$D$} ;
+
+\end{tikzpicture}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Chapitre 4 - Champs de vecteurs
+%
+%%%%%%%%%%%%%%%%%%		
+
+
+\newcommand{\diagrammeChp}{
+\begin{tikzpicture}[scale=1,font=\footnotesize]
+\draw (0,0) node{$\mathbb{R}^n$} (2.1,0) node{$\mathbb{R}^m$}
+	(0,-1) node{$\mathbb{R}^n$} (2.1,-1) node{$\mathbb{R}^m$} ;
+\draw[->] (0.3,0) -- (1.7,0) ;
+\draw[->] (0.3,-1) -- (1.7,-1) ;
+\draw[->] (0,-0.7) -- (0,-0.3) ;
+\draw[<-] (2,-0.7) -- (2,-0.3) ;
+\draw[dashed, ->] (0.2,-0.8) -- (1.8,-0.2) ;
+\draw (-0.3,-0.5) node{$h$} (1,0.3) node{$F$}
+	(1,-1.3) node{$\tilde{F}$} (2.3,-0.5) node{$H$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\defChpI}{
+\begin{tikzpicture}[scale=0.4,font=\footnotesize]
+\fill[color=gray!30] (-3.5,0,-3) -- (-3.5,0,2) -- (3,0,2) -- (3,0,-3) -- cycle ;
+\draw[->] (-3.5,0,2) -- (-3.5,3,2) ;
+\draw[thick] plot[domain=0:360,samples=100] ({3*sin(\x)},
+	{1.5/(1+(2*cos(\x))^2+(3*sin(\x))^2)},
+	{2*cos(\x)}) ;
+\foreach \t in {-1.8,-1.6,...,1.8} %x fixé
+	{\draw plot[domain=(-3*sqrt(1-(\t/2)^2)):(3*sqrt(1-(\t/2)^2))]
+		({\x},{1.5/(1+(\t)^2+(\x)^2)},{\t}) ;}
+\foreach \t in {-2.8,-2.6,...,2.8} %y fixé
+	{\draw plot[domain=(-2*sqrt(1-(\t/3)^2)):(2*sqrt(1-(\t/3)^2))]
+		({\t},{1.5/(1+(\x)^2+(\t)^2)},{\x}) ;}
+
+\fill[color=gray!40] (-3.5,4,2) -- (-4,2,2) -- (-3.5,0,2) -- (-3,2,2) -- cycle ;
+\draw[->] (-3.5,0,2) -- (-3,2,2) ;
+\draw[->] (-3.5,0,2) -- (-4,2,2) ;
+\draw (-4.5,2,2) node{$\mathbb{R}^m$} ;
+\draw (3.5,0,2) node{$\mathbb{R}^n$} ;
+\draw (0,-0.8,2) node{un seul rep\`ere pour le graphe} ;
+\draw (0,-1.4,2) node{d'une fonction vectorielle} ;
+\end{tikzpicture}
+}
+
+\newcommand{\defChpII}{
+\begin{tikzpicture}[scale=0.4,font=\footnotesize]
+\fill[color=gray!30] (-3.2,0,-2.2) -- (-3.2,0,2.2) --
+    (3.2,0,2.2) -- (3.2,0,-2.2) -- cycle ;
+\draw plot[domain=0:360,samples=100] ({3*sin(\x)},{0},{2*cos(\x)}) ;
+\foreach \t in {-2,0,2}
+	{\fill[color=gray!40] ({\t},4,0) -- ({\t+0.5},2,0) --
+    ({\t},0,0) -- ({\t-0.5},2,0) -- cycle ;
+		\draw[->] ({\t},0,0) -- ({\t+0.5},2,0) ;
+		\draw[->] ({\t},0,0) -- ({\t-0.5},2,0) ;
+		\draw ({\t-0.5},3.3,0) node{$\mathbb{R}^m$} ;
+		\draw ({\t},0,0) node{$\bullet$} ;
+	}
+\draw (3.5,0,2) node{$\mathbb{R}^n$} ;
+\draw (0,-0.8,2) node{union de rep\`eres pour le dessin} ;
+\draw (0,-1.4,2) node{d'un champ de vecteurs} ;
+\end{tikzpicture}
+}
+
+
+%%%%%%%%%%%%%%%%%%            Champs scalaires
+
+
+\newcommand{\chpScalI}{
+\begin{tikzpicture}[scale=0.4,font=\footnotesize]
+\fill[color=gray!40] (-3.2,0,-2.2) -- (-3.2,0,2.2) -- (3.2,0,2.2)
+    -- (3.2,0,-2.2) -- cycle ;
+\draw plot[domain=0:360,samples=100] ({3*sin(\x)},{0},{2*cos(\x)}) ;
+\foreach \t in {-2.5,-2,...,2.8} %y fixé
+	{\foreach \x in {-0.9,-0.5,0,0.5,0.9}
+		{\draw[->] ({\t},0,{\x}) --
+    ({\t},{1.5/(1+(\x)^2+(\t)^2)},{\x}) ;}}
+\draw (3.5,0,2) node{$\mathbb{R}^n$} ;
+\draw (-2,1.1,0) node{$\mathbb{R}$} 
+    (2,1.1,0) node{$\mathbb{R}$} ;
+\draw (0,-0.8,2) node{dessin d'un champ scalaire} ;
+\end{tikzpicture}
+}
+
+\newcommand{\chpScalII}{
+\begin{tikzpicture}[scale=0.4,font=\footnotesize]
+\fill[color=gray!40] (-3.5,0,-3) -- (-3.5,0,2) -- (3,0,2) -- (3,0,-3) -- cycle ;
+\draw[->] (-3.5,0,2) -- (-3.5,2.5,2) ;
+\draw[thick] plot[domain=0:360,samples=100] ({3*sin(\x)},
+	{1.5/(1+(2*cos(\x))^2+(3*sin(\x))^2)},
+	{2*cos(\x)}) ;
+\foreach \t in {-1.8,-1.6,...,1.8} %x fixé
+	{\draw plot[domain=(-3*sqrt(1-(\t/2)^2)):(3*sqrt(1-(\t/2)^2))]
+		({\x},{1.5/(1+(\t)^2+(\x)^2)},{\t}) ;}
+\foreach \t in {-2.8,-2.6,...,2.8} %y fixé
+	{\draw plot[domain=(-2*sqrt(1-(\t/3)^2)):(2*sqrt(1-(\t/3)^2))]
+		({\t},{1.5/(1+(\x)^2+(\t)^2)},{\x}) ;}
+\draw (-4,2.2,2) node{$\mathbb{R}$} (3.5,0,2) node{$\mathbb{R}^n$} ;
+\draw (0,-0.8,2) node{graphe d'un champ scalaire} ;
+\draw (0,-1.4,2) node{comme fonction r\'eelle} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\DomChp}{
+\begin{tikzpicture}[scale=0.35,font=\footnotesize]
+\draw[->] (0,0,0) -- (8,0,0) ;
+\draw[->] (0,0,0) -- (0,3,0) ;
+\draw[->] (0,0,0) -- (0,0,3) ;
+
+\fill[ball color=gray!100,opacity=1]
+	plot[domain=0:360,samples=100]
+    ({2.5+1*cos(\x)},{1+0.4*sin(\x)},1) -- cycle ;
+\fill[ball color=gray!100,opacity=0.5]
+	plot[domain=0:360,samples=100]
+    ({5.5+1*cos(\x)},{1+0.3*sin(\x)},1) -- cycle ;
+
+\fill[ball color=gray!60,opacity=0.4]
+	plot[domain=0:360,samples=100]
+    ({4+3.5*cos(\x)},{1+1.5*sin(\x)/(1+sin(\x)^2)},1) -- cycle ;
+
+\fill[ball color=gray!20,opacity=0.2]
+	plot[domain=0:360,samples=100]
+    ({4+4*cos(\x)},{1+2*sin(\x)},1) -- cycle ;
+
+\draw plot[domain=0:360,samples=100] ({2.5+1*cos(\x)},{1+0.4*sin(\x)},1) ;
+\draw plot[domain=0:360,samples=100] ({5.5+1*cos(\x)},{1+0.3*sin(\x)},1) ;
+\draw plot[domain=0:360,samples=100]
+    ({4+3.5*cos(\x)},{1+1.5*sin(\x)/(1+sin(\x)^2)},1) ;
+\draw plot[domain=0:360,samples=100]
+    ({4+4*cos(\x)},{1+2*sin(\x)},1) ;
+
+\draw (1.5,3,1) node{$a$} (4,2.2,1) node{$b$}
+    (2.5,1,1) node{$c$} (5.5,1,1) node{$c$} 
+    (7,3,1) node{$D_\phi$} ;
+\end{tikzpicture}
+}
+
+
+
+\newcommand{\potentielG}{
+\begin{tikzpicture}[scale=0.6,font=\footnotesize]
+\draw (0,0) node{$\bullet$} circle (1) circle (2) ;
+\draw (0,-0.5) node{$M$} (1.5,0) node{$-10$} (2.5,0) node{$-1$} ;
+\draw (-1.5,2) node{$S_a(V)$} ;
+\end{tikzpicture}
+}
+
+
+
+\newcommand{\potentielE}{
+\begin{tikzpicture}[scale=0.6,font=\footnotesize]
+\draw (0,0) node{$\bullet$} circle (1) circle (2) ;
+\draw (0,-0.5) node{$Q$} (1.5,0) node{$+10$} (2.5,0) node{$+1$} ;
+\draw (-1.5,2) node{$S_a(\phi)$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\potentielGgraph}{
+\begin{tikzpicture}[scale=0.6,font=\footnotesize]
+\draw[->] (-1,0) -- (4,0) ;
+\draw[->] (0,-4) -- (0,1) ;
+\draw[thick] plot[domain=0.25:3.5,samples=100] (\x,{-1/\x}) ;
+\draw[dashed] (-0.2,-3.5) -- (2/7,-3.5) -- (2/7,0.2)
+	(-0.2,-0.5) -- (2.2,-0.5) -- (2.2,0.2) ;
+\draw (3.5,0.5) node{$r$} (1,-3.5) node{$V(r)$}
+	(-0.7,-3.5) node{$-10$} (-0.7,-0.5) node{$-1$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\potentielEgraph}{
+\begin{tikzpicture}[scale=0.6,font=\footnotesize]
+\draw[->] (-1,0) -- (4,0) ;
+\draw[->] (0,-1) -- (0,4) ;
+\draw[thick] plot[domain=0.25:3.5,samples=100] (\x,{1/\x}) ;
+\draw[dashed] (-0.2,3.5) -- (2/7,3.5) -- (2/7,-0.2)
+	(-0.2,0.5) -- (2.2,0.5) -- (2.2,-0.2) ;
+\draw (3.5,-0.5) node{$r$} (1,3.5) node{$\phi(r)$}
+	(-0.7,3.5) node{$-10$} (-0.7,0.5) node{$-1$} ;
+\end{tikzpicture}
+}
+
+
+%%%%%%%%%%%%%%%%%%            Champs vectoriels
+
+
+\newcommand{\defChp}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[->] (0,0,0) -- (4,0,0) ;
+\draw[->] (0,0,0) -- (0,2,0) ;
+\draw[->] (0,0,0) -- (0,0,3) ;
+%\draw (4,0.5,0) node{$y$} (-0.5,2,0) node{$z$} (0,0,3.5) node{$x$} ;
+\draw[->] (1,0,1) node{$\bullet$} -- (3,0,2) ;
+\draw[->] (2,1,0) node{$\bullet$} -- (3.5,1.5,0.5) ;
+\draw (1,-0.5,1) node{$\vec{x}$} (3.75,0,2.25) node{$\overrightarrow{V}(\vec{x})$} ;
+\draw (2,0.5,0) node{$\vec{y}$} (4.25,1.75,0.75) node{$\overrightarrow{V}(\vec{y})$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\chpCylSph}{
+\begin{tikzpicture}[scale=0.9,font=\footnotesize]
+\draw[->] (0,0,0) -- (3,0,0) ;
+\draw[->] (0,0,0) -- (0,3,0) ;
+\draw[->] (0,0,0) -- (0,0,3) ;
+\draw (3,-0.2,0) node{$y$} (-0.2,3,0) node{$z$} (-0.2,0,3) node{$x$} ;
+
+\draw ({3*sin(60)*sin(45)},{3*cos(45)},{3*cos(60)*sin(45)}) node{$\bullet$} ;
+\draw ({3*sin(60)*sin(45)},0,{3*cos(60)*sin(45)}) node{$\bullet$} ;
+\draw (0,0,0) -- ({3*sin(60)*sin(45)},{3*cos(45)},{3*cos(60)*sin(45)}) ;
+\draw (0,0,0) -- ({3*sin(60)*sin(45)},0,{3*cos(60)*sin(45)}) ;
+\draw[dashed] ({3*sin(60)*sin(45)},{3*cos(45)},{3*cos(60)*sin(45)}) --
+	({3*sin(60)*sin(45)},0,{3*cos(60)*sin(45)}) ;
+	
+\draw[->] plot[domain=0:57] ({2*sin(\x)*sin(45)},{0},{2*cos(\x)*sin(45)}) ;
+\draw[->] plot[domain=0:42]
+    ({2*sin(60)*sin(\x)},{2*cos(\x)},{2*cos(60)*sin(\x)}) ;
+\draw ({1*sin(60)*sin(45)},{0.3+1*cos(45)},{1*cos(60)*sin(45)}) node{$r$} ;
+\draw ({2.2*sin(60)*sin(30)},{2.2*cos(30)},{2.2*cos(60)*sin(30)})
+    node{$\theta$} ;
+\draw ({2*sin(70)*sin(45)},{0},{2*cos(70)*sin(45)}) node{$\rho$} ;
+\draw ({2.7*sin(30)*sin(45)},{0},{2.7*cos(30)*sin(45)}) node{$\varphi$} ;
+
+\draw[thick, ->] ({3*sin(60)*sin(45)},{3*cos(45)},{3*cos(60)*sin(45)}) --
+	({3*sin(60)*sin(45) + sin(60)*sin(45)},
+	{3*cos(45) + cos(45)},
+	{3*cos(60)*sin(45) + cos(60)*sin(45)}) ;
+\draw[thick, ->] ({3*sin(60)*sin(45)},{3*cos(45)},{3*cos(60)*sin(45)}) --
+	({3*sin(60)*sin(45) + cos(60)*sin(45)},
+	{3*cos(45)},
+	{3*cos(60)*sin(45) - sin(60)*sin(45)}) ;
+\draw[thick, ->] ({3*sin(60)*sin(45)},{3*cos(45)},{3*cos(60)*sin(45)}) --
+	({3*sin(60)*sin(45) + sin(60)*cos(45)},
+	{3*cos(45) - sin(45)},
+	{3*cos(60)*sin(45) + cos(60)*cos(45)}) ;
+\draw ({3*sin(60)*sin(45) + 1.5*sin(60)*sin(45)},{3*cos(45) + 1.5*cos(45)},
+	{3*cos(60)*sin(45) + 1.5*cos(60)*sin(45)}) node{$\vec{e}_r$} ;
+\draw ({3*sin(60)*sin(45) + 1.5*cos(60)*sin(45)},{3*cos(45)},
+	{3*cos(60)*sin(45) - 1.5*sin(60)*sin(45)}) node{$\vec{e}_\varphi$} ;
+\draw ({3*sin(60)*sin(45) + 1.3*sin(60)*cos(45)},{3*cos(45) - 1.3*sin(45)},
+	{3*cos(60)*sin(45) + 1.3*cos(60)*cos(45)}) node{$\vec{e}_\theta$} ;
+
+\draw[->] ({3*sin(60)*sin(45)},{3*cos(45)},{3*cos(60)*sin(45)}) --
+	({3*sin(60)*sin(45) + 1},
+	{3*cos(45) + 0},
+	{3*cos(60)*sin(45) + 0}) ;
+\draw[->] ({3*sin(60)*sin(45)},{3*cos(45)},{3*cos(60)*sin(45)}) --
+	({3*sin(60)*sin(45) + 0},
+	{3*cos(45) + 1},
+	{3*cos(60)*sin(45) + 0}) ;
+\draw[->] ({3*sin(60)*sin(45)},{3*cos(45)},{3*cos(60)*sin(45)}) --
+	({3*sin(60)*sin(45) + 0},
+	{3*cos(45) + 0},
+	{3*cos(60)*sin(45) + 1}) ;
+\draw ({3*sin(60)*sin(45) + 1.3},{3*cos(45) + 0},{3*cos(60)*sin(45) + 0})
+    node{$\vec{j}$} ;
+\draw ({3*sin(60)*sin(45) + 0},{3*cos(45) + 1.3},{3*cos(60)*sin(45) + 0})
+    node{$\vec{k}$} ;
+\draw ({3*sin(60)*sin(45) + 0},{3*cos(45) + 0.3},{3*cos(60)*sin(45) + 0.7})
+    node{$\vec{i}$} ;
+
+\draw[thick, ->] ({3*sin(60)*sin(45)},{0},{3*cos(60)*sin(45)}) --
+	({3*sin(60)*sin(45) + sin(60)},{0},
+	{3*cos(60)*sin(45) + cos(60)}) ;
+\draw[thick, ->] ({3*sin(60)*sin(45)},{0},{3*cos(60)*sin(45)}) --
+	({3*sin(60)*sin(45) + cos(60)},{0},{3*cos(60)*sin(45) - sin(60)}) ;
+\draw ({3*sin(60)*sin(45) + 1.5*sin(60)},{0},
+	{3*cos(60)*sin(45) + 1.5*cos(60)}) node{$\vec{e}_\rho$} ;
+\draw ({3*sin(60)*sin(45) + 1.75*cos(60)},{0},
+   {3*cos(60)*sin(45) - 0.3*sin(60)}) node{$\vec{e}_\varphi$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\chpPosition}{
+\begin{tikzpicture}[scale=0.4,font=\footnotesize]
+\draw[->] (0,0,0) -- (3,0,0) ;
+\draw[->] (0,0,0) -- (0,3,0) ;
+\draw[->] (0,0,0) -- (0,0,3) ;
+\draw (3.5,0,0) node{$y$} (0,3.5,0) node{$z$} (0,0,3.5) node{$x$} ;
+\draw[thick,->] (1,0,0) node{$\bullet$} -- (2,0,0) ;
+\draw[thick,->] (1,1.5,0.5) node{$\bullet$} -- (2,3,1) ;
+\draw[thick,->] (1.2,0,1.5) node{$\bullet$} -- (2.4,0,3) ;
+\draw[thick,->] (0,1,1) node{$\bullet$} -- (0,2,2) ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\chpGrav}{
+\begin{tikzpicture}[scale=0.35,font=\footnotesize]
+\foreach \r in {2,3,4}
+	{\foreach \u in {0,30,...,359}
+		{\draw[->] ({\r*cos(\u)},{\r*sin(\u)}) --
+				({\r*cos(\u)-(2/\r)^2*cos(\u)},
+				{\r*sin(\u)-(2/\r)^2*sin(\u)}) ; }}
+\draw (0,0) node{$\bullet$} (4,4) node{$\mathbb{R}^2$} (-0.5,-0.5) node{$M$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\chpElec}{
+\begin{tikzpicture}[scale=0.35,font=\footnotesize]
+\foreach \r in {1.5,3,4}
+	{\foreach \u in {0,30,...,359}
+		{\draw[->] ({\r*cos(\u)},{\r*sin(\u)}) --
+				({\r*cos(\u)+(1.5/\r)^2*cos(\u)},
+				{\r*sin(\u)+(1.5/\r)^2*sin(\u)}) ; }}
+\draw (0,0) node{$\bullet$} (4,4) node{$\mathbb{R}^2$} (-0.5,-0.5) node{$Q$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\fluide}{
+\begin{tikzpicture}[scale=1,font=\footnotesize]
+\filldraw[draw=black,fill=gray!60]
+	plot[domain=-1:1,samples=50] ({-3+0.3*(1-\x)*(1+\x)},\x) --
+	plot[domain=-1:1,samples=50] ({-3-0.3*(1-\x)*(1+\x)},-\x) -- cycle ;
+\filldraw[draw=black,fill=gray!30]
+	plot[domain=-1:1,samples=50] ({-3+0.3*(1-\x)*(1+\x)},\x) --
+	plot[domain=-3:3,samples=50] (\x,{0.58-0.7*(pi/360)*atan(\x)}) --
+	plot[domain=-1:1,samples=50] ({3+0.1*(1-\x)*(1+\x)},-\x/7) --
+	plot[domain=-3:3,samples=50]
+    (-\x,{-0.58-0.7*(pi/360)*atan(\x)}) -- cycle ;
+\foreach \y in {-0.5,0,0.5}
+		{\draw[->] (-2.5,\y) -- ({-2.5+0.75},{\y}) ; }
+\foreach \y in {-0.5,0,0.5}
+		{\draw[->] (-1,\y) -- ({-1+0.75},{\y-\y*0.35}) ; }
+\foreach \y in {-0.3,0,0.3}
+		{\draw[->] (0,\y) -- ({0+1.25},{\y-\y*0.5}) ; }
+\foreach \y in {-0.1,0.1}
+		{\draw[->] (1.5,\y) -- ({1.5+1.5},{\y-0.5*\y}) ; }
+\end{tikzpicture}
+}
+
+\newcommand{\chpExoAI}{
+\begin{tikzpicture}[scale=0.35,font=\footnotesize]
+\draw[->] (-3,0) -- (3,0) ;
+\draw[->] (0,-3) -- (0,3) ;
+\draw (3.4,0) node{$x$} (0,3.4) node{$y$} ;
+\foreach \x in {-2,-1,0,1,2}
+	{\foreach \y in {-2,-1,0,1,2}
+			{\draw[thick, ->] (\x,\y) --
+%    ({\x-0.3*\y},{\y+0.3*\x}) ; }}
+    ({\x-\y},{\y+\x}) ; }}
+\foreach \t in {-2,-1,1,2}
+	{\draw[dashed] (\t,-2) -- (\t,2) ;
+	\draw[dashed] (-2,\t) -- (2,\t) ; }
+\draw (0,0) node{$\bullet$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\chpExoAII}{
+\begin{tikzpicture}[scale=0.4,font=\footnotesize]
+\draw[thick,->] (-3,0) -- (3,0) ;
+\draw[thick,->] (0,-3) -- (0,3) ;
+%\draw (2.4,0) node{$x$} (0,2.4) node{$y$} ;
+\foreach \x in {-1.75,-1.5,...,1.9}
+	{\foreach \y in {-1.75,-1.5,...,1.9}
+%		{\draw[->] (\x,\y) -- ({\x-0.2*\y},{\y+0.2*\x}) ; }}
+		{\draw[->] (\x,\y) -- ({\x-\y},{\y+\x}) ; }}
+\end{tikzpicture}
+}
+
+\newcommand{\chpExoBI}{
+\begin{tikzpicture}[scale=0.7,font=\footnotesize]
+\draw[->] (-1.5,0) -- (2.5,0) ;
+\draw[->] (0,-0.5) -- (0,2) ;
+\draw (2.4,-0.3) node{$x$} (-0.3,2) node{$y$} ;
+\draw (1,0) node{$\bullet$} 
+      ({cos(30)},{sin(30)}) node{$\bullet$} 
+      (0,0.5) node{$\bullet$}  ;
+\draw[thick,->] (1,0) -- ({1+1},0) ;
+\draw[thick,->] (0,0.5) -- ({0-(pi/2)},0.5+0.5) ;
+\draw[thick,->] ({cos(30)},{sin(30)}) -- 
+   ({cos(30) + (cos(30)-(pi/6)*sin(30))},
+    {sin(30) + (sin(30)+(pi/6)*cos(30))}) ;
+\draw[->] ({cos(30)},{sin(30)}) --
+    ({cos(30)-(pi/6)*sin(30)},{sin(30)+(pi/6)*cos(30)}) ;
+\draw[->] ({cos(30)},{sin(30)}) --
+    ({cos(30) + cos(30)},{sin(30) + sin(30)}) ;
+\draw[->] (0,0.5) -- (0,1) ;
+\draw[->] (0,0.5) -- ({-pi/2},0.5) ;
+\draw[dashed] (0,0) -- ({cos(30)},{sin(30)}) ;
+\draw (1.5,-0.5) node{$\vec{e}_\rho$}
+     (-1,1.5) node{$\frac{1}{2}\vec{e}_\rho\! +\! \frac{\pi}{2}\vec{e}_\varphi$}
+     (2,1.7) node{$\vec{e}_\rho\!+\!\frac{\pi}{6}\vec{e}_\varphi$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\chpExoBII}{
+\begin{tikzpicture}[scale=0.35,font=\footnotesize]
+\draw[thick,->] (-2,0) -- (2,0) ;
+\draw[thick,->] (0,-2) -- (0,2) ;
+%\draw (2.4,0) node{$x$} (0,2.4) node{$y$} ;
+\foreach \r in {0.5,1,1.5}
+	{\foreach \t in {0,30,...,359}
+		{\draw[->] ({\r*cos(\t)},{\r*sin(\t)}) --
+%		({\r*cos(\t) + 0.3*(\r*cos(\t)-(pi*\t/360)*sin(\t))},
+%		{\r*sin(\t) + 0.3*(\r*sin(\t)+(pi*\t/360)*cos(\t)}) ; }}
+		({\r*cos(\t) + (\r*cos(\t)-(pi*\t/360)*sin(\t))},
+		{\r*sin(\t) + (\r*sin(\t)+(pi*\t/360)*cos(\t)}) ; }}
+\end{tikzpicture}
+}
+
+
+\newcommand{\chpExoC}{
+\begin{tikzpicture}[scale=0.75,font=\footnotesize]
+\draw[->] (-2,0,0) -- (2,0,0) ;
+\draw[->] (0,-2,0) -- (0,2,0) ;
+\draw[->] (0,0,-2) -- (0,0,2) ;
+\draw (2.4,0,0) node{$y$} (0,2.4,0) node{$z$} (0,0,2.8) node{$x$} ;
+\draw[thick,->] (0,0,1) -- (0,0+0.5,1) ;
+\draw[thick,->] (0,1,0) -- (0,1,0+0.5) ;
+\draw[thick,->] (1,0,0) -- (1+0.5,0,0) ;
+\draw[thick,->] (1,1,0) -- (1+0.5,1,0+0.5) ;
+\draw[thick,->] (1,0,1) -- (1+0.5,0+0.5,1) ;
+\draw (0,0,0) node{$\bullet$} ;
+\end{tikzpicture}
+\qquad\qquad
+\begin{tikzpicture}[scale=0.75,font=\footnotesize]
+\draw[thick,->] (-2,0,0) -- (2,0,0) ;
+\draw[thick,->] (0,-2,0) -- (0,2,0) ;
+\draw[thick,->] (0,0,-2) -- (0,0,2) ;
+\draw (2.4,0,0) node{$y$} (0,2.4,0) node{$z$}
+    (0,0,2.8) node{$x$} ;
+\foreach \x in {-1.5,-1,...,1.9}
+	{\foreach \y in {-1.5,-1,...,1.9}
+		{\foreach \z in {-1.5,0,1.5}
+			{\draw[->] (\y,\z,\x) --
+    ({\y+0.2*\y},{\z+0.2*\x},{\x+0.2*\z}) ; }}}
+\end{tikzpicture}
+}
+
+
+\newcommand{\chpExoD}{
+\begin{tikzpicture}[scale=0.75,font=\footnotesize]
+\draw[->] (-2,0,0) -- (3,0,0) ;
+\draw[->] (0,-2.5,0) -- (0,3,0) ;
+\draw[->] (0,0,-3) -- (0,0,4) ;
+\draw (3.2,0.2,0) node{$y$} (0,3.2,0) node{$z$} (0,0,4.8) node{$x$} ;
+
+\draw[thick, ->] ({0},{sqrt(2)},{sqrt(2)}) --
+	({0},{sqrt(2) + 0.4*(0.5*sqrt(2))},{sqrt(2) + 0.4*(0.5*sqrt(2))}) ;
+\draw ({-0.2},{sqrt(2)-0.2},{sqrt(2)}) node{$\vec{e}_r$} ;
+
+\draw[thick, ->] ({0},{0},{2}) -- ({0},{0},{2+ 0.4}) ;
+\draw ({0},{-0.5},{2}) node{$\vec{e}_r$} ;
+
+\draw[thick, ->] ({sqrt(2)},{sqrt(2)},{0}) --
+	({sqrt(2) + 0.4*(0.5*sqrt(2) + (pi/2)*0.5*sqrt(2))},
+	{sqrt(2) + 0.4*(0.5*sqrt(2)-(pi/2)*0.5*sqrt(2))},
+	{0}) ;
+\draw ({1 +sqrt(2) + 0.4*(0.5*sqrt(2) + (pi/2)*0.5*sqrt(2))},
+	{sqrt(2) + 0.4*(0.5*sqrt(2)-(pi/2)*0.5*sqrt(2))},{0})
+    node{$\vec{e}_r+\frac{\pi}{2}\vec{e}_\theta$};
+\draw[->] ({sqrt(2)},{sqrt(2)},{0}) --
+	({sqrt(2) + 0.4*0.5*sqrt(2)},
+	{sqrt(2) + 0.4*0.5*sqrt(2)},
+	{0}) ;
+\draw ({0.2+sqrt(2) + 0.4*0.5*sqrt(2)},{0.2+sqrt(2) + 0.4*0.5*sqrt(2)},
+	{0}) node{$\vec{e}_r$};
+\draw[->] ({sqrt(2)},{sqrt(2)},{0}) --
+	({sqrt(2) + 0.4*(pi/2)*0.5*sqrt(2)},
+	{sqrt(2) - 0.4*(pi/2)*0.5*sqrt(2)},
+	{0}) ;
+\draw ({0.5+sqrt(2) + 0.4*(pi/2)*0.5*sqrt(2)},
+   {-0.2+sqrt(2) - 0.4*(pi/2)*0.5*sqrt(2)},
+	{0}) node{$\frac{\pi}{2}\vec{e}_\theta$} ;
+
+\draw[thick, ->] ({2},{0},{0}) --({2 + 0.4},{0.4*(0-(pi/2))},{0}) ;
+\draw (3.2,-0.4,0) node{$\vec{e}_r+\frac{\pi}{2}\vec{e}_\theta$} ;
+\draw[->] ({2},{0},{0}) --({2 + 0.4},{0},{0}) ;
+\draw (2.4,0.2,0) node{$\vec{e}_r$} ;
+\draw[->] ({2},{0},{0}) --({2},{0.4*(0-(pi/2))},{0}) ;
+\draw (2,-1,0) node{$\frac{\pi}{2}\vec{e}_\theta$} ;
+\draw[dashed] plot[domain=0:90] ({0},{2*cos(\x)},{2*sin(\x)})
+	plot[domain=0:90] ({2*sin(\x)},{2*cos(\x)},{0})
+	plot[domain=0:90] ({2*sin(\x)},{0},{2*cos(\x)}) ;
+\end{tikzpicture}
+\qquad\qquad
+\begin{tikzpicture}[scale=0.75,font=\footnotesize]
+\draw[thick,->] (-2,0,0) -- (3,0,0) ;
+\draw[thick,->] (0,-2.5,0) -- (0,3,0) ;
+\draw[thick,->] (0,0,-3) -- (0,0,4) ;
+\draw (3.2,0.2,0) node{$y$} (0,3.2,0) node{$z$}
+    (0,0,4.8) node{$x$} ;
+\foreach \r in {1,2}
+	{\foreach \u in {30,60,...,179}
+		{\foreach \v in {45,90,...,359}
+			{\draw[->] ({\r*sin(\u)*sin(\v)},{\r*cos(\u)},
+   {\r*sin(\u)*cos(\v)}) --
+	({\r*sin(\u)*sin(\v) + 0.4*(sin(\u)*sin(\v) +
+    (pi*\v/360)*sin(\v)*cos(\u))},
+	{\r*cos(\u) + 0.4*(cos(\u)-(pi*\v/360)*sin(\u))},
+	{\r*sin(\u)*cos(\v) + 0.4*(sin(\u)*cos(\v) +
+    (pi*\v/360)*cos(\u)*cos(\v)}) ; }}}
+\end{tikzpicture}
+}
+
+
+\newcommand{\ligneChp}{
+\begin{tikzpicture}[scale=0.6,font=\footnotesize]
+\draw[thick] plot[domain=-3:3,samples=100] (\x,{-0.6*sin(\x r)}) ;
+\draw[thick] plot[domain=-3:3,samples=100] (\x,{-1-0.4*sin(1.2*\x r)}) ;
+\foreach \x in {-3,-2.5,...,3}
+	{\foreach \u in {-0.25,0,...,1.25}
+		{\draw[->] (\x,{-\u + (0.2*\u-0.6)*sin((0.2*\u+1)*\x r)}) --
+			(\x+0.8,{-\u + (0.2*\u-0.6)*sin((0.2*\u+1)*\x r) +
+    0.8*(0.2*\u-0.6)*cos((0.2*\u+1)*\x r)}) ; }}
+\draw (-3.2,0) node{$\gamma$} (1.5,0.2) node{$\overrightarrow{V}$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\exoLigneChp}{
+\begin{tikzpicture}[scale=0.75,font=\footnotesize]
+\draw[thick,->] (-2,0,0) -- (2,0,0) ;
+\draw[thick,->] (0,-0.5,0) -- (0,2,0) ;
+\draw[thick,->] (0,0,-2) -- (0,0,2) ;
+\draw (2.2,0,0) node{$y$} (0,2.2,0) node{$z$}
+    (-0.2,0.1,2.3) node{$x$} ;
+\foreach \z in {0,1.5}
+	{\foreach \x in {-1.5,-1,...,1.6}
+		{\foreach \y in {-1.5,-1,...,1.6}
+		{\draw[->] (\y,\z,\x) -- ({\y+0.3*\x},\z,{\x-0.3*\y}) ; }}}
+\draw[thick] plot[domain=0:360,samples=100] ({0.8*sin(\x)},0,{0.8*cos(\x)}) ;
+\draw[thick] plot[domain=0:360,samples=100] ({sin(\x)},1.5,{cos(\x)}) ;
+\draw[thick] plot[domain=0:360,samples=100] ({1.3*sin(\x)},0,{1.3*cos(\x)}) ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\ligneChpGrav}{
+\begin{tikzpicture}[scale=0.3,font=\footnotesize]
+\foreach \r in {2,3}
+	{\foreach \u in {-90,-30,...,91}
+		{\foreach \v in {-90,-30,...,91}
+	{\draw[->] ({\r*sin(\u)*cos(\v)},{\r*sin(\v)},
+                        {\r*cos(\u)*cos(\v)}) --
+			({\r*sin(\u)*cos(\v)-(2/\r)^2*sin(\u)*cos(\v)},
+				{\r*sin(\v)-(2/\r)^2*sin(\v)},
+			{\r*cos(\u)*cos(\v)-(2/\r)^2*cos(\u)*cos(\v)}) ;
+         }}}
+\draw (0,0,0) node{$\bullet$} (3,3,0) node{$\mathbb{R}^3$}
+    (-0.5,-0.25,0) node{$M$} ;
+\draw (-4,0,0) -- (0,0,0) (-2,2,-1) -- (0,0,0)
+	(3,-1,1) -- (0,0,0) (1,-3,0) -- (0,0,0)
+	(-3,-2,1) -- (0,0,0) (1,3,-0.5) -- (0,0,0) ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\ligneChpElec}{
+\begin{tikzpicture}[scale=0.3,font=\footnotesize]
+\foreach \r in {1,3}
+	{\foreach \u in {-90,-30,...,91}
+		{\foreach \v in {-90,-30,...,91}
+	{\draw[->] ({\r*sin(\u)*cos(\v)},{\r*sin(\v)},{\r*cos(\u)*cos(\v)}) --
+			({\r*sin(\u)*cos(\v)+(1.8/\r)^2*sin(\u)*cos(\v)},
+				{\r*sin(\v)+(1.8/\r)^2*sin(\v)},
+			{\r*cos(\u)*cos(\v)+(1.8/\r)^2*cos(\u)*cos(\v)}) ; }}}
+\draw (0,0,0) node{$\bullet$} (3,3,0) node{$\mathbb{R}^3$}
+    (-0.5,-0.5,0) node{$Q$} ;
+\draw (4,0,0) -- (0,0,0) (2,-2,1) -- (0,0,0)
+	(-3,1,-1) -- (0,0,0) (-1,3,0) -- (0,0,0)
+	(3,2,-1) -- (0,0,0) (-1,-3,0.5) -- (0,0,0) ;
+\end{tikzpicture}
+}
+
+
+%%%%%%%%%%%%%%%%%%              Forces conservatives
+
+
+\newcommand{\chpGradient}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+%\foreach \t in {-2,-1.8,...,2}
+\foreach \t in {-2,-1.5,...,2}
+	{\draw plot[domain=-90:90,samples=50]
+     ({sinh(\t)},{0.5*sin(\x)*cosh(\t)},{0.5*cos(\x)*cosh(\t)}) ;}
+\foreach \t in {-90,-75,...,90}
+	{\draw plot[domain=-2:2,samples=50]
+     ({sinh(\x)},{0.5*sin(\t)*cosh(\x)},{0.5*cos(\t)*cosh(\x)}) ;}
+\foreach \u in {-75,-45,...,80}
+%	{\foreach \v in {-1.8,-1.4,...,2}
+	{\foreach \v in {-1.5,-1,...,1.5}
+		{\draw[thick,->] ({sinh(\v)},{0.5*sin(\u)*cosh(\v)},
+   {0.5*cos(\u)*cosh(\v)}) --
+			({sinh(\v)-sinh(\v)/16},
+			{0.5*sin(\u)*cosh(\v)+8*sin(\u)*cosh(\v)/16},
+			{0.5*cos(\u)*cosh(\v)+8*cos(\u)*cosh(\v)/16}) ; } }
+\draw (4,-1.5) node{$S_a(\phi)$} (-2,2.5) node{$\nabla \phi$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\connexeA}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\fill[ball color=gray!40]
+	plot[domain=0:360, samples=100]
+    ({-0.5+1.3*cos(\x)},{0.65*sin(\x)}) -- cycle ;
+\fill[color=white] plot[domain=-1:1] (\x/3,{0.1*(1-\x)*(1+\x)}) 
+	plot[domain=-1:1] (\x/3,{-0.1*(1-\x)*(1+\x)}) -- cycle ;
+\draw plot[domain=-1:1] (\x/3,{0.1*(1-\x)*(1+\x)}) 
+	plot[domain=-1.3:1.3] (\x/3,{-0.1*(1-\x)*(1+\x)}) ;
+\draw plot[domain=0:360, samples=100] ({-0.5+1.3*cos(\x)},{0.65*sin(\x)}) ;
+\draw (-0.5,-1) node{connexe} ;
+\end{tikzpicture}
+}
+
+\newcommand{\connexeB}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\filldraw[draw=black, fill=gray!40]
+	plot[domain=0:360,samples=100]
+    ({3+cos(\x)},{sin(\x)*cos(\x)}) -- cycle ;
+\draw (3,-1) node{connexe} ;
+\end{tikzpicture}
+}
+
+\newcommand{\connexeC}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\filldraw[draw=black, fill=gray!40]
+	plot[domain=0:360,samples=100] ({6+cos(\x)},{0.4*sin(\x)}) -- cycle ;
+\filldraw[draw=black, fill=gray!40]
+	plot[domain=0:360,samples=100]
+    ({7.6+0.3*cos(\x)},{0.4*sin(\x)}) -- cycle ;
+\draw (6.5,-1) node{non connexe} ;
+\end{tikzpicture}
+}
+
+\newcommand{\simplConnexeA}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\filldraw[draw=black, fill=gray!40]
+	plot[domain=0:360, samples=100]
+    ({-0.5+1.3*cos(\x)},{0.65*sin(\x)}) -- cycle ;
+\draw[thick] plot[domain=0:360,samples=100]
+    ({0.4*cos(\x)+0.05*cos(4*\x)},{0.3*sin(\x)}) ;
+\draw (-0.2,-1) node{simpl. connexe} (-0.65,0) node{$\gamma$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\simplConnexeB}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\filldraw[draw=black, fill=gray!40]
+	plot[domain=0:360, samples=100]
+    ({3+1.3*cos(\x)},{0.65*sin(\x)}) -- cycle ;
+\filldraw[draw=black, fill=white]
+	plot[domain=0:360, samples=100]
+    ({2.5+0.4*cos(\x)},{0.2*sin(\x)}) -- cycle ;
+\draw[thick] plot[domain=0:360,samples=100]
+    ({2.8+0.9*cos(\x)+0.05*cos(5*\x)},{0.4*sin(\x)}) ;
+\draw (3.4,-1) node{non simpl. connexe} (3.9,0) node{$\gamma$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\simplConnexeC}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\draw (7,0.4) node{$\mathbb{R}^n$ simpl. connexe} ;
+\draw (7,-0.4) node{$\mathbb{R}^2\smallsetminus$ point,
+    $\mathbb{R}^3\smallsetminus$ droite} ;
+\draw (7,-1) node{non simpl. connexe} ;
+\end{tikzpicture}
+}
+
+\newcommand{\contractileA}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\fill[ball color=gray!40]
+	plot[domain=0:360, samples=100] ({1*cos(\x)},{0.45*sin(\x)}) -- cycle ;
+\draw plot[domain=0:360, samples=100] ({1*cos(\x)},{0.45*sin(\x)}) -- cycle ;
+\draw (0,-1) node{contractile} ;
+\end{tikzpicture}
+}
+
+\newcommand{\contractileB}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\fill[color=gray!20] (3,-0.5,0) -- (4,-0.5,0) -- (4,0.5,0) --
+    (3,0.5,0) -- cycle ;
+\fill[color=gray!60] (4,-0.5,0) -- (4,-0.5,-1) -- (4,0.5,-1) --
+    (4,0.5,0) -- cycle ;
+\fill[color=gray!40] (4,0.5,0) -- (4,0.5,-1) -- (3,0.5,-1) --
+    (3,0.5,0) -- cycle ;
+\draw[dashed] (3,-0.5,0) -- (3.5,-0.5,0) -- (3.5,-0.5,-0.5) --
+    (3.5,0,-0.5) ;
+\draw[dashed] (3,-0.5,0) -- (3,-0.5,-1) -- (4,-0.5,-1)
+    (3,-0.5,-1) -- (3,0.5,-1) ;
+\draw (3.5,0,-0.5) node{$\bullet$} ;
+\draw (3.5,-1) node{non contractile} (3.5,-1.6) node{simpl. connexe} ;
+\end{tikzpicture}
+}
+
+\newcommand{\contractileC}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\fill[color=gray!20] (7,-0.5,0) -- (8,-0.5,0) -- (8,0.5,0) --
+    (7,0.5,0) -- cycle ;
+\fill[color=gray!60] (8,-0.5,0) -- (8,-0.5,-1) -- (8,0.5,-1) --
+    (8,0.5,0) -- cycle ;
+\fill[color=gray!40] (8,0.5,0) -- (8,0.5,-1) -- (7,0.5,-1) --
+    (7,0.5,0) -- cycle ;
+\draw[dashed] (7,-0.5,-0.5) -- (7,0,-0.5) (8,-0.5,-0.5) -- (8,0,-0.5) ;
+\draw[dashed] (7,-0.5,0) -- (7,-0.5,-1) -- (8,-0.5,-1) (7,-0.5,-1) --
+    (7,0.5,-1) ;
+\draw[thick] (6.5,0,-0.5) -- (8.5,0,-0.5) ;
+\draw (7.5,-1) node{non contractile} (7.5,-1.6) node{non simpl. connexe} ;
+\end{tikzpicture}
+}
+
+\newcommand{\contractileD}{
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\fill[color=gray!20] (11,-0.5,0) -- (12,-0.5,0) -- (12,0.5,0) --
+    (11,0.5,0) -- cycle ;
+\fill[color=gray!60] (12,-0.5,0) -- (12,-0.5,-1) -- (12,0.5,-1) --
+    (12,0.5,0) -- cycle ;
+\fill[color=gray!40] (12,0.5,0) -- (12,0.5,-1) -- (11,0.5,-1) --
+    (11,0.5,0) -- cycle ;
+\draw[dashed] (11,-0.5,0) -- (11.5,-0.5,0) -- (11.5,-0.5,-0.5) --
+    (11.5,0,-0.5) ;
+\draw[dashed] (11,-0.5,0) -- (11,-0.5,-1) -- (12,-0.5,-1)
+    (11,-0.5,-1) -- (11,0.5,-1) ;
+\draw[dashed] (12,-0.5,-0.5) -- (12,0,-0.5) ;
+\draw (11.5,0,-0.5) node{$\bullet$} ;
+\draw[thick] (11.5,0,-0.5) -- (12.5,0,-0.5) ;
+\draw (11.5,-1) node{contractile} ;
+\end{tikzpicture}
+}
+
+\newcommand{\ChpMagnI}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\filldraw[draw=white, fill=gray!20]
+    (-3,0,-3) -- (3,0,-3) -- (3,0,3) -- (-3,0,3) -- cycle ;
+\filldraw[draw=white, fill=gray!10]
+    (-3,-2.5,-3) -- (3,-2.5,-3) -- (3,-2.5,3) -- (-3,-2.5,3) -- cycle ;
+\filldraw[draw=white, fill=gray!10]
+    (-3,2.5,-3) -- (3,2.5,-3) -- (3,2.5,3) -- (-3,2.5,3) -- cycle ;
+\draw[->] (-3.5,0,0) -- (3.5,0,0) ;
+\draw[->] (0,-3.5,0) -- (0,3.5,0) ;
+\draw[->] (0,0,-3.5) -- (0,0,3.5) ;
+\draw (0,4,0) node{$\vec{k}$} ; 
+\draw[thick] (0,-3,0) -- (0,3,0) ;
+\foreach \z in {-2.5,0,2.5}
+	{\foreach \r in {1,2}
+		{\foreach \t in {0,90,...,360}
+			{\draw[->] ({\r*sin(\t)},{\z},{\r*cos(\t)}) --
+   ({\r*sin(\t) + cos(\t)/\r},{\z},{\r*cos(\t) - sin(\t)/\r}) ; } } }
+\draw (3.5,1.5,2) node{$\overrightarrow{B}$};
+\end{tikzpicture}
+}
+
+\newcommand{\ChpMagnII}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\filldraw[draw=white, fill=gray!20]
+    (-3,0,-3) -- (3,0,-3) -- (3,0,3) -- (-3,0,3) -- cycle ;
+\filldraw[draw=white, fill=gray!10]
+    (-3,-2.5,-3) -- (3,-2.5,-3) -- (3,-2.5,3) -- (-3,-2.5,3) -- cycle ;
+\filldraw[draw=white, fill=gray!10]
+    (-3,2.5,-3) -- (3,2.5,-3) -- (3,2.5,3) -- (-3,2.5,3) -- cycle ;
+\draw[->] (-3.5,0,0) -- (3.5,0,0) ;
+\draw[->] (0,-3.5,0) -- (0,3.5,0) ;
+\draw[->] (0,0,-3.5) -- (0,0,3.5) ;
+\draw (0,4,0) node{$\vec{k}$} ; 
+\draw[thick] (0,-3,0) -- (0,3,0) ;
+\foreach \z in {-2.5,0,2.5}
+	{\foreach \r in {1,2,3}
+		{\foreach \t in {0,30,...,360}
+			{\draw[->] ({\r*sin(\t)},{\z},{\r*cos(\t)}) --
+   ({\r*sin(\t) + cos(\t)/\r},{\z},{\r*cos(\t) - sin(\t)/\r}) ; } } }
+\draw (3.5,1.5,2) node{$\overrightarrow{B}$};
+\end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Chapitre 5 - Circulation et flux
+%
+%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%              Circulation sur courbes
+
+\newcommand{\Courbes}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[thick] (-0.5,-1) -- (0.5,1) ;
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[scale=0.3,font=\footnotesize]
+\draw[thick] plot[domain=-2:2, samples=100] ({\x},{0.7*(\x)^2}) ;
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[thick] plot[domain=0:360, samples=100] ({cos(\x)},{sin(\x)}) ;
+\end{tikzpicture}
+\quad 
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[rotate=45, thick] plot[domain=-1:1, samples=100] ({\x},{1.5*(\x)^4}) -- cycle ;
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[scale=0.4,font=\footnotesize]
+\draw[thick] plot[domain=-2:2, samples=100] ({\x*cos(pi*\x r)},{abs(\x)*sin(pi*\x r)}) ;
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[thick] plot[domain=-1:1, samples=100] ({4*\x*(\x-0.8)*(\x+0.8)},{2*(1-\x)*(\x+1)}) ;
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[scale=0.4,font=\footnotesize]
+\draw[thick] plot[domain=0:1080, samples=100] ({sin(\x)},{3*\x/1080},{cos(\x)}) ;
+\end{tikzpicture}
+}
+
+\newcommand{\CourbesOrientees}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[thick] (-1,-1) -- (1,1) ;
+\draw[->] (-0.7,-0.5) -- (-0.4,-0.2) ;
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[scale=0.3,font=\footnotesize]
+\draw[thick] plot[domain=-2:2, samples=100] ({\x},{0.7*(\x)^2}) ;
+\draw[<-] plot[domain=-1.9:-1.6, samples=100] ({0.1+\x},{0.3+0.7*(\x)^2}) ;
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[thick] plot[domain=0:360, samples=100] ({cos(\x)},{sin(\x)}) ;
+\draw[->] plot[domain=45:135, samples=100] ({cos(\x)},{0.4+sin(\x)}) ;
+\end{tikzpicture}
+\quad 
+\begin{tikzpicture}[scale=0.6,font=\footnotesize]
+\draw[rotate=45, thick] plot[domain=-1:1, samples=100] ({\x},{1.5*(\x)^4}) -- cycle ;
+\draw[rotate=45, <-] plot[domain=-0.2:0.2, samples=100] ({\x},{-0.4+1.5*(\x)^4}) ;
+\draw[rotate=45, ->] (-0.2,1.3) -- (0.2,1.3) ;
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[scale=0.4,font=\footnotesize]
+\draw[thick] plot[domain=-2:2, samples=100] ({\x*cos(pi*\x r)},{abs(\x)*sin(pi*\x r)}) ;
+\draw[->] plot[domain=-1.9:-1.6, samples=100] ({1.2*\x*cos(pi*\x r)},{1.2*abs(\x)*sin(pi*\x r)}) ;
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[thick] plot[domain=-1:1, samples=100] ({4*\x*(\x-0.8)*(\x+0.8)},{2*(1-\x)*(\x+1)}) ;
+\draw[->] plot[domain=0.8:0.95, samples=100] ({4*\x*(\x-0.8)*(\x+0.8)},{-0.3+2*(1-\x)*(\x+1)}) ;
+\end{tikzpicture}
+}
+
+\newcommand{\CourbeOrienteeI}{
+\begin{tikzpicture}[scale=0.7,font=\footnotesize]
+\draw[thick] plot[domain=-1:1, samples=100] ({\x*cos(pi*\x r)},{abs(\x)*sin(pi*\x r)}) ;
+\draw[<-] plot[domain=0.7:0.9, samples=100] ({1.2*\x*cos(pi*\x r)},{1.2*abs(\x)*sin(pi*\x r)}) ;
+\draw (0.8,0.8) node{$C^+$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\CourbeOrienteeII}{
+\begin{tikzpicture}[scale=0.7,font=\footnotesize]
+\draw[thick] plot[domain=-1:1, samples=100] ({\x*cos(pi*\x r)},{abs(\x)*sin(pi*\x r)}) ;
+\draw[->] plot[domain=0.7:0.9, samples=100] ({1.2*\x*cos(pi*\x r)},{1.2*abs(\x)*sin(pi*\x r)}) ;
+\draw (0.8,0.8) node{$C^-$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\ExCourbeParabole}{
+\begin{tikzpicture}[scale=1,font=\footnotesize]
+\filldraw[draw=white, fill=gray!20]
+    (0,0,0) -- (0,1,0) -- (1,1,1) -- (1,0,1) -- cycle ;
+\draw[->] (0,0,0) -- (1,0,0) ;
+\draw[->] (0,0,0) -- (0,1,0) ;
+\draw[->] (0,0,0) -- (0,0,1) ;
+\draw (1,-0.2,0) node{$y$} (-0.2,1,0) node{$z$} (-0.2,0.2,1) node{$x$} ;
+\draw[thick] plot[domain=0:1, samples=100] ({\x},{(\x)^2},{\x}) ;
+\end{tikzpicture}
+}
+
+\newcommand{\ExCourbeParaboleI}{
+\begin{tikzpicture}[scale=1.1,font=\footnotesize]
+\filldraw[draw=white, fill=gray!20]
+    (0,0,0) -- (0,1,0) -- (1,1,1) -- (1,0,1) -- cycle ;
+\draw[->] (0,0,0) -- (1,0,0) ;
+\draw[->] (0,0,0) -- (0,1,0) ;
+\draw[->] (0,0,0) -- (0,0,1) ;
+\draw (1,-0.2,0) node{$y$} (-0.2,1,0) node{$z$} (-0.2,0.2,1) node{$x$} ;
+\draw[thick] plot[domain=0:1, samples=100] ({\x},{(\x)^2},{\x}) ;
+\draw[->] plot[domain=0.6:0.9, samples=100] ({0.8*\x},{(\x)^2},{0.8*\x}) ;
+\end{tikzpicture}
+}
+
+\newcommand{\ExCourbeEllipse}{
+\begin{tikzpicture}[scale=0.6,font=\footnotesize]
+\filldraw[draw=white, fill=gray!20]
+    (0,-1.5,-2) -- (0,-1.5,2) -- (0,1.5,2) -- (0,1.5,-2) -- cycle ;
+\draw[->] (-1,0,0) -- (1,0,0) ;
+\draw[->] (0,-1.5,0) -- (0,1.5,0) ;
+\draw[->] (0,0,-2.5) -- (0,0,2.5) ;
+\draw (1,-0.3,0) node{$y$} (-0.3,1.5,0) node{$z$} (-0.2,0.2,2.5) node{$x$} ;
+\draw[thick] plot[domain=0:360, samples=100] ({0},{sin(\x)},{1.5*cos(\x)}) ;
+\draw[->] plot[domain=10:50, samples=100] ({0},{1.2*sin(\x)},{1.8*cos(\x)}) ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\ExCourbeHeliceI}{
+\begin{tikzpicture}[scale=0.6,font=\footnotesize]
+\draw[->] (-1.5,0,0) -- (1.5,0,0) ;
+\draw[->] (0,0,0) -- (0,3.5,0) ;
+\draw[->] (0,0,-1.5) -- (0,0,1.5) ;
+\draw (1.5,-0.3,0) node{$y$} (-0.3,3.5,0) node{$z$} (-0.2,0.2,1.5) node{$x$} ;
+\draw[thick] plot[domain=0:1080, samples=100] ({sin(\x)},{3*\x/1080},{cos(\x)}) ;
+\draw[->] plot[domain=440:490, samples=100] ({1.3*sin(\x)},{3*\x/1080},{1.3*cos(\x)}) ;
+\end{tikzpicture}
+}
+
+\newcommand{\ExCourbeHeliceII}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[->] (-1.5,0,0) -- (1.5,0,0) ;
+\draw[->] (0,0,0) -- (0,1.5,0) ;
+\draw[->] (0,0,-1.5) -- (0,0,1.5) ;
+\draw (1.5,-0.3,0) node{$y$} (-0.3,1.5,0) node{$z$} (-0.2,0.2,1.5) node{$x$} ;
+\draw[thick] plot[domain=0:360, samples=100] ({sin(\x)},{3*\x/1080},{cos(\x)}) ;
+\draw[->] plot[domain=70:110, samples=100] ({1.3*sin(\x)},{3*\x/1080},{1.3*cos(\x)}) ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\ExCourbeCercleI}{
+\begin{tikzpicture}[scale=.7,font=\footnotesize]
+\filldraw[draw=white, fill=gray!20]
+    (-1.2,{2/3},-1.2) -- (1.2,{2/3},-1.2) -- (1.2,{2/3},1.2) -- (-1.2,{2/3},1.2) -- cycle ;
+\draw[->] (-1.5,0,0) -- (1.5,0,0) ;
+\draw[->] (0,0,0) -- (0,1.3,0) ;
+\draw[->] (0,0,-1.5) -- (0,0,1.5) ;
+\draw (1.5,-0.2,0) node{$y$} (-0.2,1.3,0) node{$z$} (-0.1,0.2,1.5) node{$x$} ;
+\draw[thick] plot[domain=0:360, samples=100] ({sin(\x)},{2/3},{cos(\x)}) ;
+\draw[->] plot[domain=60:90, samples=100] ({1.2*sin(\x)},{2/3},{1.2*cos(\x)}) ;
+\draw (0,{2/3},0) node{$\bullet$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\ExCourbeCercleII}{
+\begin{tikzpicture}[scale=.8,font=\footnotesize]
+\filldraw[draw=white, fill=gray!20]
+    (0,-1.3,0) -- (0,1.3,0) -- (1.3,1.3,1.3) -- (1.3,-1.3,1.3) -- cycle ;
+\draw[->] (0,0,0) -- (1,0,0) ;
+\draw[->] (0,0,0) -- (0,1.5,0) ;
+\draw[->] (0,0,0) -- (0,0,1.5) ;
+\draw (1,-0.2,0) node{$y$} (-0.2,1.5,0) node{$z$} (-0.1,0.2,1.5) node{$x$} ;
+\draw[thick] plot[domain=0:180, samples=100] ({sin(\x)},{cos(\x)},{sin(\x)}) ;
+\draw[->] plot[domain=20:50, samples=100] ({1.2*sin(\x)},{1.2*cos(\x)},{1.2*sin(\x)}) ;
+\end{tikzpicture}
+}
+
+
+
+\newcommand{\ExCourbeCartImplicitI}{
+\begin{tikzpicture}[scale=0.8,font=\footnotesize]
+\draw[->] (0,0,0) -- (1.5,0,0) ;
+\draw[->] (0,0,0) -- (0,1.5,0) ;
+\draw[->] (0,0,0) -- (0,0,1.5) ;
+\draw (1.5,-0.3,0) node{$y$} (-0.3,1.5,0) node{$z$} (-0.2,0.2,1.5) node{$x$} ;
+\draw[thick] plot[domain=0:1, samples=100] ({\x},{(\x)^2},{\x}) ;
+\draw[->] plot[domain=0.6:0.9, samples=100] ({1.2*\x},{(\x)^2},{1.2*\x}) ;
+\draw (0.5,1) node{$C_1^+$} ;
+\end{tikzpicture}
+~
+\begin{tikzpicture}[scale=0.8,font=\footnotesize]
+\draw[->] (0,0,0) -- (1.5,0,0) ;
+\draw[->] (0,0,0) -- (0,1.5,0) ;
+\draw[->] (0,0,0) -- (0,0,1.5) ;
+\draw (1.5,-0.3,0) node{$y$} (-0.3,1.5,0) node{$z$} (-0.2,0.2,1.5) node{$x$} ;
+\draw[thick] plot[domain=0:1, samples=100] ({\x},{(\x)^2},{\x}) ;
+\draw[<-] plot[domain=0.6:0.9, samples=100] ({1.2*\x},{(\x)^2},{1.2*\x}) ;
+\draw (0.5,1) node{$C_1^-$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\ExCourbeCartImplicitII}{
+\begin{tikzpicture}[scale=1,font=\footnotesize]
+\draw[->] (0,0,0) -- (1.5,0,0) ;
+\draw[->] (0,0,0) -- (0,1.5,0) ;
+\draw[->] (0,0,0) -- (0,0,1.5) ;
+\draw (1.5,-0.3,0) node{$y$} (-0.3,1.5,0) node{$z$} (-0.2,0.2,1.5) node{$x$} ;
+\draw[thick] plot[domain=0:1, samples=100] ({\x},{(\x)^2},{\x}) -- (0,1,0) -- cycle ;
+\draw[->] plot[domain=0.6:0.9, samples=100] ({1.2*\x},{(\x)^2},{1.2*\x}) ;
+\draw[->] (0.7,1.2,0.7) -- (0.3,1.2,0.3) ;
+\draw[->] (-0.2,0.7,0) -- (-0.2,0.3,0) ;
+\end{tikzpicture}
+}
+
+
+
+\newcommand{\ExCourbeCartImplicitIII}{
+\begin{tikzpicture}[scale=0.7,font=\footnotesize]
+\draw[->] (-1.5,0,0) -- (1.5,0,0) ;
+\draw[->] (0,-1.5,0) -- (0,1.5,0) ;
+\draw[->] (0,0,-2.5) -- (0,0,2.5) ;
+\draw (1.5,0.3,0) node{$y$} (0.3,1.5,0) node{$z$} (-0.2,0.2,2.5) node{$x$} ;
+\draw[thick] plot[domain=0:360, samples=100] ({0},{2/3*cos(\x)},{sin(\x)}) ;
+\draw[->] plot[domain=10:50, samples=100] ({0},{0.9*cos(\x+180)},{1.3*sin(\x+180)}) ;
+\draw (0,2/3,0) node{$\bullet$} +(-0.4,0) node{$2$}
+	(0,0,1) node{$\bullet$} +(-0.4,0) node{$3$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\ExCourbeCartI}{
+\begin{tikzpicture}[scale=0.7,font=\footnotesize]
+\draw[->] (0,0,0) -- (1.5,0,0) ;
+\draw[->] (0,0,0) -- (0,1.75,0) ;
+\draw[->] (0,0,0) -- (0,0,1.5) ;
+\draw (1.5,-0.3,0) node{$y$} (-0.3,1.75,0) node{$z$} (-0.2,0.2,1.5) node{$x$} ;
+\draw[thick] plot[domain=0:360, samples=100] ({sin(\x)},{1},{cos(\x)}) ;
+\draw[->] plot[domain=-90:-10, samples=100] ({1.2*sin(\x)},{1},{1.2*cos(\x)}) ;
+\draw (0,1,0) node{$\bullet$} (1.75,1,0) node{$z=3$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\ExCourbeCartII}{
+\begin{tikzpicture}[scale=0.7,font=\footnotesize]
+\draw[->] (-1.5,0,0) -- (1.5,0,0) ;
+\draw[->] (0,-1.5,0) -- (0,1.5,0) ;
+\draw[->] (0,0,-2.5) -- (0,0,2.5) ;
+\draw (1.5,0.3,0) node{$y$} (0.3,1.5,0) node{$z$} (-0.2,0.2,2.5) node{$x$} ;
+\draw[thick] plot[domain=0:360, samples=100] ({sin(\x)},{cos(\x)},{sin(\x)}) ;
+\draw[->] plot[domain=-80:-30, samples=100] ({1.2*sin(\x)},{1.2*cos(\x)},{1.2*sin(\x)}) ;
+\draw[dashed] plot[domain=0:45, samples=100] ({sqrt(2)*sin(\x)},{0},{sqrt(2)*cos(\x)}) -- (0,0,0) ;
+\draw (2,0,1.5) node{$\varphi=\pi/4$} ;
+\end{tikzpicture}
+}
+
+
+
+
+\newcommand{\ExCourbeParamI}{
+\begin{tikzpicture}[scale=1,font=\footnotesize]
+\draw[->] (0,0,0) -- (1.5,0,0) ;
+\draw[->] (0,0,0) -- (0,1.5,0) ;
+\draw[->] (0,0,0) -- (0,0,1.5) ;
+\draw (1.5,-0.3,0) node{$y$} (-0.3,1.5,0) node{$z$} (-0.2,0.2,1.5) node{$x$} ;
+\draw[thick] plot[domain=0:1, samples=100] ({\x},{(\x)^2},{\x}) ;
+\draw[->] plot[domain=0.6:0.9, samples=100] ({1.2*\x},{(\x)^2},{1.2*\x}) ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\ExCourbeParamII}{
+\begin{tikzpicture}[scale=0.7,font=\footnotesize]
+\draw[->] (-1,0,0) -- (1,0,0) ;
+\draw[->] (0,-1.5,0) -- (0,1.5,0) ;
+\draw[->] (0,0,-2.5) -- (0,0,2.5) ;
+\draw (1,-0.3,0) node{$y$} (-0.3,1.5,0) node{$z$} (-0.2,0.2,2.5) node{$x$} ;
+\draw[thick] plot[domain=0:360, samples=100] ({0},{sin(\x)},{1.5*cos(\x)}) ;
+\draw[->] plot[domain=10:50, samples=100] ({0},{1.3*sin(\x)},{1.8*cos(\x)}) ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\ExCourbeParamIII}{
+\begin{tikzpicture}[scale=0.7,font=\footnotesize]
+\draw[->] (-1.5,0,0) -- (1.5,0,0) ;
+\draw[->] (0,0,0) -- (0,3.5,0) ;
+\draw[->] (0,0,-1.5) -- (0,0,1.5) ;
+\draw (1.5,-0.3,0) node{$y$} (-0.3,3.5,0) node{$z$} (-0.2,0.2,1.5) node{$x$} ;
+\draw[thick] plot[domain=0:1080, samples=100] ({sin(\x)},{3*\x/1080},{cos(\x)}) ;
+\draw[->] plot[domain=440:490, samples=100] ({1.3*sin(\x)},{3*\x/1080},{1.3*cos(\x)}) ;
+\end{tikzpicture}
+}
+
+%%%%%%%%%%%%%    Surfaces 
+
+\newcommand{\Surfaces}{
+\begin{center}
+% plan
+\begin{tikzpicture}[scale=.6,font=\footnotesize]
+\foreach \t in {1,2,...,5.1}
+	{\draw (-0.5,0) ++({0.5*\t/6},{2*\t/6}) -- +(1,0.5)
+	(-0.5,0) ++({1*\t/6},{0.5*\t/6}) -- +(0.5,2) ;}
+\draw[thick] (-0.5,0) -- (0,2) -- (1,2.5) -- (0.5,0.5) -- cycle ;
+\end{tikzpicture}
+~
+% chapeau
+\begin{tikzpicture}[scale=0.3,font=\footnotesize]
+\draw[thick] plot[domain=0:360,samples=100] ({3*sin(\x)},
+	{3/(1+(2*cos(\x))^2+(3*sin(\x))^2)},
+	{2*cos(\x)}) ;
+\foreach \t in {-1.8,-1.4,...,1.8} %x fixé
+	{\draw plot[domain=(-3*sqrt(1-(\t/2)^2)):(3*sqrt(1-(\t/2)^2)), samples=100]
+	({\x},{3/(1+(\t)^2+(\x)^2)},{\t}) ;}
+\foreach \t in {-2.8,-2.4,...,2.8} %y fixé
+	{\draw plot[domain=(-2*sqrt(1-(\t/3)^2)):(2*sqrt(1-(\t/3)^2)), samples=100]
+	({\t},{3/(1+(\x)^2+(\t)^2)},{\x}) ;}
+\end{tikzpicture}
+~
+% sphere
+\begin{tikzpicture}[scale=.6,font=\footnotesize]
+\foreach \t in {0,30,...,179}
+	{\draw plot[domain=0:360, samples=50] ({sin(\x)*sin(\t)},{cos(\t)},{cos(\x)*sin(\t)}) ;}
+\foreach \t in {0,30,...,359}
+	{\draw plot[domain=0:180, samples=50] ({sin(\t)*sin(\x)},{cos(\x)},{cos(\t)*sin(\x)}) ;}
+\end{tikzpicture}
+~
+% paraboloide couvert
+\begin{tikzpicture}[scale=.7,font=\footnotesize]
+\foreach \t in {0.25,0.5,0.75,1}
+	{\draw plot[domain=0:360, samples=50] ({sqrt(1-(\t))*sin(\x)},{1-\t},{sqrt(1-(\t))*cos(\x)}) ;}
+\foreach \t in {0,30,...,179}
+	{\draw plot[domain=-90:90, samples=50]
+	({sin(\t)*sin(\x)},{1-cos(\x)^2},{cos(\t)*sin(\x)}) -- cycle ;}
+\draw[thick] plot[domain=0:360, samples=50] ({sin(\x)},{1},{cos(\x)}) ;
+\end{tikzpicture}
+~
+% cylindre
+\begin{tikzpicture}[scale=0.4,font=\footnotesize]
+\foreach \t in {0,30,...,359}
+	{\draw ({sin(\t)},{0},{cos(\t)}) -- +(0,2,0) ;}
+\foreach \t in {0.5,1,...,2}
+	{\draw plot[domain=0:360, samples=50] ({sin(\x)},{\t},{cos(\x)}) ;}
+\draw[thick] plot[domain=0:360, samples=50] ({sin(\x)},{0},{cos(\x)})
+	plot[domain=0:360, samples=50] ({sin(\x)},{2},{cos(\x)}) ;
+\end{tikzpicture}
+~
+% Moebius 
+\begin{tikzpicture}[scale=.5,font=\footnotesize]
+\foreach \t in {0,30,...,359}
+	{\draw ({(1-0.5*cos(\t/2))*sin(\t-30)},{-0.5*sin(\t/2)},{(1-0.5*cos(\t/2))*cos(\t-30)}) -- 
+	({(1+0.5*cos(\t/2))*sin(\t-30)},{0.5*sin(\t/2)},{(1+0.5*cos(\t/2))*cos(\t-30)}) ;}
+\foreach \t in {-1,-0.5,...,1}
+	{\draw plot[domain=0:360, samples=100]
+	({(1+0.5*\t*cos(\x/2))*sin(\x-30)},{0.5*\t*sin(\x/2)},{(1+0.5*\t*cos(\x/2))*cos(\x-30)}) ;}
+\foreach \t in {-1,1}
+	{\draw[thick] plot[domain=0:360, samples=100]
+	({(1+0.5*\t*cos(\x/2))*sin(\x-30)},{0.5*\t*sin(\x/2)},{(1+0.5*\t*cos(\x/2))*cos(\x-30)}) ;}
+\end{tikzpicture}
+\end{center}
+}
+
+
+
+\newcommand{\SurfaceOriente}{
+\begin{tikzpicture}[scale=.8,font=\footnotesize]
+\foreach \t in {0.25,0.5,0.75}
+	{\draw[rotate=110] plot[domain=0:360, samples=50] ({sqrt(1-(\t))*sin(\x)},{1-\t},{sqrt(1-(\t))*cos(\x)}) ;}
+\foreach \t in {0,45,...,179}
+	{\draw[rotate=110] plot[domain=-90:90, samples=50]
+	({sin(\t)*sin(\x)},{1-cos(\x)^2},{cos(\t)*sin(\x)}) ;}
+\draw[rotate=110, thick] plot[domain=0:360, samples=50] ({sin(\x)},{1},{cos(\x)}) ;
+\draw[rotate=110, thick, ->] (0,0) -- (0,-1) ;
+\draw[rotate=110] (0.75,0) node{$S^+$} ;
+
+\foreach \t in {0.25,0.5,0.75}
+	{\draw[shift={(3,0)}, rotate=110] plot[domain=0:360, samples=50] ({sqrt(1-(\t))*sin(\x)},{1-\t},{sqrt(1-(\t))*cos(\x)}) ;}
+\foreach \t in {0,45,...,179}
+	{\draw[shift={(3,0)}, rotate=110] plot[domain=-90:90, samples=50]
+	({sin(\t)*sin(\x)},{1-cos(\x)^2},{cos(\t)*sin(\x)}) ;}
+\draw[shift={(3,0)}, rotate=110, thick] plot[domain=0:360, samples=50] ({sin(\x)},{1},{cos(\x)}) ;
+\draw[shift={(3,0)}, rotate=110, thick, ->] (0,0) -- (0,1) ;
+\draw[shift={(3,0)}, rotate=110] (0.75,0) node{$S^-$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\SurfaceBordOriente}{
+\begin{tikzpicture}[scale=0.6,font=\footnotesize]
+\draw[thick] plot[domain=0:360,samples=100] ({3*sin(\x)},
+	{1.5/(1+(2*cos(\x)-1)^2+(3*sin(\x)+1)^2) -
+    2/(1+(2*cos(\x)+1)^2+(3*sin(\x)-1)^2)},
+	{2*cos(\x)}) ;
+\foreach \t in {-1.8,-1.6,...,1.8} %x fixé
+	{\draw plot[domain=(-3*sqrt(1-(\t/2)^2)):(3*sqrt(1-(\t/2)^2))]
+	({\x},{1.5/(1+(\t-1)^2+(\x+1)^2) - 2/(1+(\t+1)^2+(\x-1)^2)},{\t}) ;}
+\foreach \t in {-2.8,-2.6,...,2.8} %y fixé
+	{\draw plot[domain=(-2*sqrt(1-(\t/3)^2)):(2*sqrt(1-(\t/3)^2))]
+	({\t},{1.5/(1+(\x-1)^2+(\t+1)^2) - 2/(1+(\x+1)^2+(\t-1)^2)},{\x}) ;}
+\draw[->] (-1.5,-0.4) -- (-1.1,-0.6) ;
+\draw[->] (1.5,0.2) -- (1.1,0.4) ;
+\draw[thick, ->]  (-1.4,0.9) -- +(0,1) ;
+%\draw (-2,1) node{$S^+$} (-3,-0.5) node{$\partial S^+$} ;
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[scale=0.6,font=\footnotesize]
+\draw[thick] plot[domain=0:360,samples=100] ({3*sin(\x)},
+	{1.5/(1+(2*cos(\x)-1)^2+(3*sin(\x)+1)^2) -
+    2/(1+(2*cos(\x)+1)^2+(3*sin(\x)-1)^2)},
+	{2*cos(\x)}) ;
+\foreach \t in {-1.8,-1.6,...,1.8} %x fixé
+	{\draw plot[domain=(-3*sqrt(1-(\t/2)^2)):(3*sqrt(1-(\t/2)^2))]
+	({\x},{1.5/(1+(\t-1)^2+(\x+1)^2) - 2/(1+(\t+1)^2+(\x-1)^2)},{\t}) ;}
+\foreach \t in {-2.8,-2.6,...,2.8} %y fixé
+	{\draw plot[domain=(-2*sqrt(1-(\t/3)^2)):(2*sqrt(1-(\t/3)^2))]
+	({\t},{1.5/(1+(\x-1)^2+(\t+1)^2) - 2/(1+(\x+1)^2+(\t-1)^2)},{\x}) ;}
+\draw[<-] (-1.5,-0.4) -- (-1.1,-0.6) ;
+\draw[<-] (1.5,0.2) -- (1.1,0.4) ;
+\draw[thick, ->]  (1.4,-1.4) -- +(0,-1) ;
+%\draw (-2,1) node{$S^+$} (-3,-0.5) node{$\partial S^+$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\ExCylindreParabolique}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[->] (-1,0,0) -- (2.5,0,0) ;
+\draw[->] (0,-0.5,0) -- (0,2.3,0) ;
+\draw[->] (0,0,-0.5) -- (0,0,2.3) ;
+\draw (2.5,0.4,0) node{$y$} (-0.4,2.2,0) node{$z$} (-0.2,0.2,2.2) node{$x$} ;
+\foreach \t in {0,0.25,...,2.01}
+	{\draw plot[domain=0:2, samples=50] ({\x},{0.5*\t*\t},{\t})
+		plot[domain=0:2, samples=50] ({\t},{0.5*\x*\x},{\x}) ;
+	}
+\draw[thick] plot[domain=0:2, samples=50] ({0},{0.5*\x*\x},{\x}) --
+		plot[domain=-2:0, samples=50] ({2},{0.5*\x*\x},{-\x}) -- cycle ;
+\draw[dashed] (0,0,2) -- (2,0,2) (0,2,0) -- (2,2,0) (0,2,2) -- (2,2,2)  
+            (2,0,0) -- (2,0,2) (0,2,0) -- (0,2,2) (2,2,0) -- (2,2,2) 
+            (0,0,2) -- (0,2,2) (2,0,2) -- (2,2,2) (2,0,0) -- (2,2,0) ; 
+\end{tikzpicture}
+}
+
+\newcommand{\ExCylindreParaboliquePetit}{
+\begin{tikzpicture}[scale=0.4,font=\footnotesize]
+\draw[->] (-1,0,0) -- (2.5,0,0) ;
+\draw[->] (0,-0.5,0) -- (0,2.3,0) ;
+\draw[->] (0,0,-0.5) -- (0,0,2.3) ;
+\draw (2.5,0.4,0) node{$y$} (-0.4,2.2,0) node{$z$} (-0.2,0.2,2.2) node{$x$} ;
+\foreach \t in {0,0.25,...,2.01}
+	{\draw plot[domain=0:2, samples=50] ({\x},{0.5*\t*\t},{\t})
+		plot[domain=0:2, samples=50] ({\t},{0.5*\x*\x},{\x}) ;
+	}
+\draw[thick] plot[domain=0:2, samples=50] ({0},{0.5*\x*\x},{\x}) --
+		plot[domain=-2:0, samples=50] ({2},{0.5*\x*\x},{-\x}) -- cycle ;
+\draw[dashed] (0,0,2) -- (2,0,2) (0,2,0) -- (2,2,0) (0,2,2) -- (2,2,2)  
+            (2,0,0) -- (2,0,2) (0,2,0) -- (0,2,2) (2,2,0) -- (2,2,2) 
+            (0,0,2) -- (0,2,2) (2,0,2) -- (2,2,2) (2,0,0) -- (2,2,0) ; 
+\end{tikzpicture}
+}
+
+\newcommand{\ExCylindreParaboliqueNormal}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[->] (-1,0,0) -- (2.5,0,0) ;
+\draw[->] (0,-0.5,0) -- (0,2.3,0) ;
+\draw[->] (0,0,-0.5) -- (0,0,2.3) ;
+\draw (2.5,0.4,0) node{$y$} (-0.4,2.2,0) node{$z$} (-0.2,0.2,2.2) node{$x$} ;
+\foreach \t in {0,0.25,...,2.01}
+	{\draw plot[domain=0:2, samples=50] ({\x},{0.5*\t*\t},{\t})
+		plot[domain=0:2, samples=50] ({\t},{0.5*\x*\x},{\x}) ;
+	}
+\draw[thick] plot[domain=0:2, samples=50] ({0},{0.5*\x*\x},{\x}) --
+		plot[domain=-2:0, samples=50] ({2},{0.5*\x*\x},{-\x}) -- cycle ;
+\draw[dashed] (0,0,2) -- (2,0,2) (0,2,0) -- (2,2,0) (0,2,2) -- (2,2,2)  
+            (2,0,0) -- (2,0,2) (0,2,0) -- (0,2,2) (2,2,0) -- (2,2,2) 
+            (0,0,2) -- (0,2,2) (2,0,2) -- (2,2,2) (2,0,0) -- (2,2,0) ; 
+\draw[thick, ->] (1.5,{0.5*1.5*1.5},1.5) -- +(0,-1/2,3/2) ;
+\end{tikzpicture}
+}
+
+\newcommand{\ExHyperboloide}{
+\begin{tikzpicture}[scale=0.4,font=\footnotesize]
+\draw[->] (-1,0,0) -- (2.5,0,0) ;
+\draw[->] (0,-0.5,0) -- (0,2.3,0) ;
+\draw[->] (0,0,-0.5) -- (0,0,2.3) ;
+\draw (2.5,0.4,0) node{$y$} (-0.4,2.2,0) node{$z$} (-0.2,0.2,2.2) node{$x$} ;
+\foreach \t in {0,0.25,...,2.01}
+	{\draw plot[domain=0:2, samples=50] ({\x},{0.5*\x*\t},{\t})
+		plot[domain=0:2, samples=50] ({\t},{0.5*\t*\x},{\x}) ;
+	}
+\draw[dashed] (0,0,2) -- (2,0,2) (0,2,0) -- (2,2,0) (0,2,2) -- (2,2,2)
+            (2,0,0) -- (2,0,2) (0,2,0) -- (0,2,2) (2,2,0) -- (2,2,2) 
+            (0,0,2) -- (0,2,2) (2,0,2) -- (2,2,2) (2,0,0) -- (2,2,0) ; 
+\end{tikzpicture}
+}
+
+\newcommand{\ExHyperboloideNormal}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[->] (-1,0,0) -- (2.5,0,0) ;
+\draw[->] (0,-0.5,0) -- (0,2.3,0) ;
+\draw[->] (0,0,-0.5) -- (0,0,2.3) ;
+\draw (2.5,0.4,0) node{$y$} (-0.4,2.2,0) node{$z$} (-0.2,0.2,2.2) node{$x$} ;
+\foreach \t in {0,0.25,...,2.01}
+	{\draw plot[domain=0:2, samples=50] ({\x},{0.5*\x*\t},{\t})
+		plot[domain=0:2, samples=50] ({\t},{0.5*\t*\x},{\x}) ;
+	}
+\draw[dashed] (0,0,2) -- (2,0,2) (0,2,0) -- (2,2,0) (0,2,2) -- (2,2,2)
+            (2,0,0) -- (2,0,2) (0,2,0) -- (0,2,2) (2,2,0) -- (2,2,2) 
+            (0,0,2) -- (0,2,2) (2,0,2) -- (2,2,2) (2,0,0) -- (2,2,0) ; 
+\draw[thick, ->] (1.5,{0.5*1.5*1.5},1.5) -- +(-0.75,1/2,-0.75) ;
+\end{tikzpicture}
+}
+
+\newcommand{\ExCylindre}{
+\begin{tikzpicture}[scale=0.4,font=\footnotesize]
+\draw[->] (-1.5,0,0) -- (1.5,0,0) ;
+\draw[->] (0,0,0) -- (0,3,0) ;
+\draw[->] (0,0,-1.5) -- (0,0,1.8) ;
+\draw (1.3,0.3,0) node{$y$} (-0.3,3,0) node{$z$} (-0.2,0.2,1.8) node{$x$} ;
+\foreach \t in {0,30,...,359}
+	{\draw ({sin(\t)},{0},{cos(\t)}) -- +(0,2,0) ;}
+\foreach \t in {0.5,1,...,2}
+	{\draw plot[domain=0:360, samples=50] ({sin(\x)},{\t},{cos(\x)}) ;}
+\draw[thick] plot[domain=0:360, samples=50] ({sin(\x)},{0},{cos(\x)})
+	plot[domain=0:360, samples=50] ({sin(\x)},{2},{cos(\x)}) ;
+\end{tikzpicture}
+}
+
+\newcommand{\ExCylindreNormal}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[->] (-1.5,0,0) -- (1.5,0,0) ;
+\draw[->] (0,0,0) -- (0,3,0) ;
+\draw[->] (0,0,-1.5) -- (0,0,1.8) ;
+\draw (1.3,0.3,0) node{$y$} (-0.3,3,0) node{$z$} (-0.2,0.2,1.8) node{$x$} ;
+\foreach \t in {0,30,...,359}
+	{\draw ({sin(\t)},{0},{cos(\t)}) -- +(0,2,0) ;}
+\foreach \t in {0.5,1,...,2}
+	{\draw plot[domain=0:360, samples=50] ({sin(\x)},{\t},{cos(\x)}) ;}
+\draw[thick] plot[domain=0:360, samples=50] ({sin(\x)},{0},{cos(\x)})
+	plot[domain=0:360, samples=50] ({sin(\x)},{2},{cos(\x)}) ;
+\draw[thick, ->] ({1},{1},{0}) -- +(1,0,0) ;
+\end{tikzpicture}
+}
+
+\newcommand{\ExDemiSphereNormal}{
+\begin{tikzpicture}[scale=0.7,font=\footnotesize]
+\filldraw[ball color=gray!40, draw=black]
+	plot[domain=0:180, samples=100] ({cos(\x+5)},{sin(\x+5)}) --
+	plot[domain=0:180, samples=100] ({0.95*cos(180-\x)},{0},{0.7*sin(\x)}) -- cycle ;
+\draw[->] (-1.3,0,0) -- (1.5,0,0) ;
+\draw[->] (0,-0.4,0) -- (0,1.8,0) ;
+\draw[->] (0,0,-1.3) -- (0,0,1.8) ;
+\draw plot[domain=0:180, samples=100] ({0.95*cos(-\x)},{0},{0.7*sin(180+\x)}) ;
+\draw plot[domain=0:87, samples=100] ({sin(\x)*sin(60)},{cos(\x)},{sin(\x)*cos(60)}) -- (0,0) ;
+\draw plot[domain=0:360, samples=100] ({-0.05+0.94*cos(\x)*sin(47)},{cos(49)},{0.7*sin(\x)*sin(47)}) ;
+\draw[->] plot[domain=0:45, samples=100] ({1.5*sin(\x)*sin(60)},{1.5*cos(\x)},{1.5*sin(\x)*cos(60)}) ;
+\draw[->] plot[domain=0:60, samples=100] ({1.5*sin(\x)},{0},{1.5*cos(\x)}) ;
+\draw (1.3,0.3,0) node{$y$} (-0.3,1.7,0) node{$z$} (-0.2,0.2,1.8) node{$x$}
+	({1.5*sin(30)},{-0.3},{1.5*cos(30)}) node{$\varphi$}
+	({1.5*sin(22)*sin(60)},{1.5*cos(22)+0.3},{1.5*sin(22)*cos(60)}) node{$\theta$} ;
+\draw[thick, ->] ({sin(45)*sin(60)},{cos(45)},{sin(45)*cos(60)}) --
+	({0.5*sin(45)*sin(60)},{0.5*cos(45)},{0.5*sin(45)*cos(60)}) ;
+\end{tikzpicture}
+}
+
+
+
+
+
+\newcommand{\ExSurfaceGrapheOrientee}{
+\begin{tikzpicture}[scale=0.8,font=\footnotesize]
+\draw[->] (-1,0,0) -- (2.5,0,0) ;
+\draw[->] (0,-0.5,0) -- (0,2,0) ;
+\draw[->] (0,0,-0.5) -- (0,0,2) ;
+\draw (2.5,0.4,0) node{$y$} (-0.4,2,0) node{$z$} (-0.2,0.2,2) node{$x$} ;
+\foreach \t in {0,0.25,...,2.01}
+	{\draw plot[domain=0:2, samples=50] ({\x},{0.5*\t*\t},{\t})
+		plot[domain=0:2, samples=50] ({\t},{0.5*\x*\x},{\x}) ;
+	}
+\draw[thick] plot[domain=0:2, samples=50] ({0},{0.5*\x*\x},{\x}) --
+		plot[domain=-2:0, samples=50] ({2},{0.5*\x*\x},{-\x}) -- cycle ;
+\draw[thick, ->] (1.5,{0.5*1.5*1.5},1.5) -- +(0,-1/2,3/2) ;
+\draw[->] (0.7,-0.2,0) -- (1.7,-0.2,0) ;
+\draw[->] (1.8,0.2,0) -- (1.8,1.2,0.7) ;
+\draw[->] (1.5,2.2,2) -- (0.5,2.2,2) ;
+\draw[->] (-0.7,1.2,0.7) -- (-0.7,0.2,0) ;
+\end{tikzpicture}
+}
+
+
+
+
+
+\newcommand{\ExParaboloideDisque}{
+\begin{tikzpicture}[scale=1,font=\footnotesize]
+\draw[->] (-1.5,0,0) -- (1.5,0,0) ;
+\draw[->] (0,-0.5,0) -- (0,2,0) ;
+\draw[->] (0,0,-1.5) -- (0,0,1.5) ;
+\draw (1.5,0.4,0) node{$y$} (-0.4,2,0) node{$z$} (-0.2,0.2,1.5) node{$x$} ;
+\foreach \t in {0.25,0.5,0.75}
+	{\draw plot[domain=0:360, samples=50] ({sqrt(1-(\t))*sin(\x)},{1-\t},{sqrt(1-(\t))*cos(\x)}) ;}
+\foreach \t in {0,45,...,179}
+	{\draw plot[domain=-90:90, samples=50]
+	({sin(\t)*sin(\x)},{1-cos(\x)^2},{cos(\t)*sin(\x)}) -- cycle ;}
+\draw[thick] plot[domain=0:360, samples=50] ({sin(\x)},{1},{cos(\x)}) ;
+%\draw (0,1,0) node{$\bullet$} ;
+\end{tikzpicture}
+}
+
+
+
+
+
+
+\newcommand{\ExNormalgrapheI}{
+\begin{tikzpicture}[scale=0.8,font=\footnotesize]
+\draw[->] (-1,0,0) -- (2.5,0,0) ;
+\draw[->] (0,-0.5,0) -- (0,2,0) ;
+\draw[->] (0,0,-0.5) -- (0,0,2) ;
+\draw (2.5,0.4,0) node{$y$} (-0.4,2,0) node{$z$} (-0.2,0.2,2) node{$x$} ;
+\foreach \t in {0,0.25,...,2.01}
+	{\draw plot[domain=0:2, samples=50] ({\x},{0.5*\t*\t},{\t})
+		plot[domain=0:2, samples=50] ({\t},{0.5*\x*\x},{\x}) ;
+	}
+\draw[thick, ->] (1.5,{0.5*1.5*1.5},1.5) -- +(0,-1/2,3/2) ;
+\end{tikzpicture}
+}
+
+\newcommand{\ExNormalgrapheII}{
+\begin{tikzpicture}[scale=0.8,font=\footnotesize]
+\draw[->] (-1,0,0) -- (2.5,0,0) ;
+\draw[->] (0,-0.5,0) -- (0,2,0) ;
+\draw[->] (0,0,-0.5) -- (0,0,2) ;
+\draw (2.5,0.4,0) node{$y$} (-0.4,2,0) node{$z$} (-0.2,0.2,2) node{$x$} ;
+\foreach \t in {0,0.25,...,2.01}
+	{\draw plot[domain=0:2, samples=50] ({\x},{0.5*\x*\t},{\t})
+		plot[domain=0:2, samples=50] ({\t},{0.5*\t*\x},{\x}) ;
+	}
+\draw[thick, ->] (1.5,{0.5*1.5*1.5},1.5) -- +(-0.75,1/2,-0.75) ;
+\end{tikzpicture}
+}
+
+
+
+\newcommand{\ExNormalSphere}{
+\begin{tikzpicture}[scale=0.8,font=\footnotesize]
+\filldraw[ball color=gray!40, draw=black]
+	plot[domain=0:180, samples=100] ({cos(\x+5)},{sin(\x+5)}) --
+	plot[domain=0:180, samples=100] ({0.95*cos(180-\x)},{0},{0.7*sin(\x)}) -- cycle ;
+\draw[->] (-1.5,0,0) -- (1.5,0,0) ;
+\draw[->] (0,-0.5,0) -- (0,2,0) ;
+\draw[->] (0,0,-0.5) -- (0,0,2) ;
+\draw plot[domain=0:180, samples=100] ({0.95*cos(-\x)},{0},{0.7*sin(180+\x)}) ;
+\draw plot[domain=0:87, samples=100] ({sin(\x)*sin(60)},{cos(\x)},{sin(\x)*cos(60)}) -- (0,0) ;
+\draw[thick, ->] ({sin(45)*sin(60)},{cos(45)},{sin(45)*cos(60)}) --
+	({0.5*sin(45)*sin(60)},{0.5*cos(45)},{0.5*sin(45)*cos(60)}) ;
+\draw plot[domain=0:360, samples=100] ({-0.05+0.94*cos(\x)*sin(47)},{cos(49)},{0.7*sin(\x)*sin(47)}) ;
+\draw[->] plot[domain=0:45, samples=100] ({1.5*sin(\x)*sin(60)},{1.5*cos(\x)},{1.5*sin(\x)*cos(60)}) ;
+\draw[->] plot[domain=0:60, samples=100] ({1.5*sin(\x)},{0},{1.5*cos(\x)}) ;
+\draw (1.5,0.4,0) node{$y$} (-0.4,2,0) node{$z$} (-0.2,0.2,2) node{$x$}
+	({1.5*sin(30)},{-0.3},{1.5*cos(30)}) node{$\varphi$}
+	({1.5*sin(22)*sin(60)},{1.5*cos(22)+0.3},{1.5*sin(22)*cos(60)}) node{$\theta$} ;
+\end{tikzpicture}
+}
+
+
+
+
+
+\newcommand{\thmStokes}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[thick] plot[domain=0:360,samples=100] ({3*sin(\x)},
+	{1.5/(1+(2*cos(\x)-1)^2+(3*sin(\x)+1)^2) -
+    2/(1+(2*cos(\x)+1)^2+(3*sin(\x)-1)^2)},
+	{2*cos(\x)}) ;
+\foreach \t in {-1.6,-1.2,...,1.6} %x fixé
+	{\draw plot[domain=(-3*sqrt(1-(\t/2)^2)):(3*sqrt(1-(\t/2)^2))]
+	({\x},{1.5/(1+(\t-1)^2+(\x+1)^2) - 2/(1+(\t+1)^2+(\x-1)^2)},{\t}) ;}
+\foreach \t in {-2.8,-2.4,...,2.8} %y fixé
+	{\draw plot[domain=(-2*sqrt(1-(\t/3)^2)):(2*sqrt(1-(\t/3)^2))]
+	({\t},{1.5/(1+(\x-1)^2+(\t+1)^2) - 2/(1+(\x+1)^2+(\t-1)^2)},{\x}) ;}
+\draw[->] (-1.5,-0.4) -- (-1.1,-0.6) ;
+\draw[->] (1.5,0.2) -- (1.1,0.4) ;
+\draw[thick, ->]  (-1.4,0.9) -- +(0,1) ;
+\draw (-2,1) node{$S^+$} (-3,-0.5) node{$\partial S^+$} ;
+\end{tikzpicture}
+}
+
+
+
+\newcommand{\thmRotSurfFermee}{
+\begin{tikzpicture}[scale=0.4,font=\footnotesize]
+\fill[ball color=gray!10]
+	(0,0)+(90:1) arc (90:270:1) -- (3,-1) --
+	(3,0)+(270:1) arc (270:450:1) -- (0,1) --
+	cycle ;
+\draw[thick] (0,0)+(90:1) arc (90:270:1)
+	(3,-1) -- (0,-1) (3,1) -- (0,1)
+	(3,0)+(270:1) arc (270:450:1) ;
+\draw plot[domain=-1:1]	({0.3*(\x+1)*(1-\x)},\x) ;
+\draw[dashed] plot[domain=-1:1]	({-0.3*(\x+1)*(1-\x)},\x) ;
+\draw plot[domain=-1:1]	({3+0.3*(\x+1)*(1-\x)},\x) ;
+\draw[dashed] plot[domain=-1:1]	({3-0.3*(\x+1)*(1-\x)},\x) ;
+\draw plot[domain=-1:1]	({1+0.3*(\x+1)*(1-\x)},\x) ;
+\draw[dashed] plot[domain=-1:1]	({1-0.3*(\x+1)*(1-\x)},\x) ;
+\draw plot[domain=-1:1]	({2+0.3*(\x+1)*(1-\x)},\x) ;
+\draw[dashed] plot[domain=-1:1]	({2-0.3*(\x+1)*(1-\x)},\x) ;
+
+\draw[thick, ->] ({cos(225)},{sin(225)}) -- +(-0.5,-0.5) ;
+\foreach \u in {-1,-0.5,0,0.5,1}
+	{\draw[->] ({2+0.3*(\u+1)*(1-\u)},\u) -- +(0.5,{0.5*\u}) ;}
+\foreach \u in {-1,-0.5,0,0.5,1}
+	{\draw[->] ({1+0.3*(\u+1)*(1-\u)},\u) -- +(-0.5*\u,{0.5*\u}) ;}
+\draw (0,-1.5) node{$S^+$} (2,-2) node{$\overrightarrow{rot} \overrightarrow{U}$} ;
+\end{tikzpicture}
+}
+
+\newcommand{\thmGreenRiemann}{
+\begin{tikzpicture}[scale=0.5,font=\footnotesize]
+\draw[thick,fill=gray!40] plot[domain=0:360,samples=100] ({1.5*sin(\x)},0,{cos(\x)}) ;
+\draw[->] (-2,0,0) -- (2.2,0,0) ;
+\draw[->] (0,-0.5,0) -- (0,1.5,0) ;
+\draw[->] (0,0,-1.5) -- (0,0,2) ;
+\draw (2.2,0.3,0) node{$y$} (-0.3,1.5,0) node{$z$} (-0.3,0.2,2) node{$x$} ;
+\draw[->] (1,0,1.2) -- (1.3,0,0.9) ;
+\foreach \r in {0.5,1} 
+     {\foreach \t in {0,60,300}
+        {\draw[thick, ->] ({\r*1.5*sin(\t)},0,{\r*cos(\t)}) -- +(0,{\r},0) ; }}
+\draw (1.5,1.3,0) node{$\overrightarrow{V}$} ;
+\end{tikzpicture}
+}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+\newcommand{\ChpVecSurf}{
+\begin{tikzpicture}[scale=0.6,font=\footnotesize]
+\foreach \t in {-2,-1.8,...,2} %x fixé
+	{\draw plot[domain=-3:3,samples=50]
+		({\x},{2.5/(1+(\t)^2+(\x)^2)},{\t}) ;}
+\foreach \t in {-3,-2.8,...,3} %y fixé
+	{\draw plot[domain=-2:2,samples=50]
+		({\t},{2.5/(1+(\x)^2+(\t)^2)},{\x}) ;}
+\foreach \t in {-2,-1,...,2}
+	{\foreach \x in {0,0.5,...,1.9}
+		{\draw[thick, ->] ({\t},{2.5/(1+(\x)^2+(\t)^2)},{\x}) --
+			({\t+2*sin((\t+3*(\x-1))/6 r)},
+{2.5/(1+(\x)^2+(\t)^2) + 1/(1+(\x/2)^2+(\t/2)^2)},{\x+2*sin((\t+3*(\x-1))/6 r)})
+			 ; } }
+	 \draw (-1,3,0) node{$\overrightarrow{V}$} (2,0.5,-2) node{$S$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\thmGauss}{
+\begin{tikzpicture}[scale=0.6,font=\footnotesize]
+\fill[ball color=gray!10]
+	(0,0)+(90:1) arc (90:270:1) -- (3,-1) --
+	(3,0)+(270:1) arc (270:450:1) -- (0,1) --
+	cycle ;
+\draw[thick] (0,0)+(90:1) arc (90:270:1)
+	(3,-1) -- (0,-1) (3,1) -- (0,1)
+	(3,0)+(270:1) arc (270:450:1) ;
+\draw plot[domain=-1:1]	({0.3*(\x+1)*(1-\x)},\x) ;
+\draw[dashed] plot[domain=-1:1]	({-0.3*(\x+1)*(1-\x)},\x) ;
+\draw plot[domain=-1:1]	({3+0.3*(\x+1)*(1-\x)},\x) ;
+\draw[dashed] plot[domain=-1:1]	({3-0.3*(\x+1)*(1-\x)},\x) ;
+\draw plot[domain=-1:1]	({1+0.3*(\x+1)*(1-\x)},\x) ;
+\draw[dashed] plot[domain=-1:1]	({1-0.3*(\x+1)*(1-\x)},\x) ;
+\draw plot[domain=-1:1]	({2+0.3*(\x+1)*(1-\x)},\x) ;
+\draw[dashed] plot[domain=-1:1]	({2-0.3*(\x+1)*(1-\x)},\x) ;
+\draw (0,-1.5) node{$\Omega$} (2,-1.5) node{$S=\partial \Omega$} ;
+\end{tikzpicture}
+}
+
+
+\newcommand{\ExCone}{
+\begin{tikzpicture}[scale=.7,font=\footnotesize]
+\draw[->] (-1,0,0) -- (1.2,0,0) ;
+\draw[->] (0,0,0) -- (0,1.6,0) ;
+\draw[->] (0,0,-1) -- (0,0,1.2) ;
+\draw (1.2,0.3,0) node{$y$} (-0.3,1.6,0) node{$z$} (-0.3,0.2,1.2) node{$x$} ;
+\foreach \t in {0.2,0.4,...,1}
+	{\draw plot[domain=0:360, samples=50] ({\t*sin(\x)},{\t},{\t*cos(\x)}) ;}
+\foreach \t in {0,30,...,330}
+	{\draw plot[domain=0:1, samples=50] ({\x*sin(\t)},{\x},{\x*cos(\t)}) ;}
+\end{tikzpicture}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+

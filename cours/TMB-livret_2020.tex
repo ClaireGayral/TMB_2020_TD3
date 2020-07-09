@@ -1,0 +1,105 @@
+
+%
+%  TMB-diapo.tex  2020-2021  A. Mikelic & L. Dupaigne
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% compiler avec pdflatex pour produire les slides avec pauses
+% compiler [handout] pour produire un fichier sans pauses, à imprimer
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\documentclass[10pt]{beamer}
+\documentclass[8pt,handout]{beamer} % to get handout of the presentation
+
+%\usetheme[height=1cm,width=1.7cm]{}%{sidebar}	
+
+%	
+% packages 
+%
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext,mathabx,bbm}
+\usepackage{textcomp,multicol,multirow,enumitem}
+\usepackage{pict2e,graphicx}
+\usepackage{mathrsfs}
+
+
+\usepackage[utf8]{inputenc}
+ \usepackage[francais]{babel}  % bof 
+
+%\setlength{\textwidth}{17cm}
+%\setlength{\oddsidemargin}{-1.05cm}
+%\setlength{\evensidemargin}{-1.05cm}
+%
+% packages pour dessins avec tikzpicture
+%
+%\usepackage{pgf,tikz,pgfplots}
+%\pgfplotsset{compat=1.15}
+%\usepackage{mathrsfs}
+%\usetikzlibrary{arrows}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+
+\usepackage{TMB-dessins}
+
+%
+% macros
+%
+\usepackage{TMB-macros}
+%\usepackage[paperheight=11cm, paperwidth=8.5cm]{geometry}
+%
+% macros pour beamer 
+%
+\newcommand{\uv}{\mbox{\small $u$,$v$}}
+\newcommand{\xy}{\mbox{\small $x$,$y$}}
+\newcommand{\xxyy}{\mbox{\footnotesize $\sqrt{x^2\!+\!y^2}$}}
+
+%\AtBeginSubsection[]
+%{
+%  \begin{frame}<beamer>
+%    \frametitle{Plan}
+%    \tableofcontents[currentsection,currentsubsection]
+%  \end{frame}
+%}
+
+\setbeamertemplate{navigation symbols}{} 
+
+\usepackage[footheight=.5em]{beamerthemeboxes}
+\addfootboxtemplate{\color{white}}{\color{black}\hfill\large{\insertframenumber}\hspace{1em}\null} %/\inserttotalframenumber}\hspace{1em}\null}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%\include{TMB-diapo0} 
+% Titre, programme
+
+%\addfootboxtemplate{\color{white}}{\color{black}\hfill\large{\insertframenumber}\hspace{1em}\null} %/\inserttotalframenumber}\hspace{1em}\null}
+\include{TMB-diapo1} 
+% Ch.1 - Nombres complexe
+
+\include{TMB-diapo2}
+% Ch.2 - Fonctions
+
+%\include{TMB-diapo3}
+% Ch.3 - D\'eriv\'ees
+
+%\include{TMB-diapo4}
+% Ch.4 - Int\egrales
+
+%\include{TMB-diapo5}
+% Ch.5 - \'Equations diff\'erentielles
+
+%\include{TMB-diapo6}
+% Ch.6 - Espaces vectoriels
+
+%\include{TMB-diapo7}
+% Ch.7 - Applications lin\'eaires
+
+%\include{TMB-diapo8}
+% Ch.8 - G\'eom\'etrie cartesienne
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

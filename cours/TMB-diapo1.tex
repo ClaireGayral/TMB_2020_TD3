@@ -1,0 +1,1124 @@
+%
+%   TMB-diapo1.tex  2019-2020  A. Mikelic & L. M. Tine
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{1 Complexes}
+
+\begin{frame}%%[plain]
+%\only<1>{\addtocounter{framenumber}{-1}}  %\addtocounter{framenumber}{-1}
+\frametitle{\bf TMB -- Chapitre 1 \\ 
+Nombres complexes}
+
+Dans ce chapitre: 
+\begin{itemize}
+\item[1.] 
+Nombres complexes (coordonnées, opérations élémentaires). 
+
+\item[2.] 
+Changements de coordonnées. 
+
+\item[3.] 
+Polyn\^omes complexes (racines, factorisation). 
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\addfootboxtemplate{\color{white}}{\color{black}\hfill\large{\insertframenumber}\hspace{1em}\null}
+\begin{frame}
+\begin{center}
+1. Nombres complexes (coordonnées, opérations élémentaires). 
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{\bf Nombres complexes}
+\medskip 
+
+{\bf D\'efinition:} 
+Un {\bf nombre complexe} $\mathbf z$ est un point du plan cart\'esien. 
+\begin{center}
+\begin{picture}(100,40)(-50,-10)
+\put(-50,0){\vector(1,0){100}}
+\put(0,-10){\vector(0,1){40}}
+\put(25,10){\circle*{2}}
+\put(20,14){\scriptsize $z$}
+\put(25,0){\circle*{2}}
+\multiput(0,10)(4,0){6}{\line(1,0){2}}
+\put(0,10){\circle*{2}}
+\put(-6,10){}
+\multiput(25,0)(0,4){3}{\line(0,1){2}}
+\end{picture}
+\end{center}
+{\small $\C$ est l'{ensemble des nombres complexes} et on écrit 
+$z\in\C$ pour exprimer le fait que $z$ est un nombre complexe. }
+
+\pause
+
+\vspace*{1mm} 
+
+{\bf Exemples:}
+\begin{itemize}
+\item[$\bullet$]
+\framebox{${z= i}$ est le point dont l'abscisse vaut $x=0$ et l'ordonnée $y=1$.}
+\item[$\bullet$]
+Les {\bf nombres r\'eels} forment l'axe des abscisses. On les note $z=x, \text{ où $x\in\R$}$.
+\item[$\bullet$]
+Les {\bf nombres imaginaires} forment l'axe des ordonnées. Ce sont les multiples de $i$. On les note $z=iy, \text{ où $y\in\R$}$
+\item[$\bullet$]
+Tout nombre complexe s'écrit \framebox{${z=x+iy}$}, où $x\in\R$ et $y\in\R$ 
+\vspace*{1mm}
+\end{itemize}
+\begin{center}
+\begin{picture}(100,40)(-50,-10)
+%\thicklines
+\put(-50,0){\vector(1,0){100}}
+\put(0,-10){\vector(0,1){40}}
+\put(25,10){\circle*{2}}
+\put(20,14){\scriptsize $z=x+iy$}
+\put(25,0){\circle*{2}}
+\put(25,-6){\scriptsize $x$}
+\multiput(0,10)(4,0){6}{\line(1,0){2}}
+\put(0,10){\circle*{2}}
+\put(-6,10){\scriptsize $iy$}
+\put(0,20){\circle*{2}}
+\put(-6,20){\scriptsize $i$}
+\multiput(25,0)(0,4){3}{\line(0,1){2}}
+\end{picture}
+\end{center}
+{\small \it NB: sur ce dessin, $x\simeq1,1$ et $y\simeq0,5$.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}%[plain]
+%\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Coordonnées cartésiennes}
+\medskip 
+
+{\bf D\'efinition:} 
+Pour un nombre complexe $z=x+iy$, où $x\in\R$ et $y\in\R$, 
+\begin{itemize}
+\bitem
+$x$ est la {\bf partie r\'eelle} de $z$ et on écrit \framebox{\ $x=\Re(z)$} 
+\bitem
+$y$ est la {\bf partie imaginaire} de $z$ et on écrit \framebox{\ $y=\Im(z)$} 
+%\bitem
+%{\bf conjugu\'e complexe} le nombre complexe\
+%\framebox{\ $\overline{z}=x-iy$\ } 
+\bitem
+$(x,y)$ sont appelées les {\bf coordonnées cartésiennes} de $z$.
+\end{itemize}
+\vspace*{3mm}
+
+\pause
+{\small 
+{\bf Exemple : } Pour $z=3-2i$, on a $\Re(z)=3$, $\Im(z)=-2$ et $(3,-2)$ sont les coordonnées cartésiennes de $z$.}
+\vspace*{4mm}
+
+{\bf Application: }
+le {\bf nombre complexe conjugué} de $z$ est défini par \framebox{\ $\overline{z}=x-iy$\ }.
+
+$\overline z$ est donc le point symétrique de $z$ par rapport à l'axe des abscisses.
+\vspace*{1mm}
+\begin{center}
+\begin{picture}(100,40)(-50,-10)
+%\thicklines
+\put(-50,0){\vector(1,0){100}}
+\put(0,-10){\vector(0,1){40}}
+\put(25,10){\circle*{2}}
+\put(20,14){\scriptsize $z=x+iy$}
+\put(25,-10){\circle*{2}}
+\put(20,-14){\scriptsize $\overline{z}=x-iy$}
+%\multiput(0,10)(4,0){6}{\line(1,0){2}}
+\multiput(25,-10)(0,7){3}{\line(0,1){2}}
+\end{picture}
+\end{center}
+{\small 
+{\bf Exemple : } Pour $z=2+i$, on a $\overline{z}=2-i$. Que vaut le conjugué de ${\overline z}$ ?}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}%[plain]
+%\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Coordonnées polaires}
+\medskip 
+
+Outre les coordonnées cartésiennes, on peut identifier un nombre complexe $z$ comme suit.
+
+\medskip
+
+{\bf D\'efinition:} 
+\begin{itemize}
+\bitem
+Le {\bf module} de $z$ est la distance de $z$ à l'origine, notée \framebox{${\rho=\left|z\right|}$}. %\vspace*{1mm}
+\bitem
+{\bf Un argument} de $z$ est un angle\footnote{orienté dans le sens trigonométrique} $\theta$ formé par la demi-droite $\R_+$ et la demi-droite $[Oz)$.
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+    %% axis %%
+    \draw[->,>=stealth'] (-1,0) -> (3.5,0)  node[right]{\scriptsize $\R_+$};
+    \draw[->,>=stealth'] (0,-1) -> (0,2.5) ;
+    \draw (0,0) circle (0.05)[fill=black] node[below left] {\scriptsize $O$};
+
+    %% dot  z %% :
+    \draw (30:3) circle(0.05)[fill=black] node[above]{\scriptsize $z=\rho e^{i\theta}$} ;
+    \draw (0,0) -> (30:3) node[midway, above]{\scriptsize $\rho$};
+    
+    %% theta arc %%
+
+    \draw[->,densely dotted] (0:1) arc[radius=1, start angle=0, end angle=30];
+    \draw (20:1) node[right] {\scriptsize $\theta$} ;
+\end{tikzpicture}
+\end{center}
+%\begin{center}
+%\begin{picture}(80,50)(-20,-10)
+%%\thicklines
+%\put(-20,0){\vector(1,0){80}}
+%\put(0,-10){\vector(0,1){50}}
+%\put(0,0){\circle*{2}}
+%\put(-6,-6){\scriptsize $O$}
+%\put(40,20){\circle*{2}}
+%\put(63,-2){\scriptsize $\R_+$}
+%\put(30,24){\scriptsize $z=\rho e^{i\theta}$}
+%\put(0,0){\line(2,1){40}}
+%\put(18,13){\scriptsize $\rho$}
+%\multiput(20,0)(-1,2){4}{\line(-2,1){1}}
+%\put(20,3){\scriptsize $\theta$}
+%\end{picture}
+%\end{center}
+\bitem 
+{\bf L'argument principal} de $z$ est l'unique argument de $z$ appartenant à $]-\pi,\pi]$. 
+
+On note \framebox{${\theta=\arg(z)\in]-\pi,\pi]}$}.
+\bitem
+$(\rho,\theta)$ sont appelées les {\bf coordonnées polaires} de $z$ et on note \framebox{$z=\rho e^{i\theta}$}.
+\end{itemize}
+
+{\small 
+{\bf Exemple : } 
+pour $z=i$, $\vert i\vert=1$, $\arg(i)=\pi/2$  et $\theta=5\pi/2$ est un autre argument de $i$. Donc, \framebox{$i= e^{i\frac\pi2}$}$=e^{i\frac{5\pi}2}$
+%\begin{center}
+%\begin{picture}(80,30)(-20,-10)
+%%\thicklines
+%\put(-20,0){\vector(1,0){80}}
+%\put(0,-10){\vector(0,1){50}}
+%\put(0,0){\circle*{2}}
+%\put(-6,-6){\scriptsize $O$}
+%\put(0,10){\circle*{2}}
+%\put(-5,10){\scriptsize $i$}
+%\multiput(10,0)(-2,2){4}{\line(-2,1){1}}
+%\put(8,4){\scriptsize $\theta=\pi/2$ ou $5\pi/2$ ou ...}
+%\put(-25,5){\scriptsize $\rho=1$}
+%\end{picture}
+%\end{center}
+\medskip
+
+{\bf Exercice : } montrer que $\boxed{-1=e^{i\pi}}$.
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\bf Addition et dilatation des nombres complexes}
+\medskip 
+
+{\bf D\'efinition:} 
+On {\bf ajoute} deux nombres complexes à l'aide de leurs coordonnées cartésiennes: si $z=x+iy$ et $z'=x'+iy'$, alors
+$$
+\boxed{z+z' = (x+x')+i(y+y')}
+$$
+{\small On a de même $z-z' = (x-x')+i(y-y')$.}
+
+{\bf Exemple: $z+\overline z = (x+iy) + (x-iy) = 2x$.}
+\vspace*{2mm}
+
+{\small {\bf Exercice (règle du parallélogramme):} représenter dans le plan cartésien $z=1+2i$, $z'=2+i$, $z''=z+z'$. Que pensez-vous du quadrilatère de sommets $O,z,z''$ et $z'$ ?}
+
+\
+
+{\bf D\'efinition:} 
+On {\bf dilate} un nombre complexe en coordonnées cartésiennes: si $z=x+iy$ et $\lambda\in\R$, alors
+$$\boxed{
+\lambda\,z = (\lambda\,x)+i(\lambda\,y)
+}
+$$
+{\small ou en coordonnées polaires {\it mais il faut faire attention au signe de $\lambda$}. Si $z=\rho e^{i\theta}$ et  
+$$\boxed{
+\text{si $\lambda\ge 0$, }\quad\lambda\,z = (\lambda\rho)e^{i\theta}
+}
+$$}
+\vspace*{1mm}
+
+{\small {\bf Exercice:} Soit $\lambda<0$ et $z\neq0$. L'expression $(\lambda\rho)e^{i\theta}$ n'est pas une écriture en coordonnées polaires car $\lambda\rho<0$ ne peut être une distance. Vérifier qu'en revanche $\lambda z = (\vert\lambda\vert\rho)e^{i(\theta+\pi)}$.}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\bf Multiplication des nombres complexes}
+\medskip 
+
+{\bf D\'efinition:} 
+On {\bf multiplie} deux nombres complexes à l'aide de leurs coordonnées polaires: si $z=\rho e^{i\theta}$ et $z'=\rho'e^{i\theta'}$, alors
+$$
+\boxed{zz' = \rho e^{i\theta}\cdot \rho'e^{i\theta'}=(\rho\rho')e^{i(\theta+\theta')}}
+$$
+{\small On a de même, quand $z'\neq0$, $\frac{z}{z'} = \frac{\rho e^{i\theta}}{\rho'e^{i\theta'}}=\frac{\rho}{\rho'}e^{i(\theta-\theta')}$.}
+\medskip
+
+
+{\bf Théorème : }$$\boxed{i^2=-1}$$
+
+\medskip
+{\small {\bf Démonstration: $i^2=i\cdot i = e^{i\pi/2}\cdot e^{i\pi/2}=e^{i\pi}=-1$.}}
+\medskip
+
+{\small {\bf Exercice:} vérifiez le théorème graphiquement en représentant $i=e^{i\pi/2}$ et $i^2=e^{i\pi}$.}
+\medskip
+
+{\bf Application (à retenir):} grâce au théorème, on peut aussi multiplier les nombres complexes en coordonnées cartésiennes:
+\begin{align*}
+z\cdot z' &= (x+iy)(x'+iy') \\
+&= xx' + x(iy') + (iy)x' + (iy)(iy') \\
+&= xx' + ixy' + ix'y - yy' \\
+&= (xx' - yy') + i(xy'+x'y)
+\end{align*}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}%[plain]
+%\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Retour sur la conjugaison}
+{\bf Rappel:} Si $z=x+iy$, où $x\in\R$ et $y\in\R$, alors $\boxed{\overline z=x-iy}$.
+\medskip 
+
+{\bf Propri\'et\'es (conjugaison et somme)} 
+Soient $z$ et $z'$ deux nombres complexes. Alors,
+\begin{itemize}
+\bitem 
+$\overline{z +z'}=\overline{z} +\overline{z'}$ 
+\vspace*{2mm}
+\bitem
+$x=\boxed{\Re(z)=\frac{z+\overline{z}}{2}}$ \ et\quad   
+$y=\boxed{\Im(z)=\frac{z-\overline{z}}{2i}}$
+\vspace*{2mm}
+\bitem 
+{\ $z=\overline{z}$ si et seulement si $z$ est réel. }
+
+\end{itemize}
+
+{\bf Propri\'et\'es (conjugaison et produit)} 
+\begin{itemize} 
+\bitem 
+$\overline{z z'}=\overline{z} \;\overline{z'}$ 
+
+\bitem Si $z=\rho e^{i\theta}$, alors $\boxed{\overline z=\rho e^{-i\theta}}$
+
+\bitem
+$
+\boxed{
+\begin{aligned}
+z\overline z &= (x+iy)(x-iy)=x^2+y^2\\
+&=(\rho e^{i\theta})(\rho e^{-i\theta})=\rho^2
+\end{aligned}
+}
+$
+\end{itemize}
+
+\medskip
+
+{\small{\bf Application:} Exprimer $\frac{2}{2-i}$ en coordonnées cartésiennes.
+
+{\it Idée:} On multiplie en haut et en bas par  $\overline{2-i}$ (pour appliquer la règle du $z\overline z$) :
+$$
+\frac{2}{2-i} = \frac{2(2+i)}{(2-i)(2+i)} = \frac{4+2i}{2^2+1^2} = \frac45+\frac 25i
+$$
+\medskip
+
+{\bf Exercice:} 
+\begin{itemize}
+\item[-] vérifier graphiquement que ${\overline z=\rho e^{-i\theta}}$
+\item[-] à l'aide des coordonnées polaires, vérifier que si $z'\neq0$, alors $\overline{z/z'}=\overline{z}/\overline{z'}$. 
+\item[-] montrer que $z=-\overline{z}$ si et seulement si $z$ est imaginaire.
+\end{itemize}}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\bf Exemples: op\'erations en coordonnées cartésiennes}
+\medskip 
+
+{\bf Exemples:} 
+Soient\quad $z=2\,(3+2i)$\quad et \quad $z'=5-i$. Alors:
+$$
+z+z' = (6+4i) + (5-i) = 11+3i 
+\vspace*{-2mm}
+$$
+
+\pause
+$$
+z-z' = (6+4i) - (5-i) = 1+5i  
+\vspace*{-2mm}
+$$
+
+\pause
+\begin{align*}
+zz' & = 2\,(3+2i)(5-i) \\ 
+& = 2\,(15-3i+10i-2i^2) \\ 
+& = 2\,\big((15+2) + (-3+10)i\big) \\ 
+& = 2\,(17+7i) = 34+14i 
+\vspace*{-2mm}
+\end{align*}
+
+\pause
+\begin{align*}
+\frac{z}{z'} & = \frac{2\,(3+2i)}{5-i} 
+=  \frac{2\,(3+2i)(5+i)}{25+1} \\ 
+& = \frac{2\,(15-2 + 10i+3i)}{26} \\ 
+& = \frac{13}{13} + \frac{13}{13}i 
+= 1 + i
+\end{align*}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{frame}
+%\frametitle{\bf Exemples: op\'erations en coordonnées polaires}
+%\medskip 
+%
+%{\bf Exemple:} 
+%Calculer $(z+\overline{z})(z^2+\overline{z}^2)$ en coordonnées polaires.
+%
+%\begin{align*}
+%(z+\overline{z})(z^2+\overline{z}^2) &=z^3+ z\overline z^2+ \overline z z^2+ \overline{z}^3\\
+%&=(\rho e^{i\theta})^3+(\rho e^{i\theta})(\rho e^{-i\theta})^2 + (\rho e^{-i\theta})(\rho e^{i\theta})^2+ (\rho e^{-i\theta})^3\\
+%&=\rho^3e^{i3\theta}+\rho^3e^{-i\theta}+\rho^3e^{i\theta}+\rho^3e^{-i3\theta}\\
+%&=
+%\end{align*}
+%
+%
+%\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Rep. polaire} 
+
+\begin{frame}
+\begin{center}
+2. Changements de coordonnées. 
+\end{center}
+\end{frame}
+
+
+\begin{frame}%[plain]
+%%\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Des coordonnées polaires aux coordonnées cartésiennes}
+\medskip 
+\qquad
+\begin{center}
+\begin{picture}(80,50)(-20,-10)
+%\thicklines
+\put(-20,0){\vector(1,0){80}}
+\put(0,-10){\vector(0,1){50}}
+\put(40,20){\circle*{2}}
+\put(0,0){\circle*{2}}
+\put(-5,-5){\scriptsize $O$}
+\put(36,24){\scriptsize $z=x+iy=\rho e^{i\theta}$}
+\put(40,0){\circle*{2}}
+\put(40,-6){\scriptsize $x$}
+\multiput(0,20)(4,0){9}{\line(1,0){2}}
+\put(0,20){\circle*{2}}
+\put(-6,20){\scriptsize $y$}
+\multiput(40,0)(0,4){5}{\line(0,1){2}}
+\put(0,0){\line(2,1){40}}
+\put(18,13){\scriptsize $\rho$}
+\multiput(20,0)(-1,2){4}{\line(-2,1){1}}
+\put(20,3){\scriptsize $\theta$}
+\end{picture}
+\end{center}
+
+%\vspace*{1mm}
+
+%\pause
+{\bf Propri\'et\'e:} Soit $z=x+iy=\rho e^{i\theta}$ un nombre complexe. 
+
+Par définition du sinus et du cosinus, on a
+\framebox{\ $x =\rho \cos{\theta}$\ } \quad et \quad 
+\framebox{\ $y = \rho \sin{\theta}$\ }
+
+\medskip
+
+{\small On en déduit le résultat suivant.}
+
+
+{\bf Théorème:} 
+$$\boxed{e^{i\theta} = \cos{\theta}+i\sin{\theta}}$$ 
+et donc
+$$\boxed{\rho e^{i\theta} = \rho\cos{\theta}+i\rho\sin{\theta}}$$
+\medskip
+{\small {\bf Démonstration:} Pour tout nombre complexe $z=x+iy=\rho e^{i\theta}$, on a vu que $x =\rho \cos{\theta}$ et $y = \rho \sin{\theta}$. Choisissons $\rho=1$ et identifions parties réelles et imaginaires.}
+\medskip
+
+
+
+{\bf Exemple de conversion en coordonnées cartésiennes:} 
+$$2e^{i\pi/4}= 2\cos(\pi/4)+2i\sin(\pi/4) = \sqrt 2+i\sqrt 2$$ 
+
+{\bf Corollaire:} 
+$$
+\boxed{\cos(\theta)=\frac{e^{i\theta}+e^{-i\theta}}2,\quad \sin(\theta)=\frac{e^{i\theta}-e^{-i\theta}}{2i}}
+$$
+
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}%[plain]
+%%\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Des coordonnées cartésiennes aux coordonnées polaires}
+\medskip 
+\qquad
+\begin{center}
+\begin{picture}(80,50)(-20,-10)
+%\thicklines
+\put(-20,0){\vector(1,0){80}}
+\put(0,-10){\vector(0,1){50}}
+\put(40,20){\circle*{2}}
+\put(0,0){\circle*{2}}
+\put(-5,-5){\scriptsize $O$}
+\put(36,24){\scriptsize $z=x+iy=\rho e^{i\theta}$}
+\put(40,0){\circle*{2}}
+\put(40,-6){\scriptsize $x$}
+\multiput(0,20)(4,0){9}{\line(1,0){2}}
+\put(0,20){\circle*{2}}
+\put(-6,20){\scriptsize $y$}
+\multiput(40,0)(0,4){5}{\line(0,1){2}}
+\put(0,0){\line(2,1){40}}
+\put(18,13){\scriptsize $\rho$}
+\multiput(20,0)(-1,2){4}{\line(-2,1){1}}
+\put(20,3){\scriptsize $\theta$}
+\end{picture}
+\end{center}
+
+%\vspace*{1mm}
+
+%\pause
+{\bf Propri\'et\'e:} Soit $z=x+iy=\rho e^{i\theta}$ un nombre complexe non nul. 
+
+Par le théorème de Pythagore, 
+$$\boxed{\rho^2=x^2+y^2}$$
+{\small\it NB : cette équation donne $\rho$ de manière implicite: il faut encore prendre la racine carrée.}
+
+
+Une fois connu $\rho$, on détermine un argument $\theta$ de $z$ à l'aide des relations
+$$\boxed{\cos{\theta}=\frac x\rho \text{ et } \sin{\theta}=\frac y\rho}$$ 
+{\small\it NB : ces équations donnent $\theta$ de manière implicite: il faut encore les résoudre (souvent de tête).}
+
+\medskip
+
+\
+
+{\bf Exemple de conversion en coordonnées polaires:} 
+\small
+Si $z=\sqrt 2+i\sqrt 2$, alors $\rho^2 = (\sqrt2)^2+(\sqrt2)^2=4$ d'où $\rho=\sqrt 4=2$ et 
+$$\cos{\theta}=\frac{\sqrt 2}2 \text{ et } \sin{\theta}=\frac{\sqrt 2}2$$ 
+Ainsi, $\theta=\pi/4$ est un argument de $z$ et donc $z=\rho e^{i\theta}=2e^{i\pi/4}$.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}
+\frametitle{\bf Exercice: conversion en coordonnées polaires} 
+\medskip 
+
+{\bf Exercice:}
+{\it Calculer le module et un argument des nombres complexes suivants.}
+\vspace*{1mm}
+
+\begin{itemize}
+\bitem 
+$z=-1-i$
+\end{itemize}
+\vspace*{2mm}
+
+\pause
+{\bf Solution:}
+Le module vérifie $\left|z\right|^2= {(-1)^2+(-1)^2}$. Donc $\vert z\vert=\sqrt{2}$.
+Un argument est un angle $\theta$ tel que 
+$$
+\cos{\theta}=\dfrac{-1}{\sqrt{2}} \quad\mbox{et}\quad 
+\sin{\theta}=\dfrac{-1}{\sqrt{2}}. 
+$$
+Ainsi, $\theta = \dfrac{5\pi}{4}$ est un argument de $z$. Et $z=\sqrt 2e^{i\pi/4}$
+\vspace*{3mm}
+
+\pause
+\begin{itemize}
+\bitem 
+$z=5-3i$
+\end{itemize}
+\vspace*{2mm}
+
+\pause
+{\bf Solution:}
+Le module vérifie\quad 
+$\left|z\right|^2= {5^2+3^2}={25+9}={34}$. Donc $\vert z\vert=\sqrt{34}$.
+Un argument est un angle $\theta$ tel que 
+$$
+\cos{\theta}=\dfrac{5}{\sqrt{34}} \quad\mbox{et}\quad 
+\sin{\theta}=\dfrac{-3}{\sqrt{34}}. 
+$$
+De cet angle on peut dire (sans calculette) que  $\tan\theta=-3/5$ et  $z=\sqrt{34}e^{i\theta}$.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}%[plain]
+%%\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Propri\'et\'es du module}
+\medskip 
+
+Soit $z=x+iy\in \C$. 
+Le {\bf module} de $z$ est donc donné par \framebox{\ $|z|^2= {x^2+y^2}$\ }. 
+\vspace*{1mm}
+
+{\bf Propri\'et\'es:} 
+\begin{itemize}
+\bitem {\ $|z|\geq 0$\ }\quad 
+et\quad {\ $|z|=0$ si et seulement si $z=0$\ } 
+\vspace*{2mm}
+
+\pause
+\bitem si $z=x\in{\mathbb R}$, alors $|z|=\vert x\vert$ est la valeur absolue 
+du r\'eel $x$.
+\vspace*{2mm}
+
+
+\pause
+\bitem \framebox{\ $z\overline{z} = |z|^2$\ } \quad 
+%par cons\'equent\quad  
+%\framebox{\ $\dfrac{1}{z}=\dfrac{\overline{z}}{|z|^2}$\ } si $z\neq0$ 
+\vspace*{2mm}
+
+\pause
+\bitem \framebox{\ $|z_1 z_2|=|z_1||z_2|$\ } \quad 
+%et\quad \framebox{\ $\left| \dfrac{1}{z}\right|=\dfrac{1}{|z|}$\ } 
+%i $z \neq 0$
+\vspace*{2mm}
+
+\pause
+\bitem \framebox{\ $|z_1 +z_2|\leq |z_1|+|z_2|$\ } 
+\vspace*{1mm}
+
+et $|z_1 +z_2|= |z_1|+|z_2|$ si et seulement si 
+$z_1=\lambda\,z_2$ ou $\lambda\in\R_{+}$ 
+\vspace*{2mm}
+
+\pause
+%\bitem $|z_1\!+\!z_2|\geq ||z_1|\!-\!|z_2||$, \quad i.e.
+%$\left\{\begin{array}{l}
+%\mbox{$|z_1\!+\!z_2|\geq |z_1|\!-\!|z_2|$ si $|z_1| \geq |z_2|$}, \\ 
+%\mbox{$|z_1\!+\!z_2|\geq |z_2|\!-\!|z_1|$ si $|z_1|\leq |z_2|$}. 
+%\end{array}\right.$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\bf Le cercle unité} 
+\medskip 
+
+\begin{center}
+\raisebox{-.6\height}{
+\begin{picture}(100,100)(-50,-50)
+%\thicklines
+\put(-50,0){\vector(1,0){100}}
+\put(0,-50){\vector(0,1){100}}
+\put(0,0){\circle{60}}
+\put(30,0){\circle*{2}}
+\put(31,-6){\scriptsize $1$}
+\put(15,25.98){\circle*{2}}
+\put(13,29){$e^{i\theta}$}
+\put(15,0){\circle*{2}}
+\put(7,-6){\scriptsize $\cos\theta$}
+\multiput(0,25.98)(4,0){4}{\line(1,0){2}}
+\put(0,25.98){\circle*{2}}
+\put(-15,22){\scriptsize $\sin\theta$}
+\multiput(15,0)(0,4){7}{\line(0,1){2}}
+\end{picture}}
+\end{center}
+{\bf Propriet\'es:} 
+\begin{itemize}
+
+\bitem 
+Le {\bf cercle unité} a pour équation polaire $\rho=1$ et pour équation cartésienne $x^2+y^2=1$.
+\bitem
+\framebox{Le { cercle unité} est composé des nombres $z=e^{i\theta}=\cos\theta+i\sin\theta$}, où $\theta\in\R$ 
+\bitem 
+\parbox[t]{5.5cm}{
+$e^{i\theta}$ est {\bf p\'eriodique} de {\bf p\'eriode $2\pi$}, i.e.}
+\quad  
+\parbox[t]{3cm}{
+\framebox{\ $e^{i(\theta+2k\pi )}=e^{i\theta}$\ } \vspace*{1mm} \\ 
+\quad pour tout $k\in\Z$}
+\vspace*{2mm}
+
+\pause
+\bitem 
+$e^{i\theta}$ est un nombre complexe {\bf unitaire}, i.e.\ 
+\framebox{\ $|e^{i\theta}|=1$\ }
+\vspace*{2mm}
+ 
+\end{itemize}
+
+{\small
+{\bf Exemples:}\quad 
+$e^{i 0}=e^{i 2\pi}=1$,\quad $e^{i \frac{\pi}{2}}=i$,\quad 
+$e^{i \pi}=-1$,\quad $e^{i \frac{3\pi}{2}}=-i$. }
+\vspace*{3mm}
+
+{\bf Corollaire:} pour tout angle $\theta\in\R$, $\boxed{\cos^2(\theta) + \sin^2(\theta) = 1.}$ 
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\begin{center}
+3. Polynômes complexes (racines, factorisation). 
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}%[plain]
+%\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Puissances de nombres complexes} 
+\medskip 
+
+{\bf Rappel:} 
+Tout nombre complexe $z$ s'écrit sous
+{\bf forme polaire}\ \framebox{\ $z=\rho\ e^{i\theta}$\ }.
+\vspace*{2mm}
+
+\quad {\small De plus,\quad 
+$z = x+iy = \rho \cos{\theta} + i \rho \sin{\theta} 
+=\rho(\cos{\theta} + i \sin{\theta}) = \rho\ e^{i\theta}$.} 
+\vspace*{3mm}
+
+\pause
+{\bf Calcul des puissances de $z$} 
+
+\begin{itemize}
+\bitem 
+{puissance enti\`ere positive}: $\boxed{z^n =(\rho e^{i\theta})^n=\rho^n e^{in\theta}},$\ 
+o\`u $n\in\N$
+\vspace*{1.5mm}
+
+\pause
+\bitem 
+{ puissance enti\`ere négative}: $\dfrac{1}{z^n}= z^{-n} =  \rho^{-n} e^{-i n\theta}
+=\dfrac{1}{\rho^n} e^{-in\theta}$ si $\rho\neq 0$, 
+\vspace*{1.5mm}
+
+\pause
+\bitem 
+\parbox[t]{3cm}{{\bf formule de Moivre}:}
+\quad 
+\parbox[t]{6.4cm}{
+$(e^{i\theta})^n=e^{in\theta}$\quad pour tout $n\in\Z$, donc 
+\vspace*{2mm} \\ 
+$\boxed{(\cos \theta +i \sin \theta)^n =\cos (n\theta) +i \sin (n\theta)}$} 
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\bf Racines deuxièmes et troisièmes d'un nombre complexe} 
+\medskip 
+
+{\bf Définition:} On appelle {\bf racine deuxième} du nombre complexe $z$ tout nombre $w$ tel que
+$$
+w^2=z
+$$
+{\bf Exemple:} Soit $z=-1$. 
+
+Comme $-1=e^{i\pi}$, 
+$$w_1=e^{i\pi/2}=i \quad \text{est racine deuxième de $z=-1$.}$$ 
+Comme $-1=e^{i(\pi+2\pi)}=e^{i3\pi}$, 
+$$w_2=e^{i3\pi/2}=-i\quad \text{est aussi racine deuxième de $z=-1$.}$$
+
+{\bf Exercice:} Dans le cas particulier où $z=x\in\R_+$, les racines deuxièmes de $z$ sont les racines carrées de $x$: $w_1=\sqrt x$ et $w_2=-\sqrt x$. Que sont les racines deuxièmes de $z=x\in\R_{-}$ ?
+
+\
+
+{\bf Définition:} On appelle {\bf racine troisième} du nombre complexe $z$ tout nombre $w$ tel que
+$$
+w^3=z
+$$
+{\bf Exercice:} Vérifier que $w_1=e^{i\pi/3}$, $w_2=e^{i\pi}=-1$ et $w_3=e^{i5\pi/3}$ sont racines troisièmes de $z=-1$.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+\frametitle{\bf Racines deuxièmes et troisièmes d'un nombre complexe} 
+\medskip 
+
+{\bf Théorème:} 
+\begin{itemize}
+\bitem
+Un nombre complexe $z=\rho e^{i\theta}$ non nul a toujours \underline{deux} {racines deuxièmes} 
+$w_1$ et $w_2$.
+Comme $\rho e^{i\theta}=\rho e^{i(\theta+2\pi)}$, les  racines deuxièmes de $z$ sont
+$$\boxed{w_1={\rho^{\frac12}}\ e^{i\frac{\theta}{2}},\quad\text{et}\quad w_2=\rho^{\frac12}\ e^{i\left(\frac{\theta}{2}+\pi\right)} }.$$
+et on a $\boxed{w_2=-w_1}$.
+
+\hfill
+\raisebox{-.6\height}{
+\begin{picture}(75,50)(-45,-25)
+\setlength{\unitlength}{.6pt}
+\put(-50,0){\vector(1,0){100}}
+\put(0,-50){\vector(0,1){100}}
+\put(0,0){\circle{60}}
+\put(30,0){\circle*{4}}
+\put(31,-13){\scriptsize $\sqrt{\rho}$}
+\put(15,25.98){\circle*{4}}
+\put(13,29){\scriptsize $w_1$}
+\put(-15,-25.98){\circle*{4}}
+\put(-25,-38){\scriptsize $w_2$}
+\put(-15,-25.98){\line(1,1.73){30}}
+\put(12,6){\scriptsize $\frac{\theta}{2}$}
+\end{picture}}
+\vspace*{3mm}
+
+\pause
+\bitem
+Un nombre complexe $z=\rho e^{i\theta}$ non nul a toujours \underline{trois} { racines troisièmes} 
+$w_1$, $w_2$ et $w_3$.
+$$\boxed{w_1=\rho^{1/3} e^{i\frac{\theta}{3}}, \quad w_2=\rho^{1/3} e^{i(\frac{\theta}{3}+\frac{2\pi}{3})}\quad\text{et}\quad w_3=\rho^{1/3} e^{i(\frac{\theta}{3}+\frac{4\pi}{3})} }.$$
+Si une racine troisième est r\'eelle, les deux autres sont conjugu\'ees 
+complexes.  
+\hfill
+\parbox[t]{5.7cm}{
+{\small 
+{\bf Exemple:} Si $\theta=0$. Alors\ $w_1=\sqrt[3]{\rho}$ et
+$$ 
+w_2=\sqrt[3]{\rho}\ e^{i\frac{2\pi}{3}}\quad \mbox{et}\quad  
+w_3=\sqrt[3]{\rho}\ e^{i\frac{4\pi}{3}}=\overline{w_2}
+$$}}
+\quad
+\raisebox{-.6\height}{
+\begin{picture}(100,50)(-50,-25)
+\setlength{\unitlength}{.6pt}
+\put(-50,0){\vector(1,0){100}}
+\put(0,-50){\vector(0,1){100}}
+\put(0,0){\circle{60}}
+\put(30,0){\circle*{4}}
+\put(31,-13){\scriptsize $w_1$}
+\put(-15,25.98){\circle*{4}}
+\put(-25,32){\scriptsize $w_2$}
+\put(-15,-25.98){\circle*{4}}
+\put(-25,-38){\scriptsize $w_3$}
+\put(-15,-25.98){\line(0,1){50}}
+\put(-15,-25.98){\line(1.73,1){47}}
+\put(-15,25.98){\line(1.73,-1){47}}
+\end{picture}}
+
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}%[plain]
+%\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Exercice: racines deuxièmes de nombres complexes} 
+\medskip 
+
+{\bf Exercice:}
+{\it Calculer les racines deuxièmes des complexes suivants:} 
+\vspace*{2mm}
+
+\begin{itemize}
+\bitem 
+$z=1+i\sqrt{3}$ 
+\end{itemize}
+
+\pause
+{\bf Solution:} 
+On \'ecrit $z$ en coordonnées polaires: $z=1+i\sqrt{3}=2 e^{i\frac{\pi}{3}}$. 
+Alors,
+\begin{align*}
+w_1 & =\sqrt{2}\ e^{i\frac{\pi}{6}}=\frac{\sqrt{2}}{2}(\sqrt{3}+i) \\
+w_2 & =\sqrt{2}\ e^{i\left(\frac{\pi}{6}+\pi\right)}
+=-\frac{\sqrt{2}}{2}(\sqrt{3}+i)
+\end{align*} 
+
+\pause
+\begin{itemize}
+\bitem 
+$z=15-8i$
+\end{itemize}
+
+\pause
+{\bf Solution:} 
+Comme on ne connait pas la forme polaire de $z$, on revient à la définition d'une racine deuxième en cherchant 
+$w=x+iy$ tel que $w^2=z$. Soit
+$$(x+iy)^2=(x^2-y^2)+2xyi =15-8i$$ 
+
+ Astuce: pour résoudre on commence par calculer $\vert w\vert^2=\vert z\vert$.
+$$\left|w^2\right|=x^2+y^2=\left|z\right|=\sqrt{225+64}=17.$$
+De sorte que
+\begin{align*}
+& \left\{\begin{array}{l} 
+x^2-y^2 = 15 \\ 2xy = -8 \\ x^2+y^2 = 17 
+\end{array}\right. 
+\ \Leftrightarrow\
+\left\{\begin{array}{l} 
+y^2 = 1 \\ x = -\frac{4}{y} 
+\end{array}\right. 
+\ \Leftrightarrow\ 
+\left\{\begin{array}{l} 
+y = 1 \\ x = -4
+\end{array}\right. 
+\mbox{ou}
+\left\{\begin{array}{l} 
+y = -1 \\ x = 4
+\end{array}\right. 
+\end{align*}
+On a donc\quad $w_1=-4+i$\quad et\quad $w_2=4-i$. 
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Polyn\^omes} 
+
+\begin{frame}
+\frametitle{\bf Polyn\^omes complexes et racines}
+\medskip 
+
+{\bf D\'efinition:} 
+Un {\bf polyn\^ome complexe} est une expression de la forme 
+$$P(z)=a_n z^n + a_{n-1}z^{n-1} +\cdots+ a_1 z + a_0,$$ 
+où les nombres $a_0, a_1,...,a_n$ sont des paramètres complexes et $z$ est une variable complexe. 
+\vspace*{1mm} 
+
+Le {\bf degr\'e} de $P(z)$ est le plus grand entier $k$ tel que 
+$a_k\neq 0$. 
+\vspace*{2mm} 
+
+{\small
+{\bf Exemple:}
+\quad
+\parbox[t]{7cm}{
+$z^3+(5-i)z$\quad est un polyn\^ome de degr\'e $3$ 
+%$i\sin(X^3)+5X$\quad n'est pas un polyn\^ome }
+}}
+
+\
+
+{\bf D\'efinition:} 
+Une {\bf racine} d'un polyn\^ome complexe $P(z)$ est un nombre 
+complexe $z$ tel que $$P(z)=0$$ 
+\vspace*{1mm} 
+
+{\small
+{\bf Exemple:} 
+\quad $z=i$\ et\ $z=-i$\ sont racines de $P(z)=z^2\!+\!1$.
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}%[plain]
+%\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Racines des polyn\^omes} 
+\medskip 
+
+\vspace*{1mm} 
+
+\pause
+{\bf Lemme:} 
+Si $z_1$ est une racine de $P(z)$, alors il existe un entier $m_1\geq 1$ 
+et un polyn\^ome $Q(z)$ tels que 
+$$
+P(z)=(z-z_1)^{m_1} Q(z)\quad\mbox{et}\quad Q(z_1)\neq 0.
+$$ 
+On appelle $m_1$ la {\bf multiplicit\'e} de la racine $z_1$. 
+\vspace*{1mm} 
+
+\
+
+\pause
+{\bf Th\'eor\`eme de d'Alembert-Gauss:} 
+Tout polyn\^ome complexe $P(z)$ de degr\'e $n$ peut s'écrire sous la forme 
+$$ 
+P(z) = a_n (z-z_1)^{m_1} \cdots (z-z_k)^{m_k} 
+$$
+o\`u $a_n\in\C$, $z_1,...,z_k$ sont les racines distinctes de $P(z)$ 
+et\ où $m_1+\cdots+m_k=n$. 
+\vspace*{1mm} 
+
+\
+
+\pause
+{Par cons\'equent, {\bf tout polyn\^ome complexe de degr\'e $n$ admet $n$ racines} (qui ne sont pas forcément distinctes).}  
+
+\
+
+{\bf Exemple:} Le polynôme $P(z)=z^2+1$ a pour racines $z_1=i$ et $z_2=-i$. $P$ est de degré $2$, ce qui force $m_1=m_2=1$. Enfin, par définition de $P(z)$, $a_2=1$. Par le théorème,  on conclut que $$z^2+1= (z-i)(z+i)$$
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\bf Racines d'un polyn\^ome complexe de degr\'e $2$} 
+\medskip 
+
+{\bf Proposition:} 
+Les solutions de l'\'equation\ \framebox{\ $az^2+bz+c=0$\ } 
+\`a coefficients complexes sont 
+$$
+\mbox{\framebox{\ $z = \dfrac{-b \pm \delta}{2a} \in \C$\ }}
+$$ 
+o\`u $\delta\in \C$ est une racine deuxième du discriminant 
+$\Delta = b^2 - 4ac \in \C$, c'est-\`a-dire un nombre complexe tel que 
+$\delta^2=\Delta$. 
+\vspace*{4mm}
+
+\pause
+{Par cons\'equent, } 
+le polyn\^ome $P(z)=az^2+bz+c$ possède 
+\begin{itemize}
+\bitem 
+\underline{une racine double}\quad $z=-b/2a$\ \underline{si $\Delta=0$}, 
+
+\bitem 
+\underline{deux racines distinctes}\quad 
+$z_1 = \dfrac{-b + \delta}{2a}$\ et\ $z_2 = \dfrac{-b - \delta}{2a}$\
+\underline{si $\Delta\neq 0$.} 
+\end{itemize}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}%[plain]
+%\only<1>{\addtocounter{framenumber}{-1}}
+\frametitle{\bf Exercice: \'equation complexe de degr\'e $2$} 
+\medskip 
+
+{\bf Exercice:} 
+{\it R\'esoudre l'\'equation\quad $z^2-(1+i)z+6-2i=0$.}
+\vspace*{1.5mm}
+
+\pause
+{\bf R\'eponse:} 
+Les solutions de cette \'equation sont\quad 
+$z=\dfrac{1+i\pm\delta}{2}$, o\`u il faut trouver $\delta=x+iy$ 
+tel que $\delta^2=\Delta$ et  
+$\left|\delta^2\right|=\left|\Delta \right|$, 
+\pause 
+c'est-\`a-dire:
+\begin{align*}
+(x^2-y^2)+i\,2xy & = (1+i)^2-4(6-2i) \\ 
+& = 1+2i-1-24+8i = -24+10i \\ 
+x^2+y^2 & = 2 \left|-12+5i \right| = 2\sqrt{144+25} = 2\times 13 =26
+\end{align*}
+\pause 
+On a alors
+$$
+\left\{\begin{array}{l} 
+x^2-y^2 = -24 \\ 2xy=10 \\ x^2+y^2=26 
+\end{array}\right. 
+\quad \Leftrightarrow\quad 
+\left\{\begin{array}{l} 
+2x^2 = 2 \\ xy=5 
+\end{array}\right. 
+\quad \Leftrightarrow\quad 
+\left\{\begin{array}{l} 
+x = \pm 1 \\ y=5/x=\pm 5
+\end{array}\right. 
+$$
+et par cons\'equent\quad $\delta = \pm (1+5i)$. 
+\pause
+On a donc 
+\begin{align*}
+z_1 & =\dfrac{1+i+(1+5i)}{2} = \dfrac{2+6i}{2}=1+3i \\ 
+z_2 & =\dfrac{1+i-(1+5i)}{2} = \dfrac{0-4i}{2}=-2i
+\end{align*}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\bf Racines complexes d'un polyn\^ome r\'eel} 
+\medskip 
+
+{\bf Proposition:}
+Si $P(z)$ est un polyn\^ome \`a coefficients \underline{r\'eels}, et $z_1\in\C$ 
+est une racine complexe de $P(z)$ de multiplicit\'e $m_1$, 
+alors sa conjugu\'ee $z_2=\overline{z_1}$ est aussi une racine de $P(z)$, 
+de m\^eme multiplicit\'e $m_2=m_1$. 
+\vspace*{4mm}
+
+{\small
+{\bf Exemple:} Le polyn\^ome à coefficients r\'eels $P(z)=z^2+1$ a pour racines $z_1=i$ et $z_2=-i$. 
+}
+\vspace*{4mm}
+
+\pause
+{Puisque $z=\overline{z}$ si seulement si $z\in\R$,}  
+\begin{itemize}
+\bitem 
+Tout polyn\^ome r\'eel de degré 2 tel que  $\Delta<0$ admet {deux racines complexes conjugu\'ees} $z_1$ et $z_2=\overline{z_1}$. 
+
+\bitem  
+Tout polyn\^ome r\'eel {de degr\'e $3$} 
+admet {au moins une racine r\'eelle}.
+\end{itemize}
+\vspace*{4mm}
+
+{\small
+{\bf Exemple:} Le polyn\^ome $P(z)=z^2-4z+5$ est tel que $\Delta=16-20<0$. Il a deux racines complexes 
+$z_1=2\!+\!i$ et $z_2=2\!-\!i=\overline{2\!+\!i}$. 
+}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
